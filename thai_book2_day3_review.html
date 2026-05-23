@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Book 2｜Day 3 Compact Review</title>
+  <style>
+    :root{
+      --text:var(--color-text-primary,#1f2937);--muted:#6b7280;--line:rgba(107,114,128,.28);
+      --card:rgba(255,255,255,.72);--orange:#f97316;--orange-soft:rgba(249,115,22,.13);
+      --green:#16a34a;--green-soft:rgba(22,163,74,.13);--blue:#2563eb;--blue-soft:rgba(37,99,235,.12);
+      --red:#dc2626;--red-soft:rgba(220,38,38,.11);--yellow-soft:rgba(234,179,8,.15);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;padding:24px;color:var(--text);background:linear-gradient(135deg,rgba(249,115,22,.08),rgba(22,163,74,.05),rgba(37,99,235,.05));font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.65}
+    .container{max-width:1180px;margin:0 auto}.hero{padding:28px;border:.5px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(249,115,22,.13),rgba(22,163,74,.09),rgba(37,99,235,.08));box-shadow:0 12px 34px rgba(0,0,0,.05);margin-bottom:18px}
+    h1{margin:0 0 8px;font-size:28px}h2{margin-top:0;font-size:22px;border-bottom:1px solid var(--line);padding-bottom:10px}h3{margin-top:26px;font-size:18px}p{margin:8px 0}.subtitle{color:var(--muted);font-size:14px}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;padding:10px;border:.5px solid var(--line);border-radius:18px;background:rgba(255,255,255,.65);position:sticky;top:0;backdrop-filter:blur(10px);z-index:5}
+    .tab-btn{border:.5px solid var(--line);background:rgba(255,255,255,.72);color:var(--text);border-radius:999px;padding:8px 13px;font-size:13px;cursor:pointer}.tab-btn.active{border-color:rgba(249,115,22,.55);background:var(--orange-soft);color:#9a3412;font-weight:700}
+    .tab-content{display:none;padding:24px;border:.5px solid var(--line);border-radius:24px;background:rgba(255,255,255,.62);box-shadow:0 10px 28px rgba(0,0,0,.04);margin-bottom:20px}.tab-content.active{display:block}
+    .label{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}.textbook{background:var(--orange-soft);color:#c2410c}.local{background:var(--green-soft);color:#15803d}.review{background:var(--blue-soft);color:#1d4ed8}.warn{background:var(--red-soft);color:#b91c1c}.practical{background:var(--yellow-soft);color:#854d0e}
+    .thai{font-size:15px;font-weight:500}.roman{color:#6b7280;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13px}.eng{font-size:13px}.triad{display:grid;gap:2px;margin:4px 0}.triad .thai:before{content:"Thai: ";color:var(--muted);font-weight:400}.triad .roman:before{content:"Romanization: ";color:var(--muted);font-family:inherit}.triad .eng:before{content:"English: ";color:var(--muted)}
+    table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:14px}th,td{border:.5px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}th{background:rgba(243,244,246,.72);font-weight:700}tbody tr:nth-child(even){background:rgba(249,250,251,.55)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px;margin:16px 0}.card,.study-task,.quiz-card,.review-box,.random-card,.word-box{border:.5px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:rgba(255,255,255,.72)}.study-task{background:rgba(255,248,239,.82)}.study-task label{display:block;margin:8px 0;cursor:pointer}.mini-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:700}
+    .tip{border-left:4px solid var(--green);padding:12px 14px;background:var(--green-soft);border-radius:12px;margin:14px 0}.tip.orange{border-left-color:var(--orange);background:var(--orange-soft)}.tip.blue{border-left-color:var(--blue);background:var(--blue-soft)}.tip.red{border-left-color:var(--red);background:var(--red-soft)}
+    details{border:.5px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,.55)}summary{cursor:pointer;font-weight:700}.answer-box{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--green-soft);border:.5px solid rgba(22,163,74,.22)}
+    .word-box{background:rgba(37,99,235,.07);padding:12px}.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:8px;margin-top:8px}.word-pill{border:.5px solid rgba(37,99,235,.22);background:rgba(255,255,255,.75);border-radius:12px;padding:8px 10px}
+    .progress-wrap{border:.5px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.72);margin:16px 0}.progress-bar{width:100%;height:14px;border-radius:999px;background:rgba(107,114,128,.18);overflow:hidden;margin:10px 0 6px}.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,var(--orange),var(--green),var(--blue));border-radius:999px;transition:width .25s ease}
+    .btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.small-btn{border:.5px solid var(--line);background:rgba(255,255,255,.75);border-radius:999px;padding:7px 11px;font-size:12px;cursor:pointer}.small-btn.easy{background:var(--green-soft);color:#15803d}.small-btn.hard{background:var(--red-soft);color:#b91c1c}.small-btn.blue{background:var(--blue-soft);color:#1d4ed8}
+    .bubble-wrap{display:grid;gap:10px;margin:14px 0 24px}.bubble{border:.5px solid var(--line);border-radius:18px;padding:13px 15px;max-width:84%;background:rgba(255,255,255,.72)}.bubble.a{justify-self:start;border-left:5px solid var(--blue)}.bubble.b{justify-self:end;border-right:5px solid var(--green)}.speaker{display:inline-block;font-size:12px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:6px}.speaker.a{background:var(--blue-soft);color:#1d4ed8}.speaker.b{background:var(--green-soft);color:#15803d}
+    .speak-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:.5px solid rgba(37,99,235,.3);background:var(--blue-soft);color:#1d4ed8;font-size:11px;cursor:pointer;margin-left:6px;vertical-align:middle;flex-shrink:0;transition:all .15s ease;line-height:1;padding:0}.speak-btn.speaking{background:var(--orange-soft);color:#c2410c}div.thai{display:flex;align-items:center;flex-wrap:wrap;gap:2px}.thai-text{flex:1}textarea{width:100%;min-height:90px;border:.5px solid var(--line);border-radius:14px;padding:12px;font-family:inherit;line-height:1.6;background:rgba(255,255,255,.8)}
+    @media(max-width:720px){body{padding:14px}.tab-content{padding:16px}table{font-size:13px}.bubble{max-width:100%}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>Thai Book 2｜Day 3 精簡複習版</h1>
+    <p class="subtitle">複習目標：表達意見、柔和不同意、程度副詞、租屋/費用情境。這版刻意刪掉百科型大量補充，改成「能不能開口說」的訓練頁。</p>
+    <p><span class="label review">Compact Review</span><span class="label textbook">Textbook-based</span><span class="label local">Local usage</span><span class="label practical">Practical Usage</span><span class="label warn">Common mistake</span></p>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="openTab(event,'mission')">Mission</button>
+    <button class="tab-btn" onclick="openTab(event,'core')">Core 12</button>
+    <button class="tab-btn" onclick="openTab(event,'patterns')">3 Patterns</button>
+    <button class="tab-btn" onclick="openTab(event,'words')">Key Words</button>
+    <button class="tab-btn" onclick="openTab(event,'dialogues')">Dialogues</button>
+    <button class="tab-btn" onclick="openTab(event,'translation')">Translation</button>
+    <button class="tab-btn" onclick="openTab(event,'random')">Random Quiz</button>
+    <button class="tab-btn" onclick="openTab(event,'output')">Output</button>
+  </nav>
+
+  <section id="mission" class="tab-content active">
+    <h2>Mission｜今天只練 3 件事</h2>
+    <div class="progress-wrap"><strong>今日完成度</strong><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><p id="progressText" class="subtitle">0% completed</p><div class="btn-row"><button class="small-btn blue" onclick="resetProgress()">重置今日進度</button></div></div>
+    <div class="study-task">
+      <h3>Checklist</h3>
+      <label><input type="checkbox" class="task-check" data-id="core"> 跟讀 Core 12 句</label>
+      <label><input type="checkbox" class="task-check" data-id="pattern"> 完成 3 Patterns 複習</label>
+      <label><input type="checkbox" class="task-check" data-id="words"> 複習 8 組反義詞＋租屋詞</label>
+      <label><input type="checkbox" class="task-check" data-id="dialogue"> 跟讀 3 段情境對話</label>
+      <label><input type="checkbox" class="task-check" data-id="translation"> 不看答案翻譯 10 題</label>
+      <label><input type="checkbox" class="task-check" data-id="output"> 自己造 4 句</label>
+    </div>
+    <div class="tip orange">
+      <strong>這版比上一版少很多：</strong>上一版把同義詞、反義詞、租屋、合約全部展開，容易讀到累。這版只留「複習真的會用到的東西」：意見、不同意、程度、租屋問答。
+    </div>
+    <div class="cards">
+      <div class="card"><div class="mini-title">Opinion</div><div class="triad"><div class="thai">ฉันว่าไม่แพงเท่าไรค่ะ</div><div class="roman">chǎn wâa mâi phɛɛng thâo-rai khâ</div><div class="eng">I think it’s not that expensive.</div></div></div>
+      <div class="card"><div class="mini-title">Soft disagreement</div><div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ค่อยไกลค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi khɔ̂i glai khâ</div><div class="eng">Really? I think it’s not very far.</div></div></div>
+      <div class="card"><div class="mini-title">Degree</div><div class="triad"><div class="thai">ห้องนี้มืดไปหน่อยค่ะ</div><div class="roman">hɔ̂ng níi mʉ̂ʉt bpai nɔ̀i khâ</div><div class="eng">This room is a little too dark.</div></div></div>
+      <div class="card"><div class="mini-title">Renting</div><div class="triad"><div class="thai">ค่ามัดจำเท่าไรคะ</div><div class="roman">khâa-mát-jam thâo-rai khá</div><div class="eng">How much is the deposit?</div></div></div>
+    </div>
+  </section>
+
+  <section id="core" class="tab-content">
+    <h2>Core 12｜最該反射回答的句子</h2>
+    <table>
+      <thead><tr><th>#</th><th>Thai / Romanization / English</th><th>Words from this sentence｜句中生字</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><div class="triad"><div class="thai">เมืองไทยร้อนนะคะ</div><div class="roman">mʉang-thai rɔ́ɔn ná khá</div><div class="eng">Thailand is hot, you know.</div></div></td><td>เมืองไทย / Thailand；ร้อน / hot；นะคะ / soft confirmation</td><td>柔和陳述</td></tr>
+        <tr><td>2</td><td><div class="triad"><div class="thai">ภาษาไทยยากไหมคะ</div><div class="roman">phaa-sǎa thai yâak mái khá</div><div class="eng">Is Thai difficult?</div></div></td><td>ภาษาไทย / Thai language；ยาก / difficult；ไหม / question particle</td><td>問程度</td></tr>
+        <tr><td>3</td><td><div class="triad"><div class="thai">ไม่ยากเท่าไรค่ะ</div><div class="roman">mâi yâak thâo-rai khâ</div><div class="eng">It’s not that difficult.</div></div></td><td>ไม่...เท่าไร / not that...；ยาก / difficult</td><td>程度回答</td></tr>
+        <tr><td>4</td><td><div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ค่อยยากค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi khɔ̂i yâak khâ</div><div class="eng">Really? I think it’s not very difficult.</div></div></td><td>จริงเหรอ / really?；ฉันว่า / I think；ไม่ค่อย / not very</td><td>柔和不同意</td></tr>
+        <tr><td>5</td><td><div class="triad"><div class="thai">ห้องนี้แพงไปหน่อยค่ะ</div><div class="roman">hɔ̂ng níi phɛɛng bpai nɔ̀i khâ</div><div class="eng">This room is a little too expensive.</div></div></td><td>ห้อง / room；แพง / expensive；ไปหน่อย / a little too</td><td>看房評價</td></tr>
+        <tr><td>6</td><td><div class="triad"><div class="thai">ค่าเช่าเดือนละเท่าไรคะ</div><div class="roman">khâa-châo dʉan lá thâo-rai khá</div><div class="eng">How much is the rent per month?</div></div></td><td>ค่าเช่า / rent；เดือนละ / per month；เท่าไร / how much</td><td>租屋問價格</td></tr>
+        <tr><td>7</td><td><div class="triad"><div class="thai">ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">khâa náam khâa fai ruam mái khá</div><div class="eng">Are water and electricity included?</div></div></td><td>ค่าน้ำ / water bill；ค่าไฟ / electricity bill；รวม / included</td><td>問費用</td></tr>
+        <tr><td>8</td><td><div class="triad"><div class="thai">ค่ามัดจำเท่าไรคะ</div><div class="roman">khâa-mát-jam thâo-rai khá</div><div class="eng">How much is the deposit?</div></div></td><td>ค่ามัดจำ / deposit；เท่าไร / how much</td><td>問押金</td></tr>
+        <tr><td>9</td><td><div class="triad"><div class="thai">ต้องเซ็นสัญญาไหมคะ</div><div class="roman">dtɔ̂ng sen sǎn-yaa mái khá</div><div class="eng">Do I need to sign a contract?</div></div></td><td>ต้อง / must；เซ็น / sign；สัญญา / contract</td><td>問合約</td></tr>
+        <tr><td>10</td><td><div class="triad"><div class="thai">สัญญาหมดอายุเมื่อไรคะ</div><div class="roman">sǎn-yaa mòt aa-yú mʉ̂a-rai khá</div><div class="eng">When does the contract expire?</div></div></td><td>หมดอายุ / expire；เมื่อไร / when</td><td>問到期</td></tr>
+        <tr><td>11</td><td><div class="triad"><div class="thai">ต่ออายุสัญญาได้ไหมคะ</div><div class="roman">dtɔ̀ɔ aa-yú sǎn-yaa dâai mái khá</div><div class="eng">Can I renew the contract?</div></div></td><td>ต่ออายุ / renew；ได้ไหม / can?</td><td>問續約</td></tr>
+        <tr><td>12</td><td><div class="triad"><div class="thai">ขออ่านสัญญาก่อนเซ็นได้ไหมคะ</div><div class="roman">khɔ̌ɔ àan sǎn-yaa gɔ̀ɔn sen dâai mái khá</div><div class="eng">Can I read the contract before signing?</div></div></td><td>อ่าน / read；ก่อน / before；เซ็น / sign</td><td>實用保護句</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="patterns" class="tab-content">
+    <h2>3 Patterns｜這課只抓三個句型</h2>
+    <details class="quiz-card">
+      <summary>1. 柔和陳述：N + Adj + นะคะ</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ห้องนี้สะอาดนะคะ</div><div class="roman">hɔ̂ng níi sà-àat ná khá</div><div class="eng">This room is clean, you know.</div></div>
+        <div class="word-box"><strong>Words</strong><div class="word-grid"><div class="word-pill"><div class="thai">ห้อง</div><div class="roman">hɔ̂ng</div><div class="eng">room</div></div><div class="word-pill"><div class="thai">สะอาด</div><div class="roman">sà-àat</div><div class="eng">clean</div></div><div class="word-pill"><div class="thai">นะคะ</div><div class="roman">ná khá</div><div class="eng">soft particle</div></div></div></div>
+      </div>
+    </details>
+    <details class="quiz-card">
+      <summary>2. 柔和不同意：จริงเหรอคะ / หรือคะ + ฉันว่า...</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่แพงเท่าไรค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi phɛɛng thâo-rai khâ</div><div class="eng">Really? I think it’s not that expensive.</div></div>
+        <div class="tip blue">比直接說 <span class="thai">ไม่ใช่</span> / <span class="roman">mâi châi</span> / <span class="eng">No</span> 柔和很多。</div>
+      </div>
+    </details>
+    <details class="quiz-card">
+      <summary>3. 程度副詞：不太 / 不怎麼 / 太...一點</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ไม่ค่อยไกลค่ะ</div><div class="roman">mâi khɔ̂i glai khâ</div><div class="eng">It’s not very far.</div></div>
+        <div class="triad"><div class="thai">ไม่แพงเท่าไรค่ะ</div><div class="roman">mâi phɛɛng thâo-rai khâ</div><div class="eng">It’s not that expensive.</div></div>
+        <div class="triad"><div class="thai">มืดไปหน่อยค่ะ</div><div class="roman">mʉ̂ʉt bpai nɔ̀i khâ</div><div class="eng">It’s a little too dark.</div></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="words" class="tab-content">
+    <h2>Key Words｜只留最常用反義詞＋租屋詞</h2>
+    <h3>8 組反義詞</h3>
+    <table>
+      <thead><tr><th>Pair</th><th>Thai / Romanization / English</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>貴 / 便宜</td><td><div class="triad"><div class="thai">แพง / ถูก</div><div class="roman">phɛɛng / thùuk</div><div class="eng">expensive / cheap</div></div></td><td><div class="triad"><div class="thai">ห้องนี้แพงไปหน่อยค่ะ</div><div class="roman">hɔ̂ng níi phɛɛng bpai nɔ̀i khâ</div><div class="eng">This room is a little too expensive.</div></div></td></tr>
+        <tr><td>近 / 遠</td><td><div class="triad"><div class="thai">ใกล้ / ไกล</div><div class="roman">glâi / glai</div><div class="eng">near / far</div></div></td><td><div class="triad"><div class="thai">คอนโดนี้ใกล้บีทีเอสค่ะ</div><div class="roman">khɔɔn-doo níi glâi bii-thii-ét khâ</div><div class="eng">This condo is near the BTS.</div></div></td></tr>
+        <tr><td>熱 / 涼</td><td><div class="triad"><div class="thai">ร้อน / เย็น</div><div class="roman">rɔ́ɔn / yen</div><div class="eng">hot / cool</div></div></td><td><div class="triad"><div class="thai">เมืองไทยร้อนนะคะ</div><div class="roman">mʉang-thai rɔ́ɔn ná khá</div><div class="eng">Thailand is hot, you know.</div></div></td></tr>
+        <tr><td>難 / 簡單</td><td><div class="triad"><div class="thai">ยาก / ง่าย</div><div class="roman">yâak / ngâai</div><div class="eng">difficult / easy</div></div></td><td><div class="triad"><div class="thai">ภาษาไทยไม่ง่าย แต่สนุกค่ะ</div><div class="roman">phaa-sǎa thai mâi ngâai, dtɛ̀ɛ sà-nùk khâ</div><div class="eng">Thai is not easy, but it’s fun.</div></div></td></tr>
+        <tr><td>乾淨 / 髒</td><td><div class="triad"><div class="thai">สะอาด / สกปรก</div><div class="roman">sà-àat / sòk-gà-bpròk</div><div class="eng">clean / dirty</div></div></td><td><div class="triad"><div class="thai">ห้องน้ำสะอาดมากค่ะ</div><div class="roman">hɔ̂ng-náam sà-àat mâak khâ</div><div class="eng">The bathroom is very clean.</div></div></td></tr>
+        <tr><td>暗 / 亮</td><td><div class="triad"><div class="thai">มืด / สว่าง</div><div class="roman">mʉ̂ʉt / sà-wàang</div><div class="eng">dark / bright</div></div></td><td><div class="triad"><div class="thai">ห้องนี้มืดไปหน่อยค่ะ</div><div class="roman">hɔ̂ng níi mʉ̂ʉt bpai nɔ̀i khâ</div><div class="eng">This room is a little too dark.</div></div></td></tr>
+        <tr><td>多 / 少</td><td><div class="triad"><div class="thai">มาก / น้อย</div><div class="roman">mâak / nɔ́ɔi</div><div class="eng">much, many / little, few</div></div></td><td><div class="triad"><div class="thai">ค่าน้ำค่าไฟแพงมากค่ะ</div><div class="roman">khâa náam khâa fai phɛɛng mâak khâ</div><div class="eng">Water and electricity are very expensive.</div></div></td></tr>
+        <tr><td>好 / 糟</td><td><div class="triad"><div class="thai">ดี / แย่</div><div class="roman">dii / yɛ̂ɛ</div><div class="eng">good / bad, terrible</div></div></td><td><div class="triad"><div class="thai">โลเคชันดี แต่ห้องเล็กค่ะ</div><div class="roman">loo-khee-chân dii, dtɛ̀ɛ hɔ̂ng lék khâ</div><div class="eng">The location is good, but the room is small.</div></div></td></tr>
+      </tbody>
+    </table>
+    <h3>租屋情境詞</h3>
+    <table>
+      <thead><tr><th>Thai / Romanization / English</th><th>Use</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><div class="triad"><div class="thai">ค่าเช่า</div><div class="roman">khâa-châo</div><div class="eng">rent</div></div></td><td>租金</td><td><div class="triad"><div class="thai">ค่าเช่าเดือนละเท่าไรคะ</div><div class="roman">khâa-châo dʉan lá thâo-rai khá</div><div class="eng">How much is the rent per month?</div></div></td></tr>
+        <tr><td><div class="triad"><div class="thai">ค่ามัดจำ</div><div class="roman">khâa-mát-jam</div><div class="eng">deposit</div></div></td><td>押金</td><td><div class="triad"><div class="thai">ต้องวางมัดจำไหมคะ</div><div class="roman">dtɔ̂ng waang mát-jam mái khá</div><div class="eng">Do I need to put down a deposit?</div></div></td></tr>
+        <tr><td><div class="triad"><div class="thai">ค่าน้ำค่าไฟ</div><div class="roman">khâa náam khâa fai</div><div class="eng">water and electricity bills</div></div></td><td>水電費</td><td><div class="triad"><div class="thai">ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">khâa náam khâa fai ruam mái khá</div><div class="eng">Are water and electricity included?</div></div></td></tr>
+        <tr><td><div class="triad"><div class="thai">สัญญา</div><div class="roman">sǎn-yaa</div><div class="eng">contract</div></div></td><td>合約</td><td><div class="triad"><div class="thai">ต้องเซ็นสัญญาไหมคะ</div><div class="roman">dtɔ̂ng sen sǎn-yaa mái khá</div><div class="eng">Do I need to sign a contract?</div></div></td></tr>
+        <tr><td><div class="triad"><div class="thai">หมดอายุ / ต่ออายุ</div><div class="roman">mòt aa-yú / dtɔ̀ɔ aa-yú</div><div class="eng">expire / renew</div></div></td><td>到期 / 續約</td><td><div class="triad"><div class="thai">ต่ออายุสัญญาได้ไหมคะ</div><div class="roman">dtɔ̀ɔ aa-yú sǎn-yaa dâai mái khá</div><div class="eng">Can I renew the contract?</div></div></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="dialogues" class="tab-content">
+    <h2>Dialogues｜3 個情境就夠</h2>
+    <h3>1. 聊泰文難不難</h3>
+    <div class="bubble-wrap">
+      <div class="bubble a"><span class="speaker a">Friend</span><div class="triad"><div class="thai">ภาษาไทยยากนะคะ</div><div class="roman">phaa-sǎa thai yâak ná khá</div><div class="eng">Thai is difficult, you know.</div></div></div>
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ยากเท่าไรค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi yâak thâo-rai khâ</div><div class="eng">Really? I think it’s not that difficult.</div></div></div>
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">แต่เสียงวรรณยุกต์ยากไปหน่อยค่ะ</div><div class="roman">dtɛ̀ɛ sǐang wan-ná-yúk yâak bpai nɔ̀i khâ</div><div class="eng">But the tones are a little too difficult.</div></div></div>
+    </div>
+    <h3>2. 看房：價格與條件</h3>
+    <div class="bubble-wrap">
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ค่าเช่าเดือนละเท่าไรคะ</div><div class="roman">khâa-châo dʉan lá thâo-rai khá</div><div class="eng">How much is the rent per month?</div></div></div>
+      <div class="bubble a"><span class="speaker a">Agent</span><div class="triad"><div class="thai">เดือนละหนึ่งหมื่นห้าพันบาทค่ะ</div><div class="roman">dʉan lá nʉ̀eng mʉ̀ʉn hâa phan bàat khâ</div><div class="eng">15,000 baht per month.</div></div></div>
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ฉันว่าแพงไปหน่อยค่ะ ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">chǎn wâa phɛɛng bpai nɔ̀i khâ, khâa náam khâa fai ruam mái khá</div><div class="eng">I think it’s a little too expensive. Are water and electricity included?</div></div></div>
+    </div>
+    <h3>3. 合約與押金</h3>
+    <div class="bubble-wrap">
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ค่ามัดจำเท่าไรคะ</div><div class="roman">khâa-mát-jam thâo-rai khá</div><div class="eng">How much is the deposit?</div></div></div>
+      <div class="bubble a"><span class="speaker a">Agent</span><div class="triad"><div class="thai">มัดจำสองเดือนค่ะ</div><div class="roman">mát-jam sɔ̌ɔng dʉan khâ</div><div class="eng">Two months’ deposit.</div></div></div>
+      <div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ขออ่านสัญญาก่อนเซ็นได้ไหมคะ</div><div class="roman">khɔ̌ɔ àan sǎn-yaa gɔ̀ɔn sen dâai mái khá</div><div class="eng">Can I read the contract before signing?</div></div></div>
+    </div>
+  </section>
+
+  <section id="translation" class="tab-content">
+    <h2>Translation｜10 題就好</h2>
+    <details class="quiz-card" data-qid="t1"><summary>1. 泰文很難嗎？</summary><div class="answer-box"><div class="triad"><div class="thai">ภาษาไทยยากไหมคะ</div><div class="roman">phaa-sǎa thai yâak mái khá</div><div class="eng">Is Thai difficult?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t1','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t2"><summary>2. 我覺得不怎麼難。</summary><div class="answer-box"><div class="triad"><div class="thai">ฉันว่าไม่ยากเท่าไรค่ะ</div><div class="roman">chǎn wâa mâi yâak thâo-rai khâ</div><div class="eng">I think it’s not that difficult.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t2','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t3"><summary>3. 真的嗎？我覺得不太遠。</summary><div class="answer-box"><div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ค่อยไกลค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi khɔ̂i glai khâ</div><div class="eng">Really? I think it’s not very far.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t3','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t4"><summary>4. 這個房間有點太暗。</summary><div class="answer-box"><div class="triad"><div class="thai">ห้องนี้มืดไปหน่อยค่ะ</div><div class="roman">hɔ̂ng níi mʉ̂ʉt bpai nɔ̀i khâ</div><div class="eng">This room is a little too dark.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t4','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t5"><summary>5. 租金一個月多少？</summary><div class="answer-box"><div class="triad"><div class="thai">ค่าเช่าเดือนละเท่าไรคะ</div><div class="roman">khâa-châo dʉan lá thâo-rai khá</div><div class="eng">How much is the rent per month?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t5','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t6"><summary>6. 水電費有包含嗎？</summary><div class="answer-box"><div class="triad"><div class="thai">ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">khâa náam khâa fai ruam mái khá</div><div class="eng">Are water and electricity included?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t6','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t7"><summary>7. 押金多少？</summary><div class="answer-box"><div class="triad"><div class="thai">ค่ามัดจำเท่าไรคะ</div><div class="roman">khâa-mát-jam thâo-rai khá</div><div class="eng">How much is the deposit?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t7','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t7','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t8"><summary>8. 需要簽合約嗎？</summary><div class="answer-box"><div class="triad"><div class="thai">ต้องเซ็นสัญญาไหมคะ</div><div class="roman">dtɔ̂ng sen sǎn-yaa mái khá</div><div class="eng">Do I need to sign a contract?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t8','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t8','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t9"><summary>9. 合約什麼時候到期？</summary><div class="answer-box"><div class="triad"><div class="thai">สัญญาหมดอายุเมื่อไรคะ</div><div class="roman">sǎn-yaa mòt aa-yú mʉ̂a-rai khá</div><div class="eng">When does the contract expire?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t9','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t9','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="t10"><summary>10. 可以在簽之前看合約嗎？</summary><div class="answer-box"><div class="triad"><div class="thai">ขออ่านสัญญาก่อนเซ็นได้ไหมคะ</div><div class="roman">khɔ̌ɔ àan sǎn-yaa gɔ̀ɔn sen dâai mái khá</div><div class="eng">Can I read the contract before signing?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('t10','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t10','hard')">Hard</button></div></div></details>
+  </section>
+
+  <section id="random" class="tab-content">
+    <h2>Random Quiz｜隨機抽題</h2>
+    <div class="random-card">
+      <p class="subtitle">按按鈕隨機抽一題。先自己說答案，再點「顯示答案」。</p>
+      <h3 id="randomQuestion">按下方按鈕開始抽題</h3>
+      <div id="randomAnswer" class="answer-box" style="display:none;"></div>
+      <div class="btn-row"><button class="small-btn blue" onclick="drawRandom()">抽一題</button><button class="small-btn easy" onclick="showRandomAnswer()">顯示答案</button></div>
+    </div>
+  </section>
+
+  <section id="output" class="tab-content">
+    <h2>Output｜自己造句</h2>
+    <div class="review-box">
+      <h3>1. 表達意見</h3>
+      <p>Prompt：我覺得泰文不太難 / 這個房間不太小 / 這個價格不怎麼貴</p>
+      <textarea placeholder="請輸入你的泰文句子"></textarea>
+      <details><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">ฉันว่าภาษาไทยไม่ค่อยยากค่ะ</div><div class="roman">chǎn wâa phaa-sǎa thai mâi khɔ̂i yâak khâ</div><div class="eng">I think Thai is not very difficult.</div></div>
+        <div class="triad"><div class="thai">ฉันว่าราคานี้ไม่แพงเท่าไรค่ะ</div><div class="roman">chǎn wâa raa-khaa níi mâi phɛɛng thâo-rai khâ</div><div class="eng">I think this price is not that expensive.</div></div>
+      </div></details>
+    </div>
+    <div class="review-box">
+      <h3>2. 柔和不同意</h3>
+      <p>Prompt：對方說房間很小/太遠/太貴，你柔和地不同意</p>
+      <textarea placeholder="請輸入你的泰文句子"></textarea>
+      <details><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่เล็กเท่าไรค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi lék thâo-rai khâ</div><div class="eng">Really? I think it’s not that small.</div></div>
+        <div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ค่อยไกลค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi khɔ̂i glai khâ</div><div class="eng">Really? I think it’s not very far.</div></div>
+      </div></details>
+    </div>
+    <div class="review-box">
+      <h3>3. 租屋問答</h3>
+      <p>Prompt：問租金、水電、押金、合約</p>
+      <textarea placeholder="請輸入你的泰文句子"></textarea>
+      <details><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">ค่าเช่าเดือนละเท่าไรคะ</div><div class="roman">khâa-châo dʉan lá thâo-rai khá</div><div class="eng">How much is the rent per month?</div></div>
+        <div class="triad"><div class="thai">ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">khâa náam khâa fai ruam mái khá</div><div class="eng">Are water and electricity included?</div></div>
+        <div class="triad"><div class="thai">ต้องเซ็นสัญญาไหมคะ</div><div class="roman">dtɔ̂ng sen sǎn-yaa mái khá</div><div class="eng">Do I need to sign a contract?</div></div>
+      </div></details>
+    </div>
+  </section>
+</div>
+
+<script>
+function openTab(event,tabId){document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(tabId).classList.add('active');event.currentTarget.classList.add('active')}
+const storagePrefix='thaiBook2Day3CompactReview_';
+function updateProgress(){const checks=Array.from(document.querySelectorAll('.task-check'));const done=checks.filter(c=>c.checked).length;const total=checks.length||1;const pct=Math.round(done/total*100);document.getElementById('progressFill').style.width=pct+'%';document.getElementById('progressText').textContent=`${pct}% completed（${done}/${total}）`}
+function initChecks(){document.querySelectorAll('.task-check').forEach(check=>{const key=storagePrefix+'check_'+check.dataset.id;check.checked=localStorage.getItem(key)==='true';check.addEventListener('change',()=>{localStorage.setItem(key,check.checked);updateProgress()})});updateProgress()}
+function resetProgress(){document.querySelectorAll('.task-check').forEach(check=>{check.checked=false;localStorage.removeItem(storagePrefix+'check_'+check.dataset.id)});updateProgress()}
+function markCard(id,status){localStorage.setItem(storagePrefix+'card_'+id,status);const el=document.querySelector(`[data-qid="${id}"]`);if(el){el.style.borderColor=status==='easy'?'rgba(22,163,74,.55)':'rgba(220,38,38,.55)';el.style.background=status==='easy'?'rgba(22,163,74,.08)':'rgba(220,38,38,.07)'}}
+const randomItems=[
+{q:'「我覺得不怎麼貴」怎麼說？',a:'<div class="triad"><div class="thai">ฉันว่าไม่แพงเท่าไรค่ะ</div><div class="roman">chǎn wâa mâi phɛɛng thâo-rai khâ</div><div class="eng">I think it’s not that expensive.</div></div>'},
+{q:'「真的嗎？我覺得不太遠」怎麼說？',a:'<div class="triad"><div class="thai">จริงเหรอคะ ฉันว่าไม่ค่อยไกลค่ะ</div><div class="roman">jing rʉ̌ə khá, chǎn wâa mâi khɔ̂i glai khâ</div><div class="eng">Really? I think it’s not very far.</div></div>'},
+{q:'「押金多少？」怎麼說？',a:'<div class="triad"><div class="thai">ค่ามัดจำเท่าไรคะ</div><div class="roman">khâa-mát-jam thâo-rai khá</div><div class="eng">How much is the deposit?</div></div>'},
+{q:'「水電費有包含嗎？」怎麼說？',a:'<div class="triad"><div class="thai">ค่าน้ำค่าไฟรวมไหมคะ</div><div class="roman">khâa náam khâa fai ruam mái khá</div><div class="eng">Are water and electricity included?</div></div>'},
+{q:'「可以在簽之前看合約嗎？」怎麼說？',a:'<div class="triad"><div class="thai">ขออ่านสัญญาก่อนเซ็นได้ไหมคะ</div><div class="roman">khɔ̌ɔ àan sǎn-yaa gɔ̀ɔn sen dâai mái khá</div><div class="eng">Can I read the contract before signing?</div></div>'}
+];
+let currentRandom=null;
+function drawRandom(){currentRandom=randomItems[Math.floor(Math.random()*randomItems.length)];document.getElementById('randomQuestion').textContent=currentRandom.q;const ans=document.getElementById('randomAnswer');ans.style.display='none';ans.innerHTML=''}
+function showRandomAnswer(){if(!currentRandom)drawRandom();const ans=document.getElementById('randomAnswer');ans.innerHTML=currentRandom.a;ans.style.display='block';addSpeakButtons(ans)}
+let thaiVoice=null,activBtn=null;
+function loadVoices(){const voices=window.speechSynthesis.getVoices();thaiVoice=voices.find(v=>v.lang==='th-TH')||voices.find(v=>v.lang.startsWith('th'))||null}
+loadVoices();if(speechSynthesis.onvoiceschanged!==undefined){speechSynthesis.onvoiceschanged=loadVoices}
+function speakThai(text,btn){if(!window.speechSynthesis){alert('此瀏覽器不支援語音合成。請用 Safari 或 Chrome。');return}if(activBtn===btn&&speechSynthesis.speaking){speechSynthesis.cancel();btn.classList.remove('speaking');btn.textContent='🔊';activBtn=null;return}speechSynthesis.cancel();if(activBtn){activBtn.classList.remove('speaking');activBtn.textContent='🔊'}const utter=new SpeechSynthesisUtterance(text);utter.lang='th-TH';utter.rate=.85;utter.pitch=1.0;if(thaiVoice)utter.voice=thaiVoice;utter.onstart=()=>{btn.classList.add('speaking');btn.textContent='⏸';activBtn=btn};utter.onend=utter.onerror=()=>{btn.classList.remove('speaking');btn.textContent='🔊';activBtn=null};speechSynthesis.speak(utter)}
+function addSpeakButtons(root=document){root.querySelectorAll('div.thai').forEach(el=>{if(el.querySelector('.speak-btn'))return;const rawText=el.textContent.trim();if(!rawText)return;const span=document.createElement('span');span.className='thai-text';span.textContent=rawText;const btn=document.createElement('button');btn.className='speak-btn';btn.textContent='🔊';btn.title='唸出泰文';btn.setAttribute('aria-label','播放發音');btn.addEventListener('click',e=>{e.stopPropagation();speakThai(rawText,btn)});el.textContent='';el.appendChild(span);el.appendChild(btn)})}
+document.addEventListener('DOMContentLoaded',()=>{initChecks();addSpeakButtons()});
+</script>
+</body>
+</html>

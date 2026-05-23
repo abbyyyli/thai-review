@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰文複習系統 | Book 1 & Book 2 Review Hub</title>
+    <style>
+        :root {
+            --primary: #ef4444;
+            --secondary: #0891b2;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --accent: #fcd34d;
+            --muted: #64748b;
+            --line: #e2e8f0;
+            --ready-bg: #dcfce7;
+            --ready-text: #166534;
+            --soon-bg: #f1f5f9;
+            --soon-text: #475569;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg);
+            color: #374151;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .status-badge {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #fca5a5;
+        }
+
+        .section-group { margin-top: 40px; }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--line);
+            position: relative;
+            overflow: hidden;
+            min-height: 168px;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .card:hover::before { background: var(--primary); }
+
+        .card-day {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #1e293b;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            flex-grow: 1;
+        }
+
+        .review-badge {
+            margin-top: 14px;
+            width: fit-content;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .review-badge.available {
+            background: var(--ready-bg);
+            color: var(--ready-text);
+            border: 1px solid #86efac;
+        }
+
+        .review-badge.soon {
+            background: var(--soon-bg);
+            color: var(--soon-text);
+            border: 1px solid #cbd5e1;
+        }
+
+        .tools {
+            margin-top: 50px;
+            background: #1e293b;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .tools strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: var(--accent);
+        }
+
+        .tools a {
+            margin: 0 15px;
+            color: #f8fafc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #94a3b8;
+            padding-bottom: 2px;
+        }
+
+        .tools a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-bottom: 30px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 720px) {
+            body { padding: 14px; }
+            h1 { font-size: 1.8rem; }
+            .header { padding: 18px; }
+            .grid { grid-template-columns: 1fr; }
+            .tools a {
+                display: inline-block;
+                margin: 6px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>🇹🇭 泰文複習系統：Book 1 & Book 2</h1>
+        <div style="margin-bottom: 15px;">
+            <span class="status-badge">互動複習實戰 📍 ABBY.</span>
+        </div>
+        <p style="color: #64748b;">
+            根據 RTL Speaking 1 & Speaking 2 筆記整理｜Review Mode / Compact Review / Weak Point Review
+        </p>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">☕ Book 1｜點餐與請求 Review</div>
+        <div class="grid">
+            <a href="thai_speaking1_day5_day6_review.html" class="card">
+                <div class="card-day">Day 5+6</div>
+                <span class="card-title">Day 5+6 Review</span>
+                <span class="card-desc">甜度、餐具、容器、外帶、海鮮、結帳與找零。</span>
+                <span class="review-badge available">Review Ready</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">🚕 Book 1｜曼谷生存實戰 Review</div>
+        <div class="grid">
+            <a href="thai_speaking1_day7_day8_review.html" class="card">
+                <div class="card-day">Day 7+8</div>
+                <span class="card-title">Day 7+8 Review</span>
+                <span class="card-desc">衣物、量詞、買衣服、叫車、問路與指路。</span>
+                <span class="review-badge available">Review Ready</span>
+            </a><a href="thai-book1-day9-review.html" class="card">
+                <div class="card-day">Day 9</div>
+                <span class="card-title">Day 9 Review</span>
+                <span class="card-desc">交通工具：上車下車、搭乘方式、機場、車站、碼頭。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day10-review.html" class="card">
+                <div class="card-day">Day 10</div>
+                <span class="card-title">Day 10 Review</span>
+                <span class="card-desc">買賣水果：會幾種語言、想做什麼、問價格、殺價。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day11-review.html" class="card">
+                <div class="card-day">Day 11</div>
+                <span class="card-title">Day 11 Review</span>
+                <span class="card-desc">時間單位：多久、節日、地點、跟誰、活動安排。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day12-review.html" class="card">
+                <div class="card-day">Day 12</div>
+                <span class="card-title">Day 12 Review</span>
+                <span class="card-desc">經驗與時間：曾經做過、第一次／最後一次、早中晚、幾點鐘。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">💬 Book 1｜描述、家庭與互動 Review</div>
+        <div class="grid">
+            <a href="thai-book1-day13-review.html" class="card">
+                <div class="card-day">Day 13</div>
+                <span class="card-title">Day 13 Review</span>
+                <span class="card-desc">形容詞與比較：問怎麼樣、A 比 B、日常描述。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day14-review.html" class="card">
+                <div class="card-day">Day 14</div>
+                <span class="card-title">Day 14 Review</span>
+                <span class="card-desc">家庭成員與年齡：家庭成員、年齡、排行與人物介紹。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day15-review.html" class="card">
+                <div class="card-day">Day 15</div>
+                <span class="card-title">Day 15 Review</span>
+                <span class="card-desc">請求幫忙：聽不清楚、請幫忙、開關物品。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day16-review.html" class="card">
+                <div class="card-day">Day 16</div>
+                <span class="card-title">Day 16 Review</span>
+                <span class="card-desc">接待客人：見面、接待客人、請進、明天見。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">🏥 Book 1｜健康、邀請與總結 Review</div>
+        <div class="grid">
+            <a href="thai-book1-day17-review.html" class="card">
+                <div class="card-day">Day 17</div>
+                <span class="card-title">Day 17 Review</span>
+                <span class="card-desc">不舒服與症狀：幾種、看醫生、如果／時候...怎麼辦。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day18-review.html" class="card">
+                <div class="card-day">Day 18</div>
+                <span class="card-title">Day 18 Review</span>
+                <span class="card-desc">探望與邀請：為什麼／因為、今天有空嗎、一起吃飯、請客。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book1-day19-review.html" class="card">
+                <div class="card-day">Day 19</div>
+                <span class="card-title">Day 19 Review</span>
+                <span class="card-desc">最高級與頻率：最喜歡、自然景點、電影與明星、電話號碼。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">🕒 Book 2｜基礎強化與描述 Review</div>
+        <div class="grid">
+            <a href="thai_book2_day1_review.html" class="card">
+                <div class="card-day">Day 1</div>
+                <span class="card-title">Day 1 Review</span>
+                <span class="card-desc">出發與抵達時間：烹飪方式、活動起迄時間表達。</span>
+                <span class="review-badge available">Review Ready</span>
+            </a><a href="thai_book2_day2_review.html" class="card">
+                <div class="card-day">Day 2</div>
+                <span class="card-title">Day 2 Review</span>
+                <span class="card-desc">家務與比較級：正在進行的家務、使用กว่า กัน進行兩者比較。</span>
+                <span class="review-badge available">Review Ready</span>
+            </a><a href="thai_book2_day3_review.html" class="card">
+                <div class="card-day">Day 3</div>
+                <span class="card-title">Day 3 Review</span>
+                <span class="card-desc">最高級與程度詞：最...、程度副詞、初次印象描述。</span>
+                <span class="review-badge available">Review Ready</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">📞 Book 2｜社交禮儀與通訊 Review</div>
+        <div class="grid">
+            <a href="thai-book2-day4-review.html" class="card">
+                <div class="card-day">Day 4</div>
+                <span class="card-title">Day 4 Review</span>
+                <span class="card-desc">禮儀與禁止命令：請進／請坐、禁止行為、情緒表達。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day5-review.html" class="card">
+                <div class="card-day">Day 5</div>
+                <span class="card-title">Day 5 Review</span>
+                <span class="card-desc">電話溝通與留言：詢問號碼、轉接分機、留言與轉告訊息。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day6-review.html" class="card">
+                <div class="card-day">Day 6</div>
+                <span class="card-title">Day 6 Review</span>
+                <span class="card-desc">攜帶物品與領路：帶物與帶人的區別、辦公室、移民局等場景。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day7-review.html" class="card">
+                <div class="card-day">Day 7</div>
+                <span class="card-title">Day 7 Review</span>
+                <span class="card-desc">家鄉與活動頻率：詢問對方家鄉背景、描述活動頻率。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">🏥 Book 2｜生活細節與健康 Review</div>
+        <div class="grid">
+            <a href="thai-book2-day8-review.html" class="card">
+                <div class="card-day">Day 8</div>
+                <span class="card-title">Day 8 Review</span>
+                <span class="card-desc">物品位置與收納：描述放置與儲存、方位詞應用。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day9-review.html" class="card">
+                <div class="card-day">Day 9</div>
+                <span class="card-title">Day 9 Review</span>
+                <span class="card-desc">身體不適與症狀：頭痛、肚子痛、發燒、描述症狀持續時間。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day10-review.html" class="card">
+                <div class="card-day">Day 10</div>
+                <span class="card-title">Day 10 Review</span>
+                <span class="card-desc">生活習慣與頻率副詞：經常、總是、偶爾等進階頻率詞。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day11-review.html" class="card">
+                <div class="card-day">Day 11</div>
+                <span class="card-title">Day 11 Review</span>
+                <span class="card-desc">意圖與具體計畫：表達打算做某事、預計計畫。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">💡 Book 2｜進階語法實戰 Review</div>
+        <div class="grid">
+            <a href="thai-book2-day12-review.html" class="card">
+                <div class="card-day">Day 12</div>
+                <span class="card-title">Day 12 Review</span>
+                <span class="card-desc">經驗與嘗試：曾經做過、試試看。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day13-review.html" class="card">
+                <div class="card-day">Day 13</div>
+                <span class="card-title">Day 13 Review</span>
+                <span class="card-desc">因果關係表達：因為...所以...。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day14-review.html" class="card">
+                <div class="card-day">Day 14</div>
+                <span class="card-title">Day 14 Review</span>
+                <span class="card-desc">時間長度與完成度：描述時間流逝、確認事情已完成。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day15-review.html" class="card">
+                <div class="card-day">Day 15</div>
+                <span class="card-title">Day 15 Review</span>
+                <span class="card-desc">條件假設句型：如果...就...。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day16-review.html" class="card">
+                <div class="card-day">Day 16</div>
+                <span class="card-title">Day 16 Review</span>
+                <span class="card-desc">能力與許可：表達能夠或不可以。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day17-review.html" class="card">
+                <div class="card-day">Day 17</div>
+                <span class="card-title">Day 17 Review</span>
+                <span class="card-desc">感官印象與觀察：看起來、聽起來的感覺。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day18-review.html" class="card">
+                <div class="card-day">Day 18</div>
+                <span class="card-title">Day 18 Review</span>
+                <span class="card-desc">建議與提醒：給予建議、提醒注意事項。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a><a href="thai-book2-day19-review.html" class="card">
+                <div class="card-day">Day 19</div>
+                <span class="card-title">Day 19 Review</span>
+                <span class="card-desc">先後順序：先後、銀行開戶、硬幣。</span>
+                <span class="review-badge soon">Coming Soon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="tools">
+        <strong>📚 系統導覽工具</strong>
+        <a href="https://abbyyyli.github.io/thai-index/">← 返回首頁入口</a>|
+        <a href="https://github.com/abbyyyli/thai-review.git" target="_blank">GitHub 專案倉庫</a>|
+        <a href="https://abbyyyli.github.io/thai-notes-book1-audio/">第一冊</a>|
+        <a href="https://abbyyyli.github.io/thai-notes-book2-audio/">第二冊</a>
+    </div>
+
+    <footer>
+        &copy; 2026 Thai Study Project | Review Hub | Created for ABBY.
+    </footer>
+</div>
+
+</body>
+</html>

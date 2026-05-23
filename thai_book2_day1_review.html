@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Book 2｜Day 1 Review Mode</title>
+  <style>
+    :root {
+      --text: var(--color-text-primary, #1f2937);
+      --muted: #6b7280;
+      --line: rgba(107,114,128,.28);
+      --card: rgba(255,255,255,.72);
+      --orange: #f97316;
+      --orange-soft: rgba(249,115,22,.13);
+      --green: #16a34a;
+      --green-soft: rgba(22,163,74,.13);
+      --blue: #2563eb;
+      --blue-soft: rgba(37,99,235,.12);
+      --red: #dc2626;
+      --red-soft: rgba(220,38,38,.11);
+      --purple: #7c3aed;
+      --purple-soft: rgba(124,58,237,.12);
+      --yellow-soft: rgba(234,179,8,.15);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(249,115,22,.08), rgba(22,163,74,.05), rgba(37,99,235,.05));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.65;
+    }
+
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .hero {
+      padding: 28px;
+      border: .5px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(249,115,22,.13), rgba(22,163,74,.09), rgba(37,99,235,.08));
+      box-shadow: 0 12px 34px rgba(0,0,0,.05);
+      margin-bottom: 18px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -.02em; }
+    h2 { margin-top: 0; font-size: 22px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    h3 { margin-top: 28px; font-size: 18px; }
+    h4 { margin: 18px 0 8px; font-size: 15px; }
+    p { margin: 8px 0; }
+    .subtitle { color: var(--muted); font-size: 14px; }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+      padding: 10px;
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.65);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 5;
+    }
+
+    .tab-btn {
+      border: .5px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all .18s ease;
+    }
+
+    .tab-btn:hover { transform: translateY(-1px); background: rgba(249,250,251,.95); }
+
+    .tab-btn.active {
+      border-color: rgba(249,115,22,.55);
+      background: var(--orange-soft);
+      color: #9a3412;
+      font-weight: 700;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 24px;
+      border: .5px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 10px 28px rgba(0,0,0,.04);
+      margin-bottom: 20px;
+    }
+
+    .tab-content.active { display: block; }
+
+    .label {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px 4px 2px 0;
+    }
+
+    .label.textbook { background: var(--orange-soft); color: #c2410c; border: .5px solid rgba(249,115,22,.3); }
+    .label.local { background: var(--green-soft); color: #15803d; border: .5px solid rgba(22,163,74,.3); }
+    .label.review { background: var(--blue-soft); color: #1d4ed8; border: .5px solid rgba(37,99,235,.3); }
+    .label.warn { background: var(--red-soft); color: #b91c1c; border: .5px solid rgba(220,38,38,.3); }
+    .label.practical { background: var(--yellow-soft); color: #854d0e; border: .5px solid rgba(234,179,8,.35); }
+
+    .thai { font-size: 15px; font-weight: 500; letter-spacing: .01em; }
+    .roman { color: #6b7280; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 13px; }
+    .eng { font-size: 13px; color: var(--text); }
+
+    .triad { display: grid; gap: 2px; margin: 4px 0; }
+    .triad .thai::before { content: "Thai: "; color: var(--muted); font-weight: 400; }
+    .triad .roman::before { content: "Romanization: "; color: var(--muted); font-family: inherit; }
+    .triad .eng::before { content: "English: "; color: var(--muted); }
+
+    .study-task, .quiz-card, .review-box, .random-card {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      margin: 14px 0;
+      background: rgba(255,255,255,.72);
+    }
+
+    .study-task {
+      background: rgba(255,248,239,.82);
+    }
+
+    .study-task label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+
+    details.quiz-card {
+      background: rgba(255,255,255,.78);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .answer-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      border: .5px solid rgba(22,163,74,.22);
+    }
+
+    .progress-wrap {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.72);
+      margin: 16px 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(107,114,128,.18);
+      overflow: hidden;
+      margin: 10px 0 6px;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--green), var(--blue));
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .small-btn {
+      border: .5px solid var(--line);
+      background: rgba(255,255,255,.75);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .small-btn:hover { transform: translateY(-1px); }
+    .small-btn.easy { background: var(--green-soft); color: #15803d; border-color: rgba(22,163,74,.28); }
+    .small-btn.hard { background: var(--red-soft); color: #b91c1c; border-color: rgba(220,38,38,.28); }
+    .small-btn.blue { background: var(--blue-soft); color: #1d4ed8; border-color: rgba(37,99,235,.28); }
+
+    .tip {
+      border-left: 4px solid var(--green);
+      padding: 12px 14px;
+      background: var(--green-soft);
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+
+    .tip.orange { border-left-color: var(--orange); background: var(--orange-soft); }
+    .tip.blue { border-left-color: var(--blue); background: var(--blue-soft); }
+    .tip.red { border-left-color: var(--red); background: var(--red-soft); }
+    .tip.yellow { border-left-color: #eab308; background: var(--yellow-soft); }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .card {
+      border: .5px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      background: var(--card);
+    }
+
+    .mini-title {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .bubble-wrap { display: grid; gap: 10px; margin: 14px 0 24px; }
+
+    .bubble {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 13px 15px;
+      max-width: 84%;
+      background: rgba(255,255,255,.72);
+    }
+
+    .bubble.a { justify-self: start; border-left: 5px solid var(--blue); }
+    .bubble.b { justify-self: end; border-right: 5px solid var(--green); }
+
+    .speaker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .speaker.a { background: var(--blue-soft); color: #1d4ed8; }
+    .speaker.b { background: var(--green-soft); color: #15803d; }
+
+    .speak-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: .5px solid rgba(37,99,235,.3);
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      transition: all .15s ease;
+      line-height: 1;
+      padding: 0;
+    }
+    .speak-btn:hover {
+      background: rgba(37,99,235,.22);
+      transform: scale(1.12);
+    }
+    .speak-btn.speaking {
+      background: var(--orange-soft);
+      border-color: rgba(249,115,22,.4);
+      color: #c2410c;
+      animation: pulse .6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to   { transform: scale(1.18); }
+    }
+    div.thai {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px;
+    }
+    .thai-text { flex: 1; }
+
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      border: .5px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      font-family: inherit;
+      line-height: 1.6;
+      background: rgba(255,255,255,.8);
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 14px; }
+      .tab-content { padding: 16px; }
+      .bubble { max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>Thai Book 2｜Day 1 Review Mode</h1>
+    <p class="subtitle">主題：出門/到達、交通方式、從 A 到 B 花多久、工作時間、料理方式、點餐少油、麵類與味道。</p>
+    <p>
+      <span class="label textbook">Textbook-based</span>
+      <span class="label local">Supplement / Local usage</span>
+      <span class="label practical">Practical Usage</span>
+      <span class="label review">Review</span>
+      <span class="label warn">Common mistake</span>
+    </p>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'mission')">Mission</button>
+    <button class="tab-btn" onclick="openTab(event, 'recall')">Recall</button>
+    <button class="tab-btn" onclick="openTab(event, 'translation')">Translation</button>
+    <button class="tab-btn" onclick="openTab(event, 'listening')">Shadowing</button>
+    <button class="tab-btn" onclick="openTab(event, 'random')">Random Quiz</button>
+    <button class="tab-btn" onclick="openTab(event, 'output')">Output</button>
+  </nav>
+
+  <section id="mission" class="tab-content active">
+    <h2>Mission｜今天不要只是看筆記</h2>
+
+    <div class="progress-wrap">
+      <strong>今日完成度</strong>
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <p id="progressText" class="subtitle">0% completed</p>
+      <div class="btn-row">
+        <button class="small-btn blue" onclick="resetProgress()">重置今日進度</button>
+      </div>
+    </div>
+
+    <div class="study-task">
+      <h3>今日任務 Checklist</h3>
+      <label><input type="checkbox" class="task-check" data-id="listen1"> 聽 / 播放今日核心句 1 次</label>
+      <label><input type="checkbox" class="task-check" data-id="shadow3"> 跟讀 3 次</label>
+      <label><input type="checkbox" class="task-check" data-id="translate5"> 不看答案翻譯 5 句</label>
+      <label><input type="checkbox" class="task-check" data-id="recall8"> 快速回想 8 題</label>
+      <label><input type="checkbox" class="task-check" data-id="random5"> 隨機抽題 5 題</label>
+      <label><input type="checkbox" class="task-check" data-id="output3"> 自己造 3 句</label>
+    </div>
+
+    <div class="tip orange">
+      <strong>使用方式：</strong>
+      先看題目，不要立刻點開答案。想 5 秒後再打開。打開後按 Thai 旁邊的 🔊 跟讀。最後按 Easy / Hard 自評。
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="mini-title">Core Pattern 1</div>
+        <div class="triad">
+          <div class="thai">ออกจากบ้านกี่โมงคะ</div>
+          <div class="roman">òok jàak bâan gìi moong khá</div>
+          <div class="eng">What time do you leave home?</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="mini-title">Core Pattern 2</div>
+        <div class="triad">
+          <div class="thai">มาถึงแล้วค่ะ</div>
+          <div class="roman">maa thʉ̌ng lɛ́ɛw khâ</div>
+          <div class="eng">I have arrived.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="mini-title">Core Pattern 3</div>
+        <div class="triad">
+          <div class="thai">ใช้เวลาประมาณกี่นาทีคะ</div>
+          <div class="roman">chái wee-laa bprà-maan gìi naa-thii khá</div>
+          <div class="eng">About how many minutes does it take?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recall" class="tab-content">
+    <h2>Recall｜快速回想</h2>
+
+    <h3>A. 交通與時間</h3>
+
+    <details class="quiz-card" data-qid="recall-1">
+      <summary>1. 「離開家」怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ออกจากบ้าน</div><div class="roman">òok jàak bâan</div><div class="eng">leave home</div></div>
+        <p>記憶點：<span class="thai">ออก</span> = go out，<span class="thai">จาก</span> = from。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-1','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="recall-2">
+      <summary>2. 「到公司」怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">มาถึงบริษัท</div><div class="roman">maa thʉ̌ng bɔɔ-rí-sàt</div><div class="eng">arrive at the company</div></div>
+        <p>口語也可以說 <span class="thai">ถึงที่ทำงาน</span> / <span class="roman">thʉ̌ng thîi-tham-ngaan</span> / <span class="eng">arrive at work</span>。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-2','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="recall-3">
+      <summary>3. 「搭 BTS」怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ขึ้นรถไฟฟ้า / ขึ้นบีทีเอส</div><div class="roman">khʉ̂n rót-fai-fáa / khʉ̂n bii-thii-ét</div><div class="eng">take the BTS</div></div>
+        <p>曼谷生活裡直接說 BTS 也很自然。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-3','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="recall-4">
+      <summary>4. 「塞車」怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">รถติด</div><div class="roman">rót dtìt</div><div class="eng">traffic jam / traffic is bad</div></div>
+        <p>曼谷超高頻句：<span class="thai">วันนี้รถติดมากค่ะ</span>。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-4','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <h3>B. 料理方式</h3>
+
+    <details class="quiz-card" data-qid="recall-5">
+      <summary>5. 「炒」和「炸」分別怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ผัด / ทอด</div><div class="roman">phàt / thɔ̂ɔt</div><div class="eng">stir-fry / fry</div></div>
+        <p><span class="thai">ผัดกะเพรา</span> = stir-fried basil；<span class="thai">ไก่ทอด</span> = fried chicken。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-5','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="recall-6">
+      <summary>6. 「蒸」和「煮」分別怎麼說？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">นึ่ง / ต้ม</div><div class="roman">nʉ̂ng / dtôm</div><div class="eng">steam / boil</div></div>
+        <p><span class="thai">ปลานึ่ง</span> = steamed fish；<span class="thai">ไข่ต้ม</span> = boiled egg。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-6','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="recall-7">
+      <summary>7. 串烤的量詞是什麼？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ไม้</div><div class="roman">mái</div><div class="eng">stick / skewer classifier</div></div>
+        <p>例：<span class="thai">หมูปิ้งสองไม้ค่ะ</span> = two pork skewers, please。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-7','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-7','hard')">Hard</button></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="translation" class="tab-content">
+    <h2>Translation｜先翻再看答案</h2>
+
+    <details class="quiz-card" data-qid="trans-1">
+      <summary>1. 你幾點離開家？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">คุณออกจากบ้านกี่โมงคะ</div><div class="roman">khun òok jàak bâan gìi moong khá</div><div class="eng">What time do you leave home?</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-1','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-2">
+      <summary>2. 我早上八點離開家。</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ฉันออกจากบ้านแปดโมงเช้าค่ะ</div><div class="roman">chǎn òok jàak bâan bpɛ̀ɛt moong cháo khâ</div><div class="eng">I leave home at 8 a.m.</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-2','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-3">
+      <summary>3. 我九點到公司。</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ฉันมาถึงบริษัทเก้าโมงเช้าค่ะ</div><div class="roman">chǎn maa thʉ̌ng bɔɔ-rí-sàt gâo moong cháo khâ</div><div class="eng">I arrive at the company at 9 a.m.</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-3','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-4">
+      <summary>4. 你平常怎麼去上班？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ปกติไปทำงานยังไงคะ</div><div class="roman">bpòk-gà-dtì bpai tham-ngaan yang-ngai khá</div><div class="eng">How do you usually go to work?</div></div>
+        <p><span class="label local">Local</span> <span class="thai">ยังไง</span> 比 <span class="thai">อย่างไร</span> 更口語。</p>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-4','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-5">
+      <summary>5. 從這裡到 Sukhumvit 大概要幾分鐘？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">จากที่นี่ถึงสุขุมวิทประมาณกี่นาทีคะ</div><div class="roman">jàak thîi-nîi thʉ̌ng sù-khǔm-wít bprà-maan gìi naa-thii khá</div><div class="eng">About how many minutes from here to Sukhumvit?</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-5','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-6">
+      <summary>6. 請少油。</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">ขอน้ำมันน้อย ๆ ค่ะ</div><div class="roman">khɔ̌ɔ nám-man nɔ́ɔi-nɔ́ɔi khâ</div><div class="eng">Please use very little oil.</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-6','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-7">
+      <summary>7. 這個是炸的還是烤的？</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">อันนี้ทอดหรือย่างคะ</div><div class="roman">an níi thɔ̂ɔt rʉ̌ʉ yâang khá</div><div class="eng">Is this fried or grilled?</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-7','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-7','hard')">Hard</button></div>
+      </div>
+    </details>
+
+    <details class="quiz-card" data-qid="trans-8">
+      <summary>8. 我要細麵湯。</summary>
+      <div class="answer-box">
+        <div class="triad"><div class="thai">เอาเส้นเล็กน้ำค่ะ</div><div class="roman">ao sên lék náam khâ</div><div class="eng">I’ll have thin noodles in soup.</div></div>
+        <div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-8','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-8','hard')">Hard</button></div>
+      </div>
+    </details>
+  </section>
+
+  <section id="listening" class="tab-content">
+    <h2>Shadowing｜聽＋跟讀</h2>
+
+    <div class="tip blue">
+      每句建議流程：先按 🔊 聽一次 → 看 romanization 跟讀 → 關掉眼睛跟讀 → 再看 Thai script。
+    </div>
+
+    <div class="bubble-wrap">
+      <div class="bubble a">
+        <span class="speaker a">Friend</span>
+        <div class="triad"><div class="thai">ปกติไปทำงานยังไงคะ</div><div class="roman">bpòk-gà-dtì bpai tham-ngaan yang-ngai khá</div><div class="eng">How do you usually go to work?</div></div>
+      </div>
+      <div class="bubble b">
+        <span class="speaker b">You</span>
+        <div class="triad"><div class="thai">ปกติขึ้นบีทีเอสค่ะ</div><div class="roman">bpòk-gà-dtì khʉ̂n bii-thii-ét khâ</div><div class="eng">I usually take the BTS.</div></div>
+      </div>
+      <div class="bubble a">
+        <span class="speaker a">Friend</span>
+        <div class="triad"><div class="thai">ใช้เวลานานไหมคะ</div><div class="roman">chái wee-laa naan mái khá</div><div class="eng">Does it take long?</div></div>
+      </div>
+      <div class="bubble b">
+        <span class="speaker b">You</span>
+        <div class="triad"><div class="thai">ประมาณสามสิบนาทีค่ะ</div><div class="roman">bprà-maan sǎam-sìp naa-thii khâ</div><div class="eng">About thirty minutes.</div></div>
+      </div>
+    </div>
+
+    <div class="study-task">
+      <h3>Shadowing Checklist</h3>
+      <label><input type="checkbox" class="task-check" data-id="shadow-dialogue-listen"> 第一次：只聽</label>
+      <label><input type="checkbox" class="task-check" data-id="shadow-dialogue-read"> 第二次：看字跟讀</label>
+      <label><input type="checkbox" class="task-check" data-id="shadow-dialogue-nolook"> 第三次：不看文字跟讀</label>
+      <label><input type="checkbox" class="task-check" data-id="shadow-dialogue-roleplay"> 第四次：自己扮演 You 回答</label>
+    </div>
+  </section>
+
+  <section id="random" class="tab-content">
+    <h2>Random Quiz｜隨機抽題</h2>
+
+    <div class="random-card">
+      <p class="subtitle">按按鈕隨機抽一題。先自己說答案，再點「顯示答案」。</p>
+      <h3 id="randomQuestion">按下方按鈕開始抽題</h3>
+      <div id="randomAnswer" class="answer-box" style="display:none;"></div>
+      <div class="btn-row">
+        <button class="small-btn blue" onclick="drawRandom()">抽一題</button>
+        <button class="small-btn easy" onclick="showRandomAnswer()">顯示答案</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="output" class="tab-content">
+    <h2>Output｜自己造句</h2>
+
+    <div class="tip yellow">
+      這一頁才是真的學會。只看筆記很容易睡著，但你自己造句就會醒。
+    </div>
+
+    <div class="review-box">
+      <h3>1. 用「出門時間」造句</h3>
+      <p>Prompt：我幾點離開家 / 我今天晚出門 / 我需要幾點出門？</p>
+      <textarea placeholder="請輸入你的泰文句子，例如：ฉันออกจากบ้านแปดโมงเช้าค่ะ"></textarea>
+      <details class="quiz-card">
+        <summary>參考答案</summary>
+        <div class="answer-box">
+          <div class="triad"><div class="thai">ฉันออกจากบ้านแปดโมงเช้าค่ะ</div><div class="roman">chǎn òok jàak bâan bpɛ̀ɛt moong cháo khâ</div><div class="eng">I leave home at 8 a.m.</div></div>
+          <div class="triad"><div class="thai">วันนี้ออกจากบ้านสายค่ะ</div><div class="roman">wan-níi òok jàak bâan sǎai khâ</div><div class="eng">Today I left home late.</div></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="review-box">
+      <h3>2. 用「交通方式」造句</h3>
+      <p>Prompt：我通常搭 BTS / 我搭摩托車到站 / 我開車去上班。</p>
+      <textarea placeholder="請輸入你的泰文句子"></textarea>
+      <details class="quiz-card">
+        <summary>參考答案</summary>
+        <div class="answer-box">
+          <div class="triad"><div class="thai">ปกติขึ้นบีทีเอสค่ะ</div><div class="roman">bpòk-gà-dtì khʉ̂n bii-thii-ét khâ</div><div class="eng">I usually take the BTS.</div></div>
+          <div class="triad"><div class="thai">ฉันนั่งวินไปสถานีค่ะ</div><div class="roman">chǎn nâng win bpai sà-thǎa-nii khâ</div><div class="eng">I take a motorcycle taxi to the station.</div></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="review-box">
+      <h3>3. 用「點餐要求」造句</h3>
+      <p>Prompt：少油 / 不要太辣 / 這個是炸的還是烤的？</p>
+      <textarea placeholder="請輸入你的泰文句子"></textarea>
+      <details class="quiz-card">
+        <summary>參考答案</summary>
+        <div class="answer-box">
+          <div class="triad"><div class="thai">ขอน้ำมันน้อย ๆ ค่ะ</div><div class="roman">khɔ̌ɔ nám-man nɔ́ɔi-nɔ́ɔi khâ</div><div class="eng">Please use very little oil.</div></div>
+          <div class="triad"><div class="thai">ไม่เอาเผ็ดมากค่ะ</div><div class="roman">mâi ao phèt mâak khâ</div><div class="eng">Please don’t make it too spicy.</div></div>
+          <div class="triad"><div class="thai">อันนี้ทอดหรือย่างคะ</div><div class="roman">an níi thɔ̂ɔt rʉ̌ʉ yâang khá</div><div class="eng">Is this fried or grilled?</div></div>
+        </div>
+      </details>
+    </div>
+  </section>
+</div>
+
+<script>
+  function openTab(event, tabId) {
+    const contents = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    contents.forEach(content => content.classList.remove('active'));
+    buttons.forEach(button => button.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  const storagePrefix = 'thaiBook2Day1Review_';
+
+  function updateProgress() {
+    const checks = Array.from(document.querySelectorAll('.task-check'));
+    const done = checks.filter(c => c.checked).length;
+    const total = checks.length || 1;
+    const pct = Math.round(done / total * 100);
+    const fill = document.getElementById('progressFill');
+    const text = document.getElementById('progressText');
+    if (fill) fill.style.width = pct + '%';
+    if (text) text.textContent = `${pct}% completed（${done}/${total}）`;
+  }
+
+  function initChecks() {
+    document.querySelectorAll('.task-check').forEach(check => {
+      const key = storagePrefix + 'check_' + check.dataset.id;
+      check.checked = localStorage.getItem(key) === 'true';
+      check.addEventListener('change', () => {
+        localStorage.setItem(key, check.checked);
+        updateProgress();
+      });
+    });
+    updateProgress();
+  }
+
+  function resetProgress() {
+    document.querySelectorAll('.task-check').forEach(check => {
+      check.checked = false;
+      localStorage.removeItem(storagePrefix + 'check_' + check.dataset.id);
+    });
+    updateProgress();
+  }
+
+  function markCard(id, status) {
+    localStorage.setItem(storagePrefix + 'card_' + id, status);
+    const el = document.querySelector(`[data-qid="${id}"]`);
+    if (el) {
+      el.style.borderColor = status === 'easy' ? 'rgba(22,163,74,.55)' : 'rgba(220,38,38,.55)';
+      el.style.background = status === 'easy' ? 'rgba(22,163,74,.08)' : 'rgba(220,38,38,.07)';
+    }
+  }
+
+  function restoreCardMarks() {
+    document.querySelectorAll('[data-qid]').forEach(el => {
+      const id = el.dataset.qid;
+      const status = localStorage.getItem(storagePrefix + 'card_' + id);
+      if (status) {
+        el.style.borderColor = status === 'easy' ? 'rgba(22,163,74,.55)' : 'rgba(220,38,38,.55)';
+        el.style.background = status === 'easy' ? 'rgba(22,163,74,.08)' : 'rgba(220,38,38,.07)';
+      }
+    });
+  }
+
+  const randomItems = [
+    {
+      q: '「我快到了」怎麼說？',
+      a: '<div class="triad"><div class="thai">ใกล้ถึงแล้วค่ะ</div><div class="roman">glâi thʉ̌ng lɛ́ɛw khâ</div><div class="eng">I’m almost there.</div></div>'
+    },
+    {
+      q: '「我還沒到」怎麼說？',
+      a: '<div class="triad"><div class="thai">ยังไม่ถึงค่ะ</div><div class="roman">yang mâi thʉ̌ng khâ</div><div class="eng">I haven’t arrived yet.</div></div>'
+    },
+    {
+      q: '「交通很塞」怎麼說？',
+      a: '<div class="triad"><div class="thai">รถติดมากค่ะ</div><div class="roman">rót dtìt mâak khâ</div><div class="eng">The traffic is very bad.</div></div>'
+    },
+    {
+      q: '「請少油」怎麼說？',
+      a: '<div class="triad"><div class="thai">ขอน้ำมันน้อย ๆ ค่ะ</div><div class="roman">khɔ̌ɔ nám-man nɔ́ɔi-nɔ́ɔi khâ</div><div class="eng">Please use very little oil.</div></div>'
+    },
+    {
+      q: '「這個有椰奶嗎？」怎麼說？',
+      a: '<div class="triad"><div class="thai">อันนี้ใส่กะทิไหมคะ</div><div class="roman">an níi sài gà-thí mái khá</div><div class="eng">Does this have coconut milk?</div></div>'
+    },
+    {
+      q: '「我要細麵湯」怎麼說？',
+      a: '<div class="triad"><div class="thai">เอาเส้นเล็กน้ำค่ะ</div><div class="roman">ao sên lék náam khâ</div><div class="eng">I’ll have thin noodles in soup.</div></div>'
+    },
+    {
+      q: '「兩串烤豬肉」怎麼說？',
+      a: '<div class="triad"><div class="thai">หมูปิ้งสองไม้ค่ะ</div><div class="roman">mǔu bpîng sɔ̌ɔng mái khâ</div><div class="eng">Two pork skewers, please.</div></div>'
+    }
+  ];
+
+  let currentRandom = null;
+
+  function drawRandom() {
+    currentRandom = randomItems[Math.floor(Math.random() * randomItems.length)];
+    document.getElementById('randomQuestion').textContent = currentRandom.q;
+    const ans = document.getElementById('randomAnswer');
+    ans.style.display = 'none';
+    ans.innerHTML = '';
+  }
+
+  function showRandomAnswer() {
+    if (!currentRandom) drawRandom();
+    const ans = document.getElementById('randomAnswer');
+    ans.innerHTML = currentRandom.a;
+    ans.style.display = 'block';
+    addSpeakButtons(ans);
+  }
+
+  // ── TTS ──────────────────────────────────────────────
+  let thaiVoice = null;
+  let activBtn  = null;
+
+  function loadVoices() {
+    const voices = window.speechSynthesis.getVoices();
+    thaiVoice = voices.find(v => v.lang === 'th-TH') ||
+                voices.find(v => v.lang.startsWith('th')) ||
+                null;
+  }
+  loadVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function speakThai(text, btn) {
+    if (!window.speechSynthesis) {
+      alert('此瀏覽器不支援語音合成。請用 Safari（macOS/iOS）或 Chrome。');
+      return;
+    }
+    if (activBtn === btn && speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      activBtn = null;
+      return;
+    }
+    speechSynthesis.cancel();
+    if (activBtn) {
+      activBtn.classList.remove('speaking');
+      activBtn.textContent = '🔊';
+    }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang  = 'th-TH';
+    utter.rate  = 0.85;
+    utter.pitch = 1.0;
+    if (thaiVoice) utter.voice = thaiVoice;
+    utter.onstart = () => {
+      btn.classList.add('speaking');
+      btn.textContent = '⏸';
+      activBtn = btn;
+    };
+    utter.onend = utter.onerror = () => {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      activBtn = null;
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function addSpeakButtons(root=document) {
+    root.querySelectorAll('div.thai').forEach(el => {
+      if (el.querySelector('.speak-btn')) return;
+      const rawText = el.textContent.trim();
+      if (!rawText) return;
+      const span = document.createElement('span');
+      span.className = 'thai-text';
+      span.textContent = rawText;
+      const btn = document.createElement('button');
+      btn.className = 'speak-btn';
+      btn.textContent = '🔊';
+      btn.title = '唸出泰文';
+      btn.setAttribute('aria-label', '播放發音');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        speakThai(rawText, btn);
+      });
+      el.textContent = '';
+      el.appendChild(span);
+      el.appendChild(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initChecks();
+    restoreCardMarks();
+    addSpeakButtons();
+  });
+</script>
+</body>
+</html>
