@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thai Speaking 1｜Day 5+6 Weak-Point Review</title>
+  <style>
+    :root {
+      --text: var(--color-text-primary, #1f2937);
+      --muted: #6b7280;
+      --line: rgba(107,114,128,.28);
+      --card: rgba(255,255,255,.72);
+      --orange: #f97316;
+      --orange-soft: rgba(249,115,22,.13);
+      --green: #16a34a;
+      --green-soft: rgba(22,163,74,.13);
+      --blue: #2563eb;
+      --blue-soft: rgba(37,99,235,.12);
+      --red: #dc2626;
+      --red-soft: rgba(220,38,38,.11);
+      --purple: #7c3aed;
+      --purple-soft: rgba(124,58,237,.12);
+      --yellow-soft: rgba(234,179,8,.15);
+      --amber: #d97706;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(249,115,22,.08), rgba(22,163,74,.05), rgba(37,99,235,.05));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.65;
+    }
+    .container { max-width: 1180px; margin: 0 auto; }
+    .hero {
+      padding: 28px;
+      border: .5px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(249,115,22,.13), rgba(22,163,74,.09), rgba(37,99,235,.08));
+      box-shadow: 0 12px 34px rgba(0,0,0,.05);
+      margin-bottom: 18px;
+    }
+    h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: -.02em; }
+    h2 { margin-top: 0; font-size: 22px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    h3 { margin-top: 28px; font-size: 18px; }
+    h4 { margin: 18px 0 8px; font-size: 15px; }
+    p { margin: 8px 0; }
+    .subtitle { color: var(--muted); font-size: 14px; }
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+      padding: 10px;
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.65);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 5;
+    }
+    .tab-btn {
+      border: .5px solid var(--line);
+      background: rgba(255,255,255,.72);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all .18s ease;
+    }
+    .tab-btn:hover { transform: translateY(-1px); background: rgba(249,250,251,.95); }
+    .tab-btn.active {
+      border-color: rgba(249,115,22,.55);
+      background: var(--orange-soft);
+      color: #9a3412;
+      font-weight: 700;
+    }
+    .tab-content {
+      display: none;
+      padding: 24px;
+      border: .5px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.62);
+      box-shadow: 0 10px 28px rgba(0,0,0,.04);
+      margin-bottom: 20px;
+    }
+    .tab-content.active { display: block; }
+    .label {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin: 2px 4px 2px 0;
+    }
+    .label.textbook { background: var(--orange-soft); color: #c2410c; border: .5px solid rgba(249,115,22,.3); }
+    .label.local { background: var(--green-soft); color: #15803d; border: .5px solid rgba(22,163,74,.3); }
+    .label.review { background: var(--blue-soft); color: #1d4ed8; border: .5px solid rgba(37,99,235,.3); }
+    .label.warn { background: var(--red-soft); color: #b91c1c; border: .5px solid rgba(220,38,38,.3); }
+    .label.practical { background: var(--yellow-soft); color: #854d0e; border: .5px solid rgba(234,179,8,.35); }
+    .thai { font-size: 15px; font-weight: 500; letter-spacing: .01em; }
+    .roman { color: #6b7280; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 13px; }
+    .eng { font-size: 13px; color: var(--text); }
+    .triad { display: grid; gap: 2px; margin: 4px 0; }
+    .triad .thai::before { content: "Thai: "; color: var(--muted); font-weight: 400; }
+    .triad .roman::before { content: "Romanization: "; color: var(--muted); font-family: inherit; }
+    .triad .eng::before { content: "English: "; color: var(--muted); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 24px;
+      font-size: 14px;
+    }
+    th, td {
+      border: .5px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+      text-align: left;
+    }
+    th { background: rgba(243,244,246,.72); font-weight: 700; }
+    tbody tr:nth-child(even) { background: rgba(249,250,251,.55); }
+    .tip {
+      border-left: 4px solid var(--green);
+      padding: 12px 14px;
+      background: var(--green-soft);
+      border-radius: 12px;
+      margin: 14px 0;
+    }
+    .tip.orange { border-left-color: var(--orange); background: var(--orange-soft); }
+    .tip.blue { border-left-color: var(--blue); background: var(--blue-soft); }
+    .tip.red { border-left-color: var(--red); background: var(--red-soft); }
+    .tip.yellow { border-left-color: #eab308; background: var(--yellow-soft); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+    .card, .study-task, .quiz-card, .review-box, .random-card {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      margin: 14px 0;
+      background: rgba(255,255,255,.72);
+    }
+    .study-task { background: rgba(255,248,239,.82); }
+    .study-task label { display: block; margin: 8px 0; cursor: pointer; }
+    .mini-title {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    details.quiz-card { background: rgba(255,255,255,.78); }
+    details { border: .5px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 10px 0; background: rgba(255,255,255,.45); }
+    summary { cursor: pointer; font-weight: 700; }
+    .answer-box {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      border: .5px solid rgba(22,163,74,.22);
+    }
+    .progress-wrap {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.72);
+      margin: 16px 0;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      background: rgba(107,114,128,.18);
+      overflow: hidden;
+      margin: 10px 0 6px;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), var(--green), var(--blue));
+      border-radius: 999px;
+      transition: width .25s ease;
+    }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .small-btn {
+      border: .5px solid var(--line);
+      background: rgba(255,255,255,.75);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .small-btn:hover { transform: translateY(-1px); }
+    .small-btn.easy { background: var(--green-soft); color: #15803d; border-color: rgba(22,163,74,.28); }
+    .small-btn.hard { background: var(--red-soft); color: #b91c1c; border-color: rgba(220,38,38,.28); }
+    .small-btn.blue { background: var(--blue-soft); color: #1d4ed8; border-color: rgba(37,99,235,.28); }
+    .bubble-wrap { display: grid; gap: 10px; margin: 14px 0 24px; }
+    .bubble {
+      border: .5px solid var(--line);
+      border-radius: 18px;
+      padding: 13px 15px;
+      max-width: 84%;
+      background: rgba(255,255,255,.72);
+    }
+    .bubble.a { justify-self: start; border-left: 5px solid var(--blue); }
+    .bubble.b { justify-self: end; border-right: 5px solid var(--green); }
+    .speaker {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    .speaker.a { background: var(--blue-soft); color: #1d4ed8; }
+    .speaker.b { background: var(--green-soft); color: #15803d; }
+    .classifier-chip {
+      display: inline-block;
+      border: .5px solid rgba(124,58,237,.3);
+      background: var(--purple-soft);
+      color: #5b21b6;
+      padding: 3px 9px;
+      border-radius: 9px;
+      font-weight: 800;
+      margin: 2px 4px 2px 0;
+    }
+    .speak-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: .5px solid rgba(37,99,235,.3);
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      font-size: 11px;
+      cursor: pointer;
+      margin-left: 6px;
+      vertical-align: middle;
+      flex-shrink: 0;
+      transition: all .15s ease;
+      line-height: 1;
+      padding: 0;
+    }
+    .speak-btn:hover { background: rgba(37,99,235,.22); transform: scale(1.12); }
+    .speak-btn.speaking {
+      background: var(--orange-soft);
+      border-color: rgba(249,115,22,.4);
+      color: #c2410c;
+      animation: pulse .6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.18); } }
+    div.thai { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; }
+    .thai-text { flex: 1; }
+    textarea {
+      width: 100%;
+      min-height: 90px;
+      border: .5px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      font-family: inherit;
+      line-height: 1.6;
+      background: rgba(255,255,255,.8);
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .flow-step {
+      border: .5px solid var(--line);
+      background: rgba(255,255,255,.72);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .num {
+      display: inline-flex; align-items:center; justify-content:center;
+      width: 24px; height:24px; border-radius:50%;
+      background: var(--orange-soft); color:#9a3412; font-weight:800; font-size:12px;
+      margin-right: 6px;
+    }
+    @media (max-width: 720px) {
+      body { padding: 14px; }
+      .tab-content { padding: 16px; }
+      table { font-size: 13px; }
+      .bubble { max-width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>Thai Speaking 1｜Day 5+6 弱點複習 Note</h1>
+    <p class="subtitle">主題：飲料甜度、杯型大小、餐具與容器量詞、外帶/內用、海鮮、結帳、價格與找零。這份不是完整重講，而是針對你複習後還不熟的項目做輸出練習。</p>
+    <p>
+      <span class="label review">Weak-point Review</span>
+      <span class="label local">Bangkok Real-life</span>
+      <span class="label practical">Practical Usage</span>
+      <span class="label warn">Common mistake</span>
+    </p>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="openTab(event, 'mission')">Mission</button>
+    <button class="tab-btn" onclick="openTab(event, 'weak')">Weak Words</button>
+    <button class="tab-btn" onclick="openTab(event, 'patterns')">Patterns</button>
+    <button class="tab-btn" onclick="openTab(event, 'flows')">Ordering Flow</button>
+    <button class="tab-btn" onclick="openTab(event, 'dialogues')">Dialogues</button>
+    <button class="tab-btn" onclick="openTab(event, 'recall')">Recall Quiz</button>
+    <button class="tab-btn" onclick="openTab(event, 'random')">Random Quiz</button>
+    <button class="tab-btn" onclick="openTab(event, 'output')">Output</button>
+  </nav>
+
+  <section id="mission" class="tab-content active">
+    <h2>Mission｜Day 5+6 這次要練到會用</h2>
+
+    <div class="progress-wrap">
+      <strong>今日完成度</strong>
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <p id="progressText" class="subtitle">0% completed</p>
+      <div class="btn-row"><button class="small-btn blue" onclick="resetProgress()">重置今日進度</button></div>
+    </div>
+
+    <div class="study-task">
+      <h3>今日任務 Checklist</h3>
+      <label><input type="checkbox" class="task-check" data-id="d56-listen"> 聽/播放不熟單字 1 輪</label>
+      <label><input type="checkbox" class="task-check" data-id="d56-utensils"> 餐具＋容器量詞 recall 10 題</label>
+      <label><input type="checkbox" class="task-check" data-id="d56-drinkflow"> 飲料店流程 shadowing 2 次</label>
+      <label><input type="checkbox" class="task-check" data-id="d56-foodflow"> 餐廳/路邊攤流程 shadowing 2 次</label>
+      <label><input type="checkbox" class="task-check" data-id="d56-random"> Random Quiz 抽 8 題</label>
+      <label><input type="checkbox" class="task-check" data-id="d56-output"> 自己造 3 段點餐/結帳句</label>
+    </div>
+
+    <div class="tip orange">
+      <strong>這次怎麼輸出最好：</strong>
+      原始筆記照原本保留就好，這份要另外做成「弱點複習 note」。因為你現在不是不知道文法，而是卡在「現場聽到店員問句時，能不能秒回」。所以這版重點是：短句、量詞、問答流程、反覆輸出。
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="mini-title">最容易忘 1｜甜度</div>
+        <div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div>
+      </div>
+      <div class="card">
+        <div class="mini-title">最容易忘 2｜大小</div>
+        <div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">I’ll take a medium cup.</div></div>
+      </div>
+      <div class="card">
+        <div class="mini-title">最容易忘 3｜外帶</div>
+        <div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Put it in a bag, please. / Takeaway.</div></div>
+      </div>
+      <div class="card">
+        <div class="mini-title">最容易忘 4｜結帳</div>
+        <div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="weak" class="tab-content">
+    <h2>Weak Words｜你列的不熟項目整理</h2>
+
+    <h3>Day 5｜飲料、餐具、容器、外帶</h3>
+    <table>
+      <thead>
+        <tr><th>Thai / Romanization / English</th><th>Category</th><th>How to use</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div></td>
+          <td>甜度</td>
+          <td>店員問 <span class="thai">หวานปกติไหมคะ</span> 時，可以回答這句。</td>
+          <td><div class="triad"><div class="thai">เอาหวานปกติค่ะ</div><div class="roman">ao wǎan bpòk-gà-dtì khâ</div><div class="eng">I’ll take normal sweetness.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ช้อน</div><div class="roman">chɔ́ɔn</div><div class="eng">spoon</div></div></td>
+          <td>餐具</td>
+          <td>一支湯匙：<span class="thai">ช้อนหนึ่งอัน</span> / <span class="roman">chɔ́ɔn nʉ̀eng an</span> / <span class="eng">one spoon</span>。</td>
+          <td><div class="triad"><div class="thai">ขอช้อนหน่อยค่ะ</div><div class="roman">khɔ̌ɔ chɔ́ɔn nɔ̀i khâ</div><div class="eng">May I have a spoon?</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ส้อม</div><div class="roman">sɔ̂ɔm</div><div class="eng">fork</div></div></td>
+          <td>餐具</td>
+          <td>一支叉子：<span class="thai">ส้อมหนึ่งอัน</span> / <span class="roman">sɔ̂ɔm nʉ̀eng an</span> / <span class="eng">one fork</span>。</td>
+          <td><div class="triad"><div class="thai">ขอส้อมด้วยค่ะ</div><div class="roman">khɔ̌ɔ sɔ̂ɔm dûay khâ</div><div class="eng">May I have a fork too?</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">มีด</div><div class="roman">mîit</div><div class="eng">knife</div></div></td>
+          <td>餐具</td>
+          <td>一把刀：<span class="thai">มีดหนึ่งอัน</span> / <span class="roman">mîit nʉ̀eng an</span> / <span class="eng">one knife</span>。</td>
+          <td><div class="triad"><div class="thai">ขอมีดหน่อยค่ะ</div><div class="roman">khɔ̌ɔ mîit nɔ̀i khâ</div><div class="eng">May I have a knife?</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">หลอด</div><div class="roman">lɔ̀ɔt</div><div class="eng">straw</div></div></td>
+          <td>飲料配件</td>
+          <td>一支吸管：<span class="thai">หลอดหนึ่งอัน</span> / <span class="roman">lɔ̀ɔt nʉ̀eng an</span> / <span class="eng">one straw</span>。</td>
+          <td><div class="triad"><div class="thai">ขอหลอดหน่อยค่ะ</div><div class="roman">khɔ̌ɔ lɔ̀ɔt nɔ̀i khâ</div><div class="eng">May I have a straw?</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ชาม</div><div class="roman">chaam</div><div class="eng">bowl</div></div></td>
+          <td>容器 / 食物量詞</td>
+          <td>物品本身：<span class="thai">ชามหนึ่งใบ</span>；一碗麵/湯：<span class="thai">หนึ่งชาม</span>。</td>
+          <td><div class="triad"><div class="thai">ก๋วยเตี๋ยวหนึ่งชามค่ะ</div><div class="roman">gǔay-tǐaw nʉ̀eng chaam khâ</div><div class="eng">One bowl of noodles, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">กล่อง</div><div class="roman">glɔ̀ng</div><div class="eng">box / carton</div></div></td>
+          <td>包裝量詞</td>
+          <td>盒裝牛奶、盒裝果汁常用。</td>
+          <td><div class="triad"><div class="thai">ขอนมหนึ่งกล่องค่ะ</div><div class="roman">khɔ̌ɔ nom nʉ̀eng glɔ̀ng khâ</div><div class="eng">One carton of milk, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ถ้วย</div><div class="roman">thûay</div><div class="eng">cup</div></div></td>
+          <td>熱飲杯/小碗</td>
+          <td>熱咖啡、熱茶常用；冰飲通常用 <span class="thai">แก้ว</span>。</td>
+          <td><div class="triad"><div class="thai">ขอกาแฟร้อนหนึ่งถ้วยค่ะ</div><div class="roman">khɔ̌ɔ gaa-fɛɛ rɔ́ɔn nʉ̀eng thûay khâ</div><div class="eng">One hot coffee, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ขวด</div><div class="roman">khùat</div><div class="eng">bottle</div></div></td>
+          <td>包裝量詞</td>
+          <td>瓶裝水、瓶裝飲料。</td>
+          <td><div class="triad"><div class="thai">ขอน้ำหนึ่งขวดค่ะ</div><div class="roman">khɔ̌ɔ náam nʉ̀eng khùat khâ</div><div class="eng">One bottle of water, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">กลาง</div><div class="roman">glaang</div><div class="eng">medium</div></div></td>
+          <td>大小</td>
+          <td>飲料杯型中杯。</td>
+          <td><div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">I’ll take a medium cup.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Put it in a bag, please. / Takeaway.</div></div></td>
+          <td>外帶</td>
+          <td>路邊攤、小吃攤超常用；比 <span class="thai">กลับบ้านค่ะ</span> 更像「裝袋」。</td>
+          <td><div class="triad"><div class="thai">ข้าวผัดใส่ถุงค่ะ</div><div class="roman">khâaw-phàt sài thǔng khâ</div><div class="eng">Fried rice takeaway, please.</div></div></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Day 6｜海鮮、結帳、價格、找零</h3>
+    <table>
+      <thead>
+        <tr><th>Thai / Romanization / English</th><th>Category</th><th>How to use</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="triad"><div class="thai">ปู</div><div class="roman">puu</div><div class="eng">crab</div></div></td>
+          <td>海鮮</td>
+          <td>常見於炒飯。</td>
+          <td><div class="triad"><div class="thai">ข้าวผัดปูหนึ่งจานค่ะ</div><div class="roman">khâaw-phàt puu nʉ̀eng jaan khâ</div><div class="eng">One plate of crab fried rice, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">หอย</div><div class="roman">hɔ̌i</div><div class="eng">shellfish</div></div></td>
+          <td>海鮮</td>
+          <td>泛指貝類；點菜時可搭配菜名。</td>
+          <td><div class="triad"><div class="thai">ฉันไม่ค่อยกินหอยค่ะ</div><div class="roman">chǎn mâi khɔ̂i gin hɔ̌i khâ</div><div class="eng">I don’t really eat shellfish.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ปลาหมึก</div><div class="roman">plaa-mʉ̀k</div><div class="eng">squid</div></div></td>
+          <td>海鮮</td>
+          <td>常見於炒飯、炒麵、烤魷魚。</td>
+          <td><div class="triad"><div class="thai">ข้าวผัดปลาหมึกหนึ่งจานค่ะ</div><div class="roman">khâaw-phàt plaa-mʉ̀k nʉ̀eng jaan khâ</div><div class="eng">One plate of squid fried rice, please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div></td>
+          <td>結帳</td>
+          <td>餐廳、路邊攤都能用，口語自然。</td>
+          <td><div class="triad"><div class="thai">พี่คะ คิดตังค์ด้วยค่ะ</div><div class="roman">phîi khá, khít tang dûay khâ</div><div class="eng">Excuse me, check please.</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div></td>
+          <td>問總價</td>
+          <td>買多樣東西時比單問 <span class="thai">เท่าไรคะ</span> 更清楚。</td>
+          <td><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div></td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">นี่ค่ะ เงินทอนยี่สิบบาท</div><div class="roman">nîi khâ, ngən-thɔɔn yîi-sìp bàat</div><div class="eng">Here is 20 baht change.</div></div></td>
+          <td>找零</td>
+          <td>店員給你錢時會說。你要聽懂 <span class="thai">เงินทอน</span>。</td>
+          <td><div class="triad"><div class="thai">เงินทอนยี่สิบบาทค่ะ</div><div class="roman">ngən-thɔɔn yîi-sìp bàat khâ</div><div class="eng">20 baht change.</div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="patterns" class="tab-content">
+    <h2>Patterns｜這兩天最需要反射式回答的句型</h2>
+
+    <h3>1. 飲料店甜度問答</h3>
+    <table>
+      <thead><tr><th>Staff Question</th><th>Your Answer Options</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="triad"><div class="thai">หวานปกติไหมคะ</div><div class="roman">wǎan bpòk-gà-dtì mái khá</div><div class="eng">Normal sweetness?</div></div></td>
+          <td>
+            <div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div>
+            <div class="triad"><div class="thai">หวานน้อยค่ะ</div><div class="roman">wǎan nɔ́ɔi khâ</div><div class="eng">Less sweet, please.</div></div>
+            <div class="triad"><div class="thai">ไม่หวานค่ะ</div><div class="roman">mâi wǎan khâ</div><div class="eng">Not sweet, please.</div></div>
+          </td>
+          <td>你這次特別不熟 <span class="thai">หวานปกติ</span>，所以要跟 <span class="thai">หวานน้อย</span> 一起練。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. 「要不要其他東西？」的回答</h3>
+    <table>
+      <thead><tr><th>Staff Question</th><th>Your Answer</th><th>Naturalness</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="triad"><div class="thai">เอาอย่างอื่นไหมคะ</div><div class="roman">ao yàang ʉ̀ʉn mái khá</div><div class="eng">Anything else?</div></div></td>
+          <td><div class="triad"><div class="thai">ไม่เอาค่ะ ขอบคุณค่ะ</div><div class="roman">mâi ao khâ, khɔ̀ɔp-khun khâ</div><div class="eng">No, thank you.</div></div></td>
+          <td>最安全、最禮貌。</td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">รับอะไรเพิ่มไหมคะ</div><div class="roman">ráp à-rai phə̂əm mái khá</div><div class="eng">Would you like to add anything?</div></div></td>
+          <td><div class="triad"><div class="thai">ไม่เอาแล้วค่ะ</div><div class="roman">mâi ao lɛ́ɛw khâ</div><div class="eng">No more, thanks.</div></div></td>
+          <td><span class="label local">Local</span> 現場常聽到。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. 內用/外帶</h3>
+    <table>
+      <thead><tr><th>Question</th><th>Answer</th><th>Context</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="triad"><div class="thai">ทานที่นี่หรือกลับบ้านคะ</div><div class="roman">thaan thîi-nîi rʉ̌ʉ glàp bâan khá</div><div class="eng">For here or takeaway?</div></div></td>
+          <td>
+            <div class="triad"><div class="thai">ทานที่นี่ค่ะ</div><div class="roman">thaan thîi-nîi khâ</div><div class="eng">For here.</div></div>
+            <div class="triad"><div class="thai">กลับบ้านค่ะ</div><div class="roman">glàp bâan khâ</div><div class="eng">Takeaway.</div></div>
+          </td>
+          <td>咖啡店、餐廳較常。</td>
+        </tr>
+        <tr>
+          <td><div class="triad"><div class="thai">กินที่นี่หรือใส่ถุงคะ</div><div class="roman">gin thîi-nîi rʉ̌ʉ sài thǔng khá</div><div class="eng">Eat here or put it in a bag?</div></div></td>
+          <td>
+            <div class="triad"><div class="thai">กินที่นี่ค่ะ</div><div class="roman">gin thîi-nîi khâ</div><div class="eng">Eat here.</div></div>
+            <div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Takeaway / bag it, please.</div></div>
+          </td>
+          <td><span class="label local">Local</span> 路邊攤、小吃攤常用。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4. 結帳與找零</h3>
+    <div class="flow">
+      <div class="flow-step"><span class="num">1</span><strong>叫結帳</strong><div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div></div>
+      <div class="flow-step"><span class="num">2</span><strong>問總價</strong><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div></div>
+      <div class="flow-step"><span class="num">3</span><strong>給錢</strong><div class="triad"><div class="thai">นี่ค่ะ หนึ่งร้อยบาท</div><div class="roman">nîi khâ, nʉ̀eng-rɔ́ɔi bàat</div><div class="eng">Here, 100 baht.</div></div></div>
+      <div class="flow-step"><span class="num">4</span><strong>聽找零</strong><div class="triad"><div class="thai">เงินทอนยี่สิบบาทค่ะ</div><div class="roman">ngən-thɔɔn yîi-sìp bàat khâ</div><div class="eng">20 baht change.</div></div></div>
+    </div>
+  </section>
+
+  <section id="flows" class="tab-content">
+    <h2>Ordering Flow｜現場流程反射訓練</h2>
+
+    <h3>Flow A｜飲料店：點冰咖啡＋中杯＋正常甜＋外帶</h3>
+    <div class="flow">
+      <div class="flow-step"><span class="num">1</span><strong>店員問</strong><div class="triad"><div class="thai">รับอะไรดีคะ</div><div class="roman">ráp à-rai dii khá</div><div class="eng">What would you like?</div></div></div>
+      <div class="flow-step"><span class="num">2</span><strong>你點</strong><div class="triad"><div class="thai">เอากาแฟเย็นแก้วนึงค่ะ</div><div class="roman">ao gaa-fɛɛ yen gɛ̂ɛw nʉng khâ</div><div class="eng">I’ll take one iced coffee.</div></div></div>
+      <div class="flow-step"><span class="num">3</span><strong>大小</strong><div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">Medium, please.</div></div></div>
+      <div class="flow-step"><span class="num">4</span><strong>甜度</strong><div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div></div>
+      <div class="flow-step"><span class="num">5</span><strong>外帶</strong><div class="triad"><div class="thai">กลับบ้านค่ะ</div><div class="roman">glàp bâan khâ</div><div class="eng">Takeaway, please.</div></div></div>
+    </div>
+
+    <h3>Flow B｜路邊攤：點炒飯＋外帶＋結帳</h3>
+    <div class="flow">
+      <div class="flow-step"><span class="num">1</span><strong>店員問</strong><div class="triad"><div class="thai">สั่งอะไรคะ</div><div class="roman">sàng à-rai khá</div><div class="eng">What would you like to order?</div></div></div>
+      <div class="flow-step"><span class="num">2</span><strong>你點</strong><div class="triad"><div class="thai">ข้าวผัดปูหนึ่งจานค่ะ</div><div class="roman">khâaw-phàt puu nʉ̀eng jaan khâ</div><div class="eng">One crab fried rice, please.</div></div></div>
+      <div class="flow-step"><span class="num">3</span><strong>外帶</strong><div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Takeaway / put it in a bag, please.</div></div></div>
+      <div class="flow-step"><span class="num">4</span><strong>結帳</strong><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div></div>
+    </div>
+
+    <h3>Flow C｜餐廳：要餐具＋結帳＋找零</h3>
+    <div class="flow">
+      <div class="flow-step"><span class="num">1</span><strong>要湯匙</strong><div class="triad"><div class="thai">ขอช้อนหน่อยค่ะ</div><div class="roman">khɔ̌ɔ chɔ́ɔn nɔ̀i khâ</div><div class="eng">May I have a spoon?</div></div></div>
+      <div class="flow-step"><span class="num">2</span><strong>要叉子</strong><div class="triad"><div class="thai">ขอส้อมด้วยค่ะ</div><div class="roman">khɔ̌ɔ sɔ̂ɔm dûay khâ</div><div class="eng">May I have a fork too?</div></div></div>
+      <div class="flow-step"><span class="num">3</span><strong>結帳</strong><div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div></div>
+      <div class="flow-step"><span class="num">4</span><strong>聽懂找零</strong><div class="triad"><div class="thai">นี่ค่ะ เงินทอนยี่สิบบาท</div><div class="roman">nîi khâ, ngən-thɔɔn yîi-sìp bàat</div><div class="eng">Here is 20 baht change.</div></div></div>
+    </div>
+  </section>
+
+  <section id="dialogues" class="tab-content">
+    <h2>Dialogues｜Day 5+6 弱點實戰對話</h2>
+
+    <h3>1. 飲料店：你列的不熟句全部放進一段</h3>
+    <div class="bubble-wrap">
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">รับอะไรดีคะ</div><div class="roman">ráp à-rai dii khá</div><div class="eng">What would you like?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">เอากาแฟเย็นแก้วนึงค่ะ</div><div class="roman">ao gaa-fɛɛ yen gɛ̂ɛw nʉng khâ</div><div class="eng">I’ll take one iced coffee.</div></div></div>
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">เอาแก้วเล็ก กลาง หรือใหญ่คะ</div><div class="roman">ao gɛ̂ɛw lék, glaang, rʉ̌ʉ yài khá</div><div class="eng">Small, medium, or large?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">Medium, please.</div></div></div>
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">หวานปกติไหมคะ</div><div class="roman">wǎan bpòk-gà-dtì mái khá</div><div class="eng">Normal sweetness?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">หวานน้อยค่ะ</div><div class="roman">wǎan nɔ́ɔi khâ</div><div class="eng">Less sweet, please.</div></div></div>
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">เอาอย่างอื่นไหมคะ</div><div class="roman">ao yàang ʉ̀ʉn mái khá</div><div class="eng">Anything else?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ไม่เอาค่ะ ขอบคุณค่ะ</div><div class="roman">mâi ao khâ, khɔ̀ɔp-khun khâ</div><div class="eng">No, thank you.</div></div></div>
+    </div>
+
+    <h3>2. 小吃攤：海鮮＋外帶＋結帳</h3>
+    <div class="bubble-wrap">
+      <div class="bubble a"><span class="speaker a">Vendor</span><div class="triad"><div class="thai">สั่งอะไรคะ</div><div class="roman">sàng à-rai khá</div><div class="eng">What would you like to order?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ขอข้าวผัดปูหนึ่งจานค่ะ</div><div class="roman">khɔ̌ɔ khâaw-phàt puu nʉ̀eng jaan khâ</div><div class="eng">One plate of crab fried rice, please.</div></div></div>
+      <div class="bubble a"><span class="speaker a">Vendor</span><div class="triad"><div class="thai">เอาปลาหมึกด้วยไหมคะ</div><div class="roman">ao plaa-mʉ̀k dûay mái khá</div><div class="eng">Would you like squid too?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ไม่เอาค่ะ ใส่ถุงค่ะ</div><div class="roman">mâi ao khâ, sài thǔng khâ</div><div class="eng">No. Takeaway, please.</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div></div>
+      <div class="bubble a"><span class="speaker a">Vendor</span><div class="triad"><div class="thai">แปดสิบบาทค่ะ</div><div class="roman">bpɛ̀ɛt-sìp bàat khâ</div><div class="eng">80 baht.</div></div></div>
+    </div>
+
+    <h3>3. 餐廳：要餐具＋結帳找零</h3>
+    <div class="bubble-wrap">
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ขอโทษค่ะ ขอช้อนกับส้อมหน่อยค่ะ</div><div class="roman">khɔ̌ɔ-thôot khâ, khɔ̌ɔ chɔ́ɔn gàp sɔ̂ɔm nɔ̀i khâ</div><div class="eng">Excuse me, may I have a spoon and fork?</div></div></div>
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">ได้ค่ะ</div><div class="roman">dâai khâ</div><div class="eng">Sure.</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">ขอหลอดด้วยค่ะ</div><div class="roman">khɔ̌ɔ lɔ̀ɔt dûay khâ</div><div class="eng">May I have a straw too?</div></div></div>
+      <div class="bubble b"><span class="speaker b">Customer</span><div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div></div>
+      <div class="bubble a"><span class="speaker a">Staff</span><div class="triad"><div class="thai">นี่ค่ะ เงินทอนยี่สิบบาท</div><div class="roman">nîi khâ, ngən-thɔɔn yîi-sìp bàat</div><div class="eng">Here is 20 baht change.</div></div></div>
+    </div>
+  </section>
+
+  <section id="recall" class="tab-content">
+    <h2>Recall Quiz｜先想 5 秒再打開</h2>
+
+    <h3>A. 單字 recall</h3>
+    <details class="quiz-card" data-qid="recall-1"><summary>1. spoon / fork / knife / straw 怎麼說？</summary><div class="answer-box"><div class="triad"><div class="thai">ช้อน / ส้อม / มีด / หลอด</div><div class="roman">chɔ́ɔn / sɔ̂ɔm / mîit / lɔ̀ɔt</div><div class="eng">spoon / fork / knife / straw</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-1','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="recall-2"><summary>2. box/carton、cup、bottle、bowl 怎麼說？</summary><div class="answer-box"><div class="triad"><div class="thai">กล่อง / ถ้วย / ขวด / ชาม</div><div class="roman">glɔ̀ng / thûay / khùat / chaam</div><div class="eng">box/carton / cup / bottle / bowl</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-2','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="recall-3"><summary>3. crab / shellfish / squid 怎麼說？</summary><div class="answer-box"><div class="triad"><div class="thai">ปู / หอย / ปลาหมึก</div><div class="roman">puu / hɔ̌i / plaa-mʉ̀k</div><div class="eng">crab / shellfish / squid</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('recall-3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('recall-3','hard')">Hard</button></div></div></details>
+
+    <h3>B. 句子翻譯</h3>
+    <details class="quiz-card" data-qid="trans-1"><summary>1. Normal sweetness, please.</summary><div class="answer-box"><div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-1','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="trans-2"><summary>2. I’ll take a medium cup.</summary><div class="answer-box"><div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">I’ll take a medium cup.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-2','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="trans-3"><summary>3. Put it in a bag, please. / Takeaway.</summary><div class="answer-box"><div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Put it in a bag, please. / Takeaway.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-3','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="trans-4"><summary>4. Check, please.</summary><div class="answer-box"><div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-4','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="trans-5"><summary>5. How much is everything?</summary><div class="answer-box"><div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-5','hard')">Hard</button></div></div></details>
+    <details class="quiz-card" data-qid="trans-6"><summary>6. Here is 20 baht change.</summary><div class="answer-box"><div class="triad"><div class="thai">นี่ค่ะ เงินทอนยี่สิบบาท</div><div class="roman">nîi khâ, ngən-thɔɔn yîi-sìp bàat</div><div class="eng">Here is 20 baht change.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('trans-6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('trans-6','hard')">Hard</button></div></div></details>
+
+    <h3>C. 店員問句聽懂訓練</h3>
+    <details class="quiz-card" data-qid="listen-1"><summary>店員說：รับอะไรดีคะ 你要怎麼回答？</summary><div class="answer-box"><div class="triad"><div class="thai">เอากาแฟเย็นแก้วนึงค่ะ</div><div class="roman">ao gaa-fɛɛ yen gɛ̂ɛw nʉng khâ</div><div class="eng">I’ll take one iced coffee.</div></div></div></details>
+    <details class="quiz-card" data-qid="listen-2"><summary>店員說：หวานปกติไหมคะ 你要少甜怎麼回答？</summary><div class="answer-box"><div class="triad"><div class="thai">หวานน้อยค่ะ</div><div class="roman">wǎan nɔ́ɔi khâ</div><div class="eng">Less sweet, please.</div></div></div></details>
+    <details class="quiz-card" data-qid="listen-3"><summary>店員說：เอาอย่างอื่นไหมคะ 你不要了怎麼回答？</summary><div class="answer-box"><div class="triad"><div class="thai">ไม่เอาค่ะ ขอบคุณค่ะ</div><div class="roman">mâi ao khâ, khɔ̀ɔp-khun khâ</div><div class="eng">No, thank you.</div></div></div></details>
+  </section>
+
+  <section id="random" class="tab-content">
+    <h2>Random Quiz｜隨機抽題</h2>
+
+    <div class="random-card">
+      <p class="subtitle">按按鈕隨機抽一題。先自己說答案，再點「顯示答案」。</p>
+      <h3 id="randomQuestion">按下方按鈕開始抽題</h3>
+      <div id="randomAnswer" class="answer-box" style="display:none;"></div>
+      <div class="btn-row">
+        <button class="small-btn blue" onclick="drawRandom()">抽一題</button>
+        <button class="small-btn easy" onclick="showRandomAnswer()">顯示答案</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="output" class="tab-content">
+    <h2>Output｜自己輸出才會記得</h2>
+
+    <div class="tip yellow">
+      請不要只看答案。每題先自己用泰文打一遍，再打開參考答案。這一頁可以當你下次複習前的暖身。
+    </div>
+
+    <div class="review-box">
+      <h3>1. 飲料店點餐</h3>
+      <p>Prompt：我要一杯冰咖啡，中杯，正常甜，外帶。</p>
+      <textarea placeholder="請輸入你的泰文答案"></textarea>
+      <details class="quiz-card"><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">เอากาแฟเย็นแก้วนึงค่ะ</div><div class="roman">ao gaa-fɛɛ yen gɛ̂ɛw nʉng khâ</div><div class="eng">I’ll take one iced coffee.</div></div>
+        <div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">Medium, please.</div></div>
+        <div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div>
+        <div class="triad"><div class="thai">กลับบ้านค่ะ</div><div class="roman">glàp bâan khâ</div><div class="eng">Takeaway, please.</div></div>
+      </div></details>
+    </div>
+
+    <div class="review-box">
+      <h3>2. 路邊攤點餐</h3>
+      <p>Prompt：我要一份蟹肉炒飯，外帶，總共多少？</p>
+      <textarea placeholder="請輸入你的泰文答案"></textarea>
+      <details class="quiz-card"><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">ขอข้าวผัดปูหนึ่งจานค่ะ</div><div class="roman">khɔ̌ɔ khâaw-phàt puu nʉ̀eng jaan khâ</div><div class="eng">One plate of crab fried rice, please.</div></div>
+        <div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Takeaway, please.</div></div>
+        <div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div>
+      </div></details>
+    </div>
+
+    <div class="review-box">
+      <h3>3. 餐具＋結帳</h3>
+      <p>Prompt：請給我湯匙、叉子和吸管。然後說我要結帳。</p>
+      <textarea placeholder="請輸入你的泰文答案"></textarea>
+      <details class="quiz-card"><summary>參考答案</summary><div class="answer-box">
+        <div class="triad"><div class="thai">ขอช้อน ส้อม แล้วก็หลอดหน่อยค่ะ</div><div class="roman">khɔ̌ɔ chɔ́ɔn, sɔ̂ɔm, lɛ́ɛw-gɔ̂ɔ lɔ̀ɔt nɔ̀i khâ</div><div class="eng">May I have a spoon, fork, and straw?</div></div>
+        <div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div>
+      </div></details>
+    </div>
+  </section>
+</div>
+
+<script>
+  function openTab(event, tabId) {
+    const contents = document.querySelectorAll('.tab-content');
+    const buttons = document.querySelectorAll('.tab-btn');
+    contents.forEach(content => content.classList.remove('active'));
+    buttons.forEach(button => button.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  const storagePrefix = 'thaiSpeaking1Day5Day6WeakReview_';
+
+  function updateProgress() {
+    const checks = Array.from(document.querySelectorAll('.task-check'));
+    const done = checks.filter(c => c.checked).length;
+    const total = checks.length || 1;
+    const pct = Math.round(done / total * 100);
+    const fill = document.getElementById('progressFill');
+    const text = document.getElementById('progressText');
+    if (fill) fill.style.width = pct + '%';
+    if (text) text.textContent = `${pct}% completed（${done}/${total}）`;
+  }
+
+  function initChecks() {
+    document.querySelectorAll('.task-check').forEach(check => {
+      const key = storagePrefix + 'check_' + check.dataset.id;
+      check.checked = localStorage.getItem(key) === 'true';
+      check.addEventListener('change', () => {
+        localStorage.setItem(key, check.checked);
+        updateProgress();
+      });
+    });
+    updateProgress();
+  }
+
+  function resetProgress() {
+    document.querySelectorAll('.task-check').forEach(check => {
+      check.checked = false;
+      localStorage.removeItem(storagePrefix + 'check_' + check.dataset.id);
+    });
+    updateProgress();
+  }
+
+  function markCard(id, status) {
+    localStorage.setItem(storagePrefix + 'card_' + id, status);
+    const el = document.querySelector(`[data-qid="${id}"]`);
+    if (el) {
+      el.style.borderColor = status === 'easy' ? 'rgba(22,163,74,.55)' : 'rgba(220,38,38,.55)';
+      el.style.background = status === 'easy' ? 'rgba(22,163,74,.08)' : 'rgba(220,38,38,.07)';
+    }
+  }
+
+  function restoreCardMarks() {
+    document.querySelectorAll('[data-qid]').forEach(el => {
+      const id = el.dataset.qid;
+      const status = localStorage.getItem(storagePrefix + 'card_' + id);
+      if (status) {
+        el.style.borderColor = status === 'easy' ? 'rgba(22,163,74,.55)' : 'rgba(220,38,38,.55)';
+        el.style.background = status === 'easy' ? 'rgba(22,163,74,.08)' : 'rgba(220,38,38,.07)';
+      }
+    });
+  }
+
+  const randomItems = [
+    { q: '「Normal sweetness, please.」怎麼說？', a: '<div class="triad"><div class="thai">หวานปกติค่ะ</div><div class="roman">wǎan bpòk-gà-dtì khâ</div><div class="eng">Normal sweetness, please.</div></div>' },
+    { q: '「I’ll take a medium cup.」怎麼說？', a: '<div class="triad"><div class="thai">เอาแก้วกลางค่ะ</div><div class="roman">ao gɛ̂ɛw glaang khâ</div><div class="eng">I’ll take a medium cup.</div></div>' },
+    { q: '「spoon / fork / knife / straw」怎麼說？', a: '<div class="triad"><div class="thai">ช้อน / ส้อม / มีด / หลอด</div><div class="roman">chɔ́ɔn / sɔ̂ɔm / mîit / lɔ̀ɔt</div><div class="eng">spoon / fork / knife / straw</div></div>' },
+    { q: '「box / cup / bottle / bowl」怎麼說？', a: '<div class="triad"><div class="thai">กล่อง / ถ้วย / ขวด / ชาม</div><div class="roman">glɔ̀ng / thûay / khùat / chaam</div><div class="eng">box/carton / cup / bottle / bowl</div></div>' },
+    { q: '「Takeaway / put it in a bag」怎麼說？', a: '<div class="triad"><div class="thai">ใส่ถุงค่ะ</div><div class="roman">sài thǔng khâ</div><div class="eng">Put it in a bag, please. / Takeaway.</div></div>' },
+    { q: '「crab / shellfish / squid」怎麼說？', a: '<div class="triad"><div class="thai">ปู / หอย / ปลาหมึก</div><div class="roman">puu / hɔ̌i / plaa-mʉ̀k</div><div class="eng">crab / shellfish / squid</div></div>' },
+    { q: '「Check, please.」怎麼說？', a: '<div class="triad"><div class="thai">คิดตังค์ด้วยค่ะ</div><div class="roman">khít tang dûay khâ</div><div class="eng">Check, please.</div></div>' },
+    { q: '「How much is everything?」怎麼說？', a: '<div class="triad"><div class="thai">ทั้งหมดเท่าไรคะ</div><div class="roman">tháng-mòt thâo-rài khá</div><div class="eng">How much is everything?</div></div>' },
+    { q: '「Here is 20 baht change.」怎麼說？', a: '<div class="triad"><div class="thai">นี่ค่ะ เงินทอนยี่สิบบาท</div><div class="roman">nîi khâ, ngən-thɔɔn yîi-sìp bàat</div><div class="eng">Here is 20 baht change.</div></div>' },
+    { q: '店員問「เอาอย่างอื่นไหมคะ」你不要了怎麼說？', a: '<div class="triad"><div class="thai">ไม่เอาค่ะ ขอบคุณค่ะ</div><div class="roman">mâi ao khâ, khɔ̀ɔp-khun khâ</div><div class="eng">No, thank you.</div></div>' }
+  ];
+
+  let currentRandom = null;
+
+  function drawRandom() {
+    currentRandom = randomItems[Math.floor(Math.random() * randomItems.length)];
+    document.getElementById('randomQuestion').textContent = currentRandom.q;
+    const ans = document.getElementById('randomAnswer');
+    ans.style.display = 'none';
+    ans.innerHTML = '';
+  }
+
+  function showRandomAnswer() {
+    if (!currentRandom) drawRandom();
+    const ans = document.getElementById('randomAnswer');
+    ans.innerHTML = currentRandom.a;
+    ans.style.display = 'block';
+    addSpeakButtons(ans);
+  }
+
+  // TTS
+  let thaiVoice = null;
+  let activBtn  = null;
+
+  function loadVoices() {
+    const voices = window.speechSynthesis.getVoices();
+    thaiVoice = voices.find(v => v.lang === 'th-TH') ||
+                voices.find(v => v.lang.startsWith('th')) ||
+                null;
+  }
+  loadVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = loadVoices;
+  }
+
+  function speakThai(text, btn) {
+    if (!window.speechSynthesis) {
+      alert('此瀏覽器不支援語音合成。請用 Safari（macOS/iOS）或 Chrome。');
+      return;
+    }
+    if (activBtn === btn && speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      activBtn = null;
+      return;
+    }
+    speechSynthesis.cancel();
+    if (activBtn) {
+      activBtn.classList.remove('speaking');
+      activBtn.textContent = '🔊';
+    }
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang  = 'th-TH';
+    utter.rate  = 0.85;
+    utter.pitch = 1.0;
+    if (thaiVoice) utter.voice = thaiVoice;
+    utter.onstart = () => {
+      btn.classList.add('speaking');
+      btn.textContent = '⏸';
+      activBtn = btn;
+    };
+    utter.onend = utter.onerror = () => {
+      btn.classList.remove('speaking');
+      btn.textContent = '🔊';
+      activBtn = null;
+    };
+    speechSynthesis.speak(utter);
+  }
+
+  function addSpeakButtons(root=document) {
+    root.querySelectorAll('div.thai').forEach(el => {
+      if (el.querySelector('.speak-btn')) return;
+      const rawText = el.textContent.trim();
+      if (!rawText) return;
+      const span = document.createElement('span');
+      span.className = 'thai-text';
+      span.textContent = rawText;
+      const btn = document.createElement('button');
+      btn.className = 'speak-btn';
+      btn.textContent = '🔊';
+      btn.title = '唸出泰文';
+      btn.setAttribute('aria-label', '播放發音');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        speakThai(rawText, btn);
+      });
+      el.textContent = '';
+      el.appendChild(span);
+      el.appendChild(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initChecks();
+    restoreCardMarks();
+    addSpeakButtons();
+  });
+</script>
+</body>
+</html>

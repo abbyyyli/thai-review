@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thai Speaking 1｜Day 9 Review Mode</title>
+<style>
+:root{
+  --text:var(--color-text-primary,#1f2937);
+  --muted:#6b7280;
+  --line:rgba(107,114,128,.28);
+  --orange:#f97316;--orange-soft:rgba(249,115,22,.13);
+  --green:#16a34a;--green-soft:rgba(22,163,74,.13);
+  --blue:#2563eb;--blue-soft:rgba(37,99,235,.12);
+  --red:#dc2626;--red-soft:rgba(220,38,38,.11);
+  --yellow-soft:rgba(234,179,8,.15);
+  --purple:#7c3aed;--purple-soft:rgba(124,58,237,.12);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:24px;
+  color:var(--text);
+  background:transparent;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.65;
+}
+.container{max-width:1180px;margin:0 auto}
+.hero{
+  padding:28px;
+  border:.5px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(249,115,22,.10),rgba(22,163,74,.08),rgba(37,99,235,.06));
+  box-shadow:0 12px 34px rgba(0,0,0,.05);
+  margin-bottom:18px;
+}
+h1{margin:0 0 8px;font-size:28px;letter-spacing:-.02em}
+h2{margin-top:0;font-size:22px;border-bottom:1px solid var(--line);padding-bottom:10px}
+h3{margin-top:26px;font-size:18px}
+p{margin:8px 0}
+.subtitle{color:var(--muted);font-size:14px}
+.tabs{
+  display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;padding:10px;
+  border:.5px solid var(--line);border-radius:18px;background:rgba(255,255,255,.45);
+  position:sticky;top:0;backdrop-filter:blur(10px);z-index:5;
+}
+.tab-btn{
+  border:.5px solid var(--line);background:rgba(255,255,255,.65);color:var(--text);
+  border-radius:999px;padding:8px 13px;font-size:13px;cursor:pointer;transition:.18s ease;
+}
+.tab-btn:hover{transform:translateY(-1px);background:rgba(249,250,251,.95)}
+.tab-btn.active{border-color:rgba(249,115,22,.55);background:var(--orange-soft);color:#9a3412;font-weight:700}
+.tab-content{
+  display:none;padding:24px;border:.5px solid var(--line);border-radius:24px;
+  background:rgba(255,255,255,.52);box-shadow:0 10px 28px rgba(0,0,0,.04);margin-bottom:20px;
+}
+.tab-content.active{display:block}
+.label{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}
+.textbook{background:var(--orange-soft);color:#c2410c;border:.5px solid rgba(249,115,22,.3)}
+.local{background:var(--green-soft);color:#15803d;border:.5px solid rgba(22,163,74,.3)}
+.review{background:var(--blue-soft);color:#1d4ed8;border:.5px solid rgba(37,99,235,.3)}
+.warn{background:var(--red-soft);color:#b91c1c;border:.5px solid rgba(220,38,38,.3)}
+.practical{background:var(--yellow-soft);color:#854d0e;border:.5px solid rgba(234,179,8,.35)}
+.drill{background:var(--purple-soft);color:#5b21b6;border:.5px solid rgba(124,58,237,.28)}
+.thai{font-size:15px;font-weight:500;letter-spacing:.01em}
+.roman{color:#6b7280;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13px}
+.eng{font-size:13px;color:var(--text)}
+.triad{display:grid;gap:2px;margin:4px 0}
+.triad .thai:before{content:"Thai: ";color:var(--muted);font-weight:400}
+.triad .roman:before{content:"Romanization: ";color:var(--muted);font-family:inherit}
+.triad .eng:before{content:"English: ";color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:14px}
+th,td{border:.5px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
+th{background:rgba(243,244,246,.72);font-weight:700}
+tbody tr:nth-child(even){background:rgba(249,250,251,.55)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px;margin:16px 0}
+.card,.study-task,.quiz-card,.review-box,.random-card,.word-box{
+  border:.5px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:rgba(255,255,255,.72);
+}
+.study-task{background:rgba(255,248,239,.82)}
+.study-task label{display:block;margin:8px 0;cursor:pointer}
+.mini-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:700}
+.tip{border-left:4px solid var(--green);padding:12px 14px;background:var(--green-soft);border-radius:12px;margin:14px 0}
+.tip.orange{border-left-color:var(--orange);background:var(--orange-soft)}
+.tip.blue{border-left-color:var(--blue);background:var(--blue-soft)}
+.tip.red{border-left-color:var(--red);background:var(--red-soft)}
+details{border:.5px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,.45)}
+summary{cursor:pointer;font-weight:700}
+.answer-box{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--green-soft);border:.5px solid rgba(22,163,74,.22)}
+.word-box{background:rgba(37,99,235,.07);padding:12px}
+.word-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:8px;margin-top:8px}
+.word-pill{border:.5px solid rgba(37,99,235,.22);background:rgba(255,255,255,.75);border-radius:12px;padding:8px 10px}
+.progress-wrap{border:.5px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.72);margin:16px 0}
+.progress-bar{width:100%;height:14px;border-radius:999px;background:rgba(107,114,128,.18);overflow:hidden;margin:10px 0 6px}
+.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,var(--orange),var(--green),var(--blue));border-radius:999px;transition:width .25s ease}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.small-btn{border:.5px solid var(--line);background:rgba(255,255,255,.75);border-radius:999px;padding:7px 11px;font-size:12px;cursor:pointer}
+.small-btn:hover{transform:translateY(-1px)}
+.small-btn.easy{background:var(--green-soft);color:#15803d;border-color:rgba(22,163,74,.28)}
+.small-btn.hard{background:var(--red-soft);color:#b91c1c;border-color:rgba(220,38,38,.28)}
+.small-btn.blue{background:var(--blue-soft);color:#1d4ed8;border-color:rgba(37,99,235,.28)}
+.bubble-wrap{display:grid;gap:10px;margin:14px 0 24px}
+.bubble{border:.5px solid var(--line);border-radius:18px;padding:13px 15px;max-width:84%;background:rgba(255,255,255,.72)}
+.bubble.a{justify-self:start;border-left:5px solid var(--blue)}
+.bubble.b{justify-self:end;border-right:5px solid var(--green)}
+.speaker{display:inline-block;font-size:12px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:6px}
+.speaker.a{background:var(--blue-soft);color:#1d4ed8}
+.speaker.b{background:var(--green-soft);color:#15803d}
+.speak-btn{
+  display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+  border:.5px solid rgba(37,99,235,.3);background:var(--blue-soft);color:#1d4ed8;font-size:11px;cursor:pointer;
+  margin-left:6px;vertical-align:middle;flex-shrink:0;transition:.15s;line-height:1;padding:0;
+}
+.speak-btn:hover{background:rgba(37,99,235,.22);transform:scale(1.12)}
+.speak-btn.speaking{background:var(--orange-soft);border-color:rgba(249,115,22,.4);color:#c2410c;animation:pulse .6s ease-in-out infinite alternate}
+@keyframes pulse{from{transform:scale(1)}to{transform:scale(1.18)}}
+div.thai{display:flex;align-items:center;flex-wrap:wrap;gap:2px}
+.thai-text{flex:1}
+textarea{width:100%;min-height:90px;border:.5px solid var(--line);border-radius:14px;padding:12px;font-family:inherit;line-height:1.6;background:rgba(255,255,255,.8)}
+@media(max-width:720px){body{padding:14px}.tab-content{padding:16px}table{font-size:13px}.bubble{max-width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<section class="hero">
+<h1>Thai Speaking 1｜Day 9 Review Mode</h1>
+<p class="subtitle">主線：交通工具、ขึ้น/ลง 上下車、โดย 交通方式、กับใคร 跟誰來、สถานี/สนามบิน/ท่าเรือ 交通地點。這版是複習工具，不是完整講義。</p>
+<p><span class="label review">Review Mode</span><span class="label textbook">Textbook-based</span><span class="label local">Bangkok Local</span><span class="label practical">Practical Usage</span><span class="label drill">Cycling Drill</span></p>
+</section>
+
+<nav class="tabs">
+<button class="tab-btn active" onclick="openTab(event,'mission')">Mission</button>
+<button class="tab-btn" onclick="openTab(event,'core')">Core Sentences</button>
+<button class="tab-btn" onclick="openTab(event,'recall')">Recall</button>
+<button class="tab-btn" onclick="openTab(event,'translation')">Translation</button>
+<button class="tab-btn" onclick="openTab(event,'shadowing')">Shadowing</button>
+<button class="tab-btn" onclick="openTab(event,'random')">Random Quiz</button>
+<button class="tab-btn" onclick="openTab(event,'output')">Output</button>
+<button class="tab-btn" onclick="openTab(event,'bangkok')">Bangkok Real-life</button>
+<button class="tab-btn" onclick="openTab(event,'mistakes')">Mistakes</button>
+<button class="tab-btn" onclick="openTab(event,'quick')">Quick Review</button>
+</nav>
+
+<section id="mission" class="tab-content active">
+<h2>Mission｜今天的複習任務</h2>
+<div class="progress-wrap">
+<strong>今日完成度</strong>
+<div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+<p id="progressText" class="subtitle">0% completed</p>
+<div class="btn-row"><button class="small-btn blue" onclick="resetProgress()">重置今日進度</button></div>
+</div>
+<div class="study-task">
+<h3>Checklist</h3>
+<label><input type="checkbox" class="task-check" data-id="core"> Core Sentences 跟讀 1 輪</label>
+<label><input type="checkbox" class="task-check" data-id="cycle"> 交通工具 Cycling Drill 刷 1 輪</label>
+<label><input type="checkbox" class="task-check" data-id="recall"> Recall 先想再看答案 8 題</label>
+<label><input type="checkbox" class="task-check" data-id="translation"> Translation 完成 10 題</label>
+<label><input type="checkbox" class="task-check" data-id="shadow"> Shadowing 跟讀 3 輪</label>
+<label><input type="checkbox" class="task-check" data-id="random"> Random Quiz 抽 5 題</label>
+<label><input type="checkbox" class="task-check" data-id="output"> Output 自己造 4 句</label>
+</div>
+<div class="cards">
+<div class="card"><div class="mini-title">How did you come?</div><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></div>
+<div class="card"><div class="mini-title">By plane</div><div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ</div><div class="eng">I came by plane.</div></div></div>
+<div class="card"><div class="mini-title">Get on / off</div><div class="triad"><div class="thai">ขึ้นที่อโศก ลงที่สยามค่ะ</div><div class="roman">khʉ̂n thîi à-sòok, long thîi sà-yǎam khâ</div><div class="eng">I get on at Asok and get off at Siam.</div></div></div>
+<div class="card"><div class="mini-title">With whom?</div><div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div></div>
+</div>
+<div class="tip orange"><strong>今天達標：</strong>能反射說出「我怎麼來泰國」、「我在哪上/下 BTS」、「我跟誰來」、「我喜歡/不喜歡哪種交通工具」。</div>
+</section>
+
+<section id="core" class="tab-content">
+<h2>Core Sentences｜刷熟這 16 句</h2>
+<table>
+<thead><tr><th>#</th><th>Sentence</th><th>Words from this sentence｜句中生字</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></td><td>มา / come；ไทย / Thailand；ยังไง / how</td><td>口語問法</td></tr>
+<tr><td>2</td><td><div class="triad"><div class="thai">มาประเทศไทยโดยเครื่องบินค่ะ</div><div class="roman">maa bprà-thêet thai dooi khrʉ̂ang-bin khâ</div><div class="eng">I came to Thailand by plane.</div></div></td><td>ประเทศไทย / Thailand；โดย / by；เครื่องบิน / airplane</td><td>教材核心</td></tr>
+<tr><td>3</td><td><div class="triad"><div class="thai">ไปห้างโดยรถไฟฟ้าค่ะ</div><div class="roman">bpai hâang dooi rót-fai-fáa khâ</div><div class="eng">I go to the mall by skytrain.</div></div></td><td>ไป / go；ห้าง / mall；รถไฟฟ้า / skytrain</td><td>曼谷日常</td></tr>
+<tr><td>4</td><td><div class="triad"><div class="thai">กลับบ้านโดยแท็กซี่ค่ะ</div><div class="roman">glàp bâan dooi thɛ́k-sîi khâ</div><div class="eng">I go home by taxi.</div></div></td><td>กลับบ้าน / go home；โดย / by；แท็กซี่ / taxi</td><td>回家方式</td></tr>
+<tr><td>5</td><td><div class="triad"><div class="thai">ขึ้นบีทีเอสที่ไหนคะ</div><div class="roman">khʉ̂n bii-thii-ét thîi nǎi khá</div><div class="eng">Where do I get on the BTS?</div></div></td><td>ขึ้น / get on；บีทีเอส / BTS；ที่ไหน / where</td><td>問上車地點</td></tr>
+<tr><td>6</td><td><div class="triad"><div class="thai">ลงสถานีไหนคะ</div><div class="roman">long sà-thǎa-nii nǎi khá</div><div class="eng">Which station do I get off at?</div></div></td><td>ลง / get off；สถานี / station；ไหน / which</td><td>問下車地點</td></tr>
+<tr><td>7</td><td><div class="triad"><div class="thai">ขึ้นที่อโศกค่ะ</div><div class="roman">khʉ̂n thîi à-sòok khâ</div><div class="eng">I get on at Asok.</div></div></td><td>ขึ้น / get on；ที่ / at；อโศก / Asok</td><td>站名回答</td></tr>
+<tr><td>8</td><td><div class="triad"><div class="thai">ลงที่สยามค่ะ</div><div class="roman">long thîi sà-yǎam khâ</div><div class="eng">I get off at Siam.</div></div></td><td>ลง / get off；ที่ / at；สยาม / Siam</td><td>站名回答</td></tr>
+<tr><td>9</td><td><div class="triad"><div class="thai">ขึ้นรถเมล์ที่ป้ายรถเมล์ค่ะ</div><div class="roman">khʉ̂n rót-mee thîi bpâai rót-mee khâ</div><div class="eng">I get on the bus at the bus stop.</div></div></td><td>รถเมล์ / bus；ป้ายรถเมล์ / bus stop</td><td>公車</td></tr>
+<tr><td>10</td><td><div class="triad"><div class="thai">ขึ้นเรือที่ท่าเรือค่ะ</div><div class="roman">khʉ̂n rʉa thîi thâa-rʉa khâ</div><div class="eng">I board the boat at the pier.</div></div></td><td>เรือ / boat；ท่าเรือ / pier</td><td>搭船</td></tr>
+<tr><td>11</td><td><div class="triad"><div class="thai">นั่งแท็กซี่ไปสนามบินค่ะ</div><div class="roman">nâng thɛ́k-sîi bpai sà-nǎam-bin khâ</div><div class="eng">I take a taxi to the airport.</div></div></td><td>นั่ง / take, sit；สนามบิน / airport</td><td>機場</td></tr>
+<tr><td>12</td><td><div class="triad"><div class="thai">ขับรถไปทำงานค่ะ</div><div class="roman">khàp rót bpai tham-ngaan khâ</div><div class="eng">I drive to work.</div></div></td><td>ขับรถ / drive；ทำงาน / work</td><td>開車</td></tr>
+<tr><td>13</td><td><div class="triad"><div class="thai">ขี่จักรยานไปสวนค่ะ</div><div class="roman">khìi jàk-grà-yaan bpai sǔan khâ</div><div class="eng">I ride a bicycle to the park.</div></div></td><td>ขี่ / ride；จักรยาน / bicycle；สวน / park</td><td>騎車</td></tr>
+<tr><td>14</td><td><div class="triad"><div class="thai">มากับใครคะ</div><div class="roman">maa gàp khrai khá</div><div class="eng">Who did you come with?</div></div></td><td>มา / come；กับ / with；ใคร / who</td><td>跟誰來</td></tr>
+<tr><td>15</td><td><div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div></td><td>คนเดียว / alone, by oneself</td><td>一個人來</td></tr>
+<tr><td>16</td><td><div class="triad"><div class="thai">ไม่มีใครชอบนั่งรถเมล์ค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp nâng rót-mee khâ</div><div class="eng">Nobody likes taking the bus.</div></div></td><td>ไม่มีใคร / nobody；ชอบ / like；นั่งรถเมล์ / take a bus</td><td>誰喜歡</td></tr>
+</tbody>
+</table>
+
+<h3>Transport Cycling Drill｜交通工具＋動詞反射</h3>
+<table>
+<thead><tr><th>Vehicle</th><th>Natural Verb</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><div class="triad"><div class="thai">เครื่องบิน</div><div class="roman">khrʉ̂ang-bin</div><div class="eng">airplane</div></div></td><td><div class="triad"><div class="thai">ขึ้นเครื่องบิน / มาโดยเครื่องบิน</div><div class="roman">khʉ̂n khrʉ̂ang-bin / maa dooi khrʉ̂ang-bin</div><div class="eng">board a plane / come by plane</div></div></td><td><div class="triad"><div class="thai">มาไทยโดยเครื่องบินค่ะ</div><div class="roman">maa thai dooi khrʉ̂ang-bin khâ</div><div class="eng">I came to Thailand by plane.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">รถไฟฟ้า</div><div class="roman">rót-fai-fáa</div><div class="eng">skytrain</div></div></td><td><div class="triad"><div class="thai">ขึ้น / ลง / นั่ง</div><div class="roman">khʉ̂n / long / nâng</div><div class="eng">get on / get off / take</div></div></td><td><div class="triad"><div class="thai">นั่งรถไฟฟ้าไปสยามค่ะ</div><div class="roman">nâng rót-fai-fáa bpai sà-yǎam khâ</div><div class="eng">I take the skytrain to Siam.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">รถเมล์</div><div class="roman">rót-mee</div><div class="eng">bus</div></div></td><td><div class="triad"><div class="thai">ขึ้น / ลง / นั่ง</div><div class="roman">khʉ̂n / long / nâng</div><div class="eng">get on / get off / take</div></div></td><td><div class="triad"><div class="thai">ขึ้นรถเมล์ที่ป้ายรถเมล์ค่ะ</div><div class="roman">khʉ̂n rót-mee thîi bpâai rót-mee khâ</div><div class="eng">I get on the bus at the bus stop.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">แท็กซี่</div><div class="roman">thɛ́k-sîi</div><div class="eng">taxi</div></div></td><td><div class="triad"><div class="thai">นั่ง</div><div class="roman">nâng</div><div class="eng">take</div></div></td><td><div class="triad"><div class="thai">นั่งแท็กซี่กลับบ้านค่ะ</div><div class="roman">nâng thɛ́k-sîi glàp bâan khâ</div><div class="eng">I take a taxi home.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">รถ</div><div class="roman">rót</div><div class="eng">car</div></div></td><td><div class="triad"><div class="thai">ขับ</div><div class="roman">khàp</div><div class="eng">drive</div></div></td><td><div class="triad"><div class="thai">ขับรถไปทำงานค่ะ</div><div class="roman">khàp rót bpai tham-ngaan khâ</div><div class="eng">I drive to work.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">มอเตอร์ไซค์ / จักรยาน</div><div class="roman">mɔɔ-dtəə-sai / jàk-grà-yaan</div><div class="eng">motorcycle / bicycle</div></div></td><td><div class="triad"><div class="thai">ขี่</div><div class="roman">khìi</div><div class="eng">ride</div></div></td><td><div class="triad"><div class="thai">ขี่จักรยานไปสวนค่ะ</div><div class="roman">khìi jàk-grà-yaan bpai sǔan khâ</div><div class="eng">I ride a bicycle to the park.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">เรือ</div><div class="roman">rʉa</div><div class="eng">boat</div></div></td><td><div class="triad"><div class="thai">ขึ้น / ลง / นั่ง</div><div class="roman">khʉ̂n / long / nâng</div><div class="eng">board / get off / take</div></div></td><td><div class="triad"><div class="thai">ขึ้นเรือที่ท่าเรือค่ะ</div><div class="roman">khʉ̂n rʉa thîi thâa-rʉa khâ</div><div class="eng">I board the boat at the pier.</div></div></td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="recall" class="tab-content">
+<h2>Recall｜先想，再打開答案</h2>
+<details class="quiz-card" data-qid="r1"><summary>1. 朋友問：「你怎麼來泰國？」用口語版。</summary><div class="answer-box"><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div><div class="word-box"><strong>Words from this sentence</strong><div class="word-grid"><div class="word-pill"><div class="thai">มา</div><div class="roman">maa</div><div class="eng">come</div></div><div class="word-pill"><div class="thai">ยังไง</div><div class="roman">yang-ngai</div><div class="eng">how</div></div></div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r1','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r2"><summary>2. 回答：「我搭飛機來。」</summary><div class="answer-box"><div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ</div><div class="eng">I came by plane.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r2','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r3"><summary>3. 問：「BTS 要在哪裡上？」</summary><div class="answer-box"><div class="triad"><div class="thai">ขึ้นบีทีเอสที่ไหนคะ</div><div class="roman">khʉ̂n bii-thii-ét thîi nǎi khá</div><div class="eng">Where do I get on the BTS?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r3','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r4"><summary>4. 問：「要在哪站下？」</summary><div class="answer-box"><div class="triad"><div class="thai">ลงสถานีไหนคะ</div><div class="roman">long sà-thǎa-nii nǎi khá</div><div class="eng">Which station do I get off at?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r4','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r5"><summary>5. 說：「我在 Asok 上，Siam 下。」</summary><div class="answer-box"><div class="triad"><div class="thai">ขึ้นที่อโศก ลงที่สยามค่ะ</div><div class="roman">khʉ̂n thîi à-sòok, long thîi sà-yǎam khâ</div><div class="eng">I get on at Asok and get off at Siam.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r5','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r6"><summary>6. 說：「我搭計程車去機場。」</summary><div class="answer-box"><div class="triad"><div class="thai">นั่งแท็กซี่ไปสนามบินค่ะ</div><div class="roman">nâng thɛ́k-sîi bpai sà-nǎam-bin khâ</div><div class="eng">I take a taxi to the airport.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r6','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r7"><summary>7. 問：「你跟誰來？」</summary><div class="answer-box"><div class="triad"><div class="thai">มากับใครคะ</div><div class="roman">maa gàp khrai khá</div><div class="eng">Who did you come with?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r7','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r7','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r8"><summary>8. 回答：「我一個人來。」</summary><div class="answer-box"><div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r8','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r8','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r9"><summary>9. 說：「沒有人喜歡搭公車。」</summary><div class="answer-box"><div class="triad"><div class="thai">ไม่มีใครชอบนั่งรถเมล์ค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp nâng rót-mee khâ</div><div class="eng">Nobody likes taking the bus.</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r9','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r9','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="r10"><summary>10. 問：「碼頭在哪裡？」</summary><div class="answer-box"><div class="triad"><div class="thai">ท่าเรืออยู่ตรงไหนคะ</div><div class="roman">thâa-rʉa yùu dtrong nǎi khá</div><div class="eng">Where exactly is the pier?</div></div><div class="btn-row"><button class="small-btn easy" onclick="markCard('r10','easy')">Easy</button><button class="small-btn hard" onclick="markCard('r10','hard')">Hard</button></div></div></details>
+</section>
+
+<section id="translation" class="tab-content">
+<h2>Translation｜中/英 → 泰</h2>
+<details class="quiz-card" data-qid="t1"><summary>1. How did you come to Thailand?</summary><div class="answer-box"><div class="triad"><div class="thai">คุณมาประเทศไทยยังไงคะ</div><div class="roman">khun maa bprà-thêet thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div><p>中文：正式完整句；口語可說 <span class="thai">มาไทยยังไงคะ</span>。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t1','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t1','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t2"><summary>2. 我搭飛機來泰國。</summary><div class="answer-box"><div class="triad"><div class="thai">มาประเทศไทยโดยเครื่องบินค่ะ</div><div class="roman">maa bprà-thêet thai dooi khrʉ̂ang-bin khâ</div><div class="eng">I came to Thailand by plane.</div></div><p>中文：โดย + 交通工具 = by transportation。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t2','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t2','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t3"><summary>3. Where do I get on the BTS?</summary><div class="answer-box"><div class="triad"><div class="thai">ขึ้นบีทีเอสที่ไหนคะ</div><div class="roman">khʉ̂n bii-thii-ét thîi nǎi khá</div><div class="eng">Where do I get on the BTS?</div></div><p>中文：ขึ้น = 上車；ที่ไหน = 哪裡。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t3','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t3','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t4"><summary>4. I get off at Siam.</summary><div class="answer-box"><div class="triad"><div class="thai">ลงที่สยามค่ะ</div><div class="roman">long thîi sà-yǎam khâ</div><div class="eng">I get off at Siam.</div></div><p>中文：口語可省略รถไฟฟ้า，直接說站名。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t4','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t4','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t5"><summary>5. 我搭計程車去機場。</summary><div class="answer-box"><div class="triad"><div class="thai">นั่งแท็กซี่ไปสนามบินค่ะ</div><div class="roman">nâng thɛ́k-sîi bpai sà-nǎam-bin khâ</div><div class="eng">I take a taxi to the airport.</div></div><p>中文：นั่ง + vehicle = 搭乘。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t5','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t5','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t6"><summary>6. 我在公車站搭公車。</summary><div class="answer-box"><div class="triad"><div class="thai">ขึ้นรถเมล์ที่ป้ายรถเมล์ค่ะ</div><div class="roman">khʉ̂n rót-mee thîi bpâai rót-mee khâ</div><div class="eng">I get on the bus at the bus stop.</div></div><p>中文：ป้ายรถเมล์ = bus stop。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t6','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t6','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t7"><summary>7. Can I get on the boat at this pier?</summary><div class="answer-box"><div class="triad"><div class="thai">ขึ้นเรือที่ท่าเรือนี้ได้ไหมคะ</div><div class="roman">khʉ̂n rʉa thîi thâa-rʉa níi dâai mái khá</div><div class="eng">Can I board the boat at this pier?</div></div><p>中文：ได้ไหมคะ = 可以嗎。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t7','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t7','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t8"><summary>8. 我跟朋友來。</summary><div class="answer-box"><div class="triad"><div class="thai">มากับเพื่อนค่ะ</div><div class="roman">maa gàp phʉ̂an khâ</div><div class="eng">I came with a friend.</div></div><p>中文：กับ = with。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t8','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t8','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t9"><summary>9. I came alone.</summary><div class="answer-box"><div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div><p>中文：คนเดียว = alone / by oneself。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t9','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t9','hard')">Hard</button></div></div></details>
+<details class="quiz-card" data-qid="t10"><summary>10. Nobody likes taking the bus.</summary><div class="answer-box"><div class="triad"><div class="thai">ไม่มีใครชอบนั่งรถเมล์ค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp nâng rót-mee khâ</div><div class="eng">Nobody likes taking the bus.</div></div><p>中文：ไม่มีใคร = 沒有人。</p><div class="btn-row"><button class="small-btn easy" onclick="markCard('t10','easy')">Easy</button><button class="small-btn hard" onclick="markCard('t10','hard')">Hard</button></div></div></details>
+</section>
+
+<section id="shadowing" class="tab-content">
+<h2>Shadowing｜跟讀 3 輪</h2>
+<div class="tip blue"><strong>練法：</strong>第一輪聽，第二輪看 romanization 跟讀，第三輪只看泰文。Day9 重點是「ขึ้น / ลง / โดย」的口腔反射。</div>
+<div class="bubble-wrap">
+<div class="bubble a"><span class="speaker a">Friend</span><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ</div><div class="eng">I came by plane.</div></div></div>
+<div class="bubble a"><span class="speaker a">Friend</span><div class="triad"><div class="thai">มากับใครคะ</div><div class="roman">maa gàp khrai khá</div><div class="eng">Who did you come with?</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div></div>
+<div class="bubble a"><span class="speaker a">Local</span><div class="triad"><div class="thai">ไปสยามขึ้นที่อโศก แล้วลงที่สยามค่ะ</div><div class="roman">bpai sà-yǎam khʉ̂n thîi à-sòok, lɛ́ɛw long thîi sà-yǎam khâ</div><div class="eng">To go to Siam, get on at Asok and get off at Siam.</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">โอเคค่ะ ขอบคุณค่ะ</div><div class="roman">oo-khee khâ, khɔ̀ɔp-khun khâ</div><div class="eng">Okay, thank you.</div></div></div>
+</div>
+</section>
+
+<section id="random" class="tab-content">
+<h2>Random Quiz｜隨機抽題</h2>
+<div class="random-card">
+<p class="subtitle">抽題後先自己說，再顯示答案。</p>
+<h3 id="randomQuestion">按下方按鈕開始抽題</h3>
+<div id="randomAnswer" class="answer-box" style="display:none;"></div>
+<div class="btn-row"><button class="small-btn blue" onclick="drawRandom()">抽一題</button><button class="small-btn easy" onclick="showRandomAnswer()">顯示答案</button></div>
+</div>
+</section>
+
+<section id="output" class="tab-content">
+<h2>Output｜真實情境造句</h2>
+<div class="review-box">
+<h3>1. 入境聊天</h3>
+<p>Prompt：朋友問你怎麼來泰國、跟誰來。請回答：搭飛機來、一個人來。</p>
+<textarea placeholder="請輸入你的泰文句子"></textarea>
+<details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ มาคนเดียวค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ, maa khon diao khâ</div><div class="eng">I came by plane. I came alone.</div></div></div></details>
+</div>
+<div class="review-box">
+<h3>2. BTS 問路</h3>
+<p>Prompt：你要去 Siam，問路人在哪裡上 BTS、在哪裡下。</p>
+<textarea placeholder="請輸入你的泰文句子"></textarea>
+<details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">ไปสยามขึ้นบีทีเอสที่ไหนคะ แล้วลงสถานีไหนคะ</div><div class="roman">bpai sà-yǎam khʉ̂n bii-thii-ét thîi nǎi khá, lɛ́ɛw long sà-thǎa-nii nǎi khá</div><div class="eng">To go to Siam, where do I get on the BTS? And which station do I get off at?</div></div></div></details>
+</div>
+<div class="review-box">
+<h3>3. Grab / Taxi 情境</h3>
+<p>Prompt：跟司機說你要去 Suvarnabhumi Airport。</p>
+<textarea placeholder="請輸入你的泰文句子"></textarea>
+<details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">ไปสนามบินสุวรรณภูมิค่ะ</div><div class="roman">bpai sà-nǎam-bin sù-wan-ná-phuum khâ</div><div class="eng">I’m going to Suvarnabhumi Airport.</div></div></div></details>
+</div>
+<div class="review-box">
+<h3>4. 交通喜好</h3>
+<p>Prompt：說你喜歡搭 BTS，但不喜歡搭公車，因為公車慢。</p>
+<textarea placeholder="請輸入你的泰文句子"></textarea>
+<details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">ฉันชอบนั่งบีทีเอสค่ะ แต่ไม่ชอบนั่งรถเมล์ เพราะรถเมล์ช้าค่ะ</div><div class="roman">chǎn chɔ̂ɔp nâng bii-thii-ét khâ, dtɛ̀ɛ mâi chɔ̂ɔp nâng rót-mee, phrɔ́ rót-mee cháa khâ</div><div class="eng">I like taking the BTS, but I don’t like taking the bus because the bus is slow.</div></div></div></details>
+</div>
+</section>
+
+<section id="bangkok" class="tab-content">
+<h2>Bangkok Real-life｜課本到生活</h2>
+<table>
+<thead><tr><th>Situation</th><th>Textbook</th><th>Natural Bangkok Thai</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>問怎麼來泰國</td><td><div class="triad"><div class="thai">คุณมาประเทศไทยยังไงคะ</div><div class="roman">khun maa bprà-thêet thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></td><td><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></td><td>口語常省略 ประเทศ。</td></tr>
+<tr><td>搭 BTS</td><td><div class="triad"><div class="thai">ขึ้นรถไฟฟ้าที่สถานีอโศกค่ะ</div><div class="roman">khʉ̂n rót-fai-fáa thîi sà-thǎa-nii à-sòok khâ</div><div class="eng">I get on the skytrain at Asok station.</div></div></td><td><div class="triad"><div class="thai">ขึ้นบีทีเอสที่อโศกค่ะ</div><div class="roman">khʉ̂n bii-thii-ét thîi à-sòok khâ</div><div class="eng">I get on the BTS at Asok.</div></div></td><td>曼谷常直接說 BTS / MRT。</td></tr>
+<tr><td>下 BTS</td><td><div class="triad"><div class="thai">ลงรถไฟฟ้าที่สถานีสยามค่ะ</div><div class="roman">long rót-fai-fáa thîi sà-thǎa-nii sà-yǎam khâ</div><div class="eng">I get off the skytrain at Siam station.</div></div></td><td><div class="triad"><div class="thai">ลงสยามค่ะ</div><div class="roman">long sà-yǎam khâ</div><div class="eng">I get off at Siam.</div></div></td><td>已知道交通工具時可直接說站名。</td></tr>
+<tr><td>問公車站</td><td><div class="triad"><div class="thai">คุณขึ้นรถเมล์ที่ไหนคะ</div><div class="roman">khun khʉ̂n rót-mee thîi nǎi khá</div><div class="eng">Where do you get on the bus?</div></div></td><td><div class="triad"><div class="thai">ขึ้นรถเมล์ตรงไหนคะ</div><div class="roman">khʉ̂n rót-mee dtrong nǎi khá</div><div class="eng">Where exactly do I get on the bus?</div></div></td><td>ตรงไหน 更像現場問路。</td></tr>
+<tr><td>計程車/Grab</td><td><div class="triad"><div class="thai">ฉันไปสนามบินโดยแท็กซี่ค่ะ</div><div class="roman">chǎn bpai sà-nǎam-bin dooi thɛ́k-sîi khâ</div><div class="eng">I go to the airport by taxi.</div></div></td><td><div class="triad"><div class="thai">ไปสนามบินสุวรรณภูมิค่ะ</div><div class="roman">bpai sà-nǎam-bin sù-wan-ná-phuum khâ</div><div class="eng">I’m going to Suvarnabhumi Airport.</div></div></td><td>跟司機說目的地即可。</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="mistakes" class="tab-content">
+<h2>Common Mistakes｜真正常錯</h2>
+<table>
+<thead><tr><th>Mistake</th><th>Why awkward</th><th>Better</th></tr></thead>
+<tbody>
+<tr><td><div class="triad"><div class="thai">ลงรถไฟฟ้าที่อโศก แล้วขึ้นที่สยาม</div><div class="roman">long rót-fai-fáa thîi à-sòok, lɛ́ɛw khʉ̂n thîi sà-yǎam</div><div class="eng">Get off at Asok, then get on at Siam.</div></div></td><td>上下車動詞反了。去 Siam 通常是 Asok 上、Siam 下。</td><td><div class="triad"><div class="thai">ขึ้นที่อโศก แล้วลงที่สยามค่ะ</div><div class="roman">khʉ̂n thîi à-sòok, lɛ́ɛw long thîi sà-yǎam khâ</div><div class="eng">Get on at Asok, then get off at Siam.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">ขับจักรยาน</div><div class="roman">khàp jàk-grà-yaan</div><div class="eng">drive a bicycle</div></div></td><td>腳踏車用騎，不用開。</td><td><div class="triad"><div class="thai">ขี่จักรยาน</div><div class="roman">khìi jàk-grà-yaan</div><div class="eng">ride a bicycle</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">ไปไทยยังไงคะ</div><div class="roman">bpai thai yang-ngai khá</div><div class="eng">How do you go to Thailand?</div></div></td><td>如果對方已經人在泰國，問「怎麼來」要用 มา。</td><td><div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">ไม่มีใครชอบค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp khâ</div><div class="eng">Nobody likes it.</div></div></td><td>句子本身可行，但沒有受詞時容易不清楚。</td><td><div class="triad"><div class="thai">ไม่มีใครชอบนั่งรถเมล์ค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp nâng rót-mee khâ</div><div class="eng">Nobody likes taking the bus.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">ขึ้นเรือที่สถานี</div><div class="roman">khʉ̂n rʉa thîi sà-thǎa-nii</div><div class="eng">Board a boat at the station.</div></div></td><td>船的地點是碼頭，不是 station。</td><td><div class="triad"><div class="thai">ขึ้นเรือที่ท่าเรือค่ะ</div><div class="roman">khʉ̂n rʉa thîi thâa-rʉa khâ</div><div class="eng">I board the boat at the pier.</div></div></td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="quick" class="tab-content">
+<h2>Quick Review｜睡前 3 分鐘</h2>
+<div class="cards">
+<div class="card"><div class="mini-title">今日最重要</div>
+<div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div>
+<div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ</div><div class="eng">I came by plane.</div></div>
+<div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div>
+</div>
+<div class="card"><div class="mini-title">Bangkok 最實用</div>
+<div class="triad"><div class="thai">ขึ้นบีทีเอสที่ไหนคะ</div><div class="roman">khʉ̂n bii-thii-ét thîi nǎi khá</div><div class="eng">Where do I get on the BTS?</div></div>
+<div class="triad"><div class="thai">ลงสถานีไหนคะ</div><div class="roman">long sà-thǎa-nii nǎi khá</div><div class="eng">Which station do I get off at?</div></div>
+<div class="triad"><div class="thai">ไปสนามบินสุวรรณภูมิค่ะ</div><div class="roman">bpai sà-nǎam-bin sù-wan-ná-phuum khâ</div><div class="eng">I’m going to Suvarnabhumi Airport.</div></div>
+</div>
+<div class="card"><div class="mini-title">今天最容易錯</div>
+<p>1. <span class="thai">ขึ้น</span> / <span class="roman">khʉ̂n</span> / <span class="eng">get on</span> ≠ <span class="thai">ลง</span> / <span class="roman">long</span> / <span class="eng">get off</span></p>
+<p>2. <span class="thai">ขับรถ</span> / <span class="roman">khàp rót</span> / <span class="eng">drive a car</span>；<span class="thai">ขี่จักรยาน</span> / <span class="roman">khìi jàk-grà-yaan</span> / <span class="eng">ride a bicycle</span></p>
+<p>3. 已在泰國時問 <span class="thai">มาไทยยังไงคะ</span> / <span class="roman">maa thai yang-ngai khá</span> / <span class="eng">How did you come to Thailand?</span></p>
+</div>
+</div>
+</section>
+</div>
+
+<script>
+function openTab(event,tabId){
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+const storagePrefix='thaiSpeaking1Day9ReviewMode_';
+function updateProgress(){
+  const checks=Array.from(document.querySelectorAll('.task-check'));
+  const done=checks.filter(c=>c.checked).length;
+  const total=checks.length||1;
+  const pct=Math.round(done/total*100);
+  const fill=document.getElementById('progressFill');
+  const text=document.getElementById('progressText');
+  if(fill)fill.style.width=pct+'%';
+  if(text)text.textContent=`${pct}% completed（${done}/${total}）`;
+}
+function initChecks(){
+  document.querySelectorAll('.task-check').forEach(check=>{
+    const key=storagePrefix+'check_'+check.dataset.id;
+    check.checked=localStorage.getItem(key)==='true';
+    check.addEventListener('change',()=>{
+      localStorage.setItem(key,check.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+}
+function resetProgress(){
+  document.querySelectorAll('.task-check').forEach(check=>{
+    check.checked=false;
+    localStorage.removeItem(storagePrefix+'check_'+check.dataset.id);
+  });
+  updateProgress();
+}
+function markCard(id,status){
+  localStorage.setItem(storagePrefix+'card_'+id,status);
+  const el=document.querySelector(`[data-qid="${id}"]`);
+  if(el){
+    el.style.borderColor=status==='easy'?'rgba(22,163,74,.55)':'rgba(220,38,38,.55)';
+    el.style.background=status==='easy'?'rgba(22,163,74,.08)':'rgba(220,38,38,.07)';
+  }
+}
+function restoreCardMarks(){
+  document.querySelectorAll('[data-qid]').forEach(el=>{
+    const status=localStorage.getItem(storagePrefix+'card_'+el.dataset.qid);
+    if(status){
+      el.style.borderColor=status==='easy'?'rgba(22,163,74,.55)':'rgba(220,38,38,.55)';
+      el.style.background=status==='easy'?'rgba(22,163,74,.08)':'rgba(220,38,38,.07)';
+    }
+  });
+}
+const randomItems=[
+{q:'「你怎麼來泰國？」口語版',a:'<div class="triad"><div class="thai">มาไทยยังไงคะ</div><div class="roman">maa thai yang-ngai khá</div><div class="eng">How did you come to Thailand?</div></div>'},
+{q:'「我搭飛機來。」',a:'<div class="triad"><div class="thai">มาโดยเครื่องบินค่ะ</div><div class="roman">maa dooi khrʉ̂ang-bin khâ</div><div class="eng">I came by plane.</div></div>'},
+{q:'「在哪裡上 BTS？」',a:'<div class="triad"><div class="thai">ขึ้นบีทีเอสที่ไหนคะ</div><div class="roman">khʉ̂n bii-thii-ét thîi nǎi khá</div><div class="eng">Where do I get on the BTS?</div></div>'},
+{q:'「在哪站下？」',a:'<div class="triad"><div class="thai">ลงสถานีไหนคะ</div><div class="roman">long sà-thǎa-nii nǎi khá</div><div class="eng">Which station do I get off at?</div></div>'},
+{q:'「我一個人來。」',a:'<div class="triad"><div class="thai">มาคนเดียวค่ะ</div><div class="roman">maa khon diao khâ</div><div class="eng">I came alone.</div></div>'},
+{q:'「我搭計程車去機場。」',a:'<div class="triad"><div class="thai">นั่งแท็กซี่ไปสนามบินค่ะ</div><div class="roman">nâng thɛ́k-sîi bpai sà-nǎam-bin khâ</div><div class="eng">I take a taxi to the airport.</div></div>'},
+{q:'「沒有人喜歡搭公車。」',a:'<div class="triad"><div class="thai">ไม่มีใครชอบนั่งรถเมล์ค่ะ</div><div class="roman">mâi mii khrai chɔ̂ɔp nâng rót-mee khâ</div><div class="eng">Nobody likes taking the bus.</div></div>'}
+];
+let currentRandom=null;
+function drawRandom(){
+  currentRandom=randomItems[Math.floor(Math.random()*randomItems.length)];
+  document.getElementById('randomQuestion').textContent=currentRandom.q;
+  const ans=document.getElementById('randomAnswer');
+  ans.style.display='none';
+  ans.innerHTML='';
+}
+function showRandomAnswer(){
+  if(!currentRandom)drawRandom();
+  const ans=document.getElementById('randomAnswer');
+  ans.innerHTML=currentRandom.a;
+  ans.style.display='block';
+  addSpeakButtons(ans);
+}
+let thaiVoice=null,activBtn=null;
+function loadVoices(){
+  const voices=window.speechSynthesis.getVoices();
+  thaiVoice=voices.find(v=>v.lang==='th-TH')||voices.find(v=>v.lang.startsWith('th'))||null;
+}
+loadVoices();
+if(speechSynthesis.onvoiceschanged!==undefined){speechSynthesis.onvoiceschanged=loadVoices}
+function speakThai(text,btn){
+  if(!window.speechSynthesis){
+    alert('此瀏覽器不支援語音合成。請用 Safari 或 Chrome。');
+    return;
+  }
+  if(activBtn===btn&&speechSynthesis.speaking){
+    speechSynthesis.cancel();
+    btn.classList.remove('speaking');
+    btn.textContent='🔊';
+    activBtn=null;
+    return;
+  }
+  speechSynthesis.cancel();
+  if(activBtn){
+    activBtn.classList.remove('speaking');
+    activBtn.textContent='🔊';
+  }
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.lang='th-TH';
+  utter.rate=.85;
+  utter.pitch=1.0;
+  if(thaiVoice)utter.voice=thaiVoice;
+  utter.onstart=()=>{
+    btn.classList.add('speaking');
+    btn.textContent='⏸';
+    activBtn=btn;
+  };
+  utter.onend=utter.onerror=()=>{
+    btn.classList.remove('speaking');
+    btn.textContent='🔊';
+    activBtn=null;
+  };
+  speechSynthesis.speak(utter);
+}
+function addSpeakButtons(root=document){
+  root.querySelectorAll('div.thai').forEach(el=>{
+    if(el.querySelector('.speak-btn'))return;
+    const rawText=el.textContent.trim();
+    if(!rawText)return;
+    const span=document.createElement('span');
+    span.className='thai-text';
+    span.textContent=rawText;
+    const btn=document.createElement('button');
+    btn.className='speak-btn';
+    btn.textContent='🔊';
+    btn.title='唸出泰文';
+    btn.setAttribute('aria-label','播放發音');
+    btn.addEventListener('click',e=>{
+      e.stopPropagation();
+      speakThai(rawText,btn);
+    });
+    el.textContent='';
+    el.appendChild(span);
+    el.appendChild(btn);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  initChecks();
+  restoreCardMarks();
+  addSpeakButtons();
+});
+</script>
+</body>
+</html>
