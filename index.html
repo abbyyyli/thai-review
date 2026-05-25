@@ -1,583 +1,644 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泰文複習系統 | Book 1 & Book 2 Review Hub</title>
-    <style>
-        :root {
-            --primary: #ef4444;
-            --secondary: #0891b2;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --accent: #fcd34d;
-            --muted: #64748b;
-            --line: #e2e8f0;
-            --ready-bg: #dcfce7;
-            --ready-text: #166534;
-            --soon-bg: #f1f5f9;
-            --soon-text: #475569;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泰文複習系統｜Book 1 & Book 2 Review Hub</title>
+  <style>
+    :root {
+      --bg: #fffaf4;
+      --text: #302820;
+      --muted: #7a6f63;
+      --line: rgba(88,63,35,.16);
+      --card: rgba(255,255,255,.9);
+      --purple: #7c63c0;
+      --purple-soft: #f0ecff;
+      --purple-mid: #c4b5f7;
+      --purple-deep: #5b3fa8;
+      --orange: #f2a35d;
+      --orange-soft: #fff1df;
+      --green: #2e9e55;
+      --green-soft: #d4f5e2;
+      --shadow: 0 12px 28px rgba(74,45,18,.08);
+      --shadow-hover: 0 20px 40px rgba(74,45,18,.13);
+      --radius: 18px;
+    }
 
-        body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            background-color: var(--bg);
-            color: #374151;
-            padding: 20px;
-            line-height: 1.6;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .container { max-width: 900px; margin: 0 auto; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Noto Sans Thai", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,99,192,.12), transparent 36%),
+        radial-gradient(circle at top right, rgba(242,163,93,.10), transparent 38%),
+        linear-gradient(135deg, #fffaf4 0%, #fdf9ff 55%, #fff8f4 100%);
+      color: var(--text);
+      padding: 52px 20px 72px;
+      line-height: 1.68;
+      min-height: 100vh;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
+    .container { max-width: 920px; margin: 0 auto; }
 
-        h1 {
-            color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
+    /* ── Header ── */
+    .eyebrow {
+      font-size: 11.5px;
+      font-weight: 720;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: var(--purple);
+      border-radius: 2px;
+    }
 
-        .status-badge {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 6px 16px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            border: 1px solid #fca5a5;
-        }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 860;
+      letter-spacing: -.03em;
+      line-height: 1.16;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
 
-        .section-group { margin-top: 40px; }
+    .subtitle {
+      font-size: 0.97rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
 
-        .section-title {
-            font-size: 1.3rem;
-            color: var(--secondary);
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-            display: flex;
-            align-items: center;
-        }
+    .header-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
+    .header-tag {
+      font-size: 0.76rem;
+      font-weight: 650;
+      border-radius: 999px;
+      padding: 4px 11px;
+      background: var(--purple-soft);
+      color: var(--purple-deep);
+      border: 1px solid var(--purple-mid);
+    }
 
-        .card {
-            background: var(--card);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--line);
-            position: relative;
-            overflow: hidden;
-            min-height: 168px;
-        }
+    /* ── Toolbar ── */
+    .review-toolbar {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow);
+    }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: transparent;
-            transition: background 0.3s;
-        }
+    .search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
+    .search-box {
+      flex: 1;
+      min-width: 240px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 11px 16px;
+      font-size: 0.93rem;
+      outline: none;
+      background: #faf8f5;
+      color: var(--text);
+      font-family: inherit;
+      transition: border-color .18s, box-shadow .18s;
+    }
 
-        .card:hover::before { background: var(--primary); }
+    .search-box:focus {
+      border-color: var(--purple);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(124,99,192,.12);
+    }
 
-        .card-day {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
+    .filter-btn {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,.72);
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: inherit;
+      transition: all .18s ease;
+    }
 
-        .card-title {
-            font-weight: bold;
-            color: #1e293b;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--purple-soft);
+      color: var(--purple-deep);
+      border-color: var(--purple-mid);
+    }
 
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            flex-grow: 1;
-        }
+    .search-hint {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
 
-        .review-badge {
-            margin-top: 14px;
-            width: fit-content;
-            padding: 4px 10px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 800;
-        }
+    /* ── Favorites ── */
+    .favorite-section { display: none; margin-top: 20px; }
+    .favorite-section.show { display: block; }
 
-        .review-badge.available {
-            background: var(--ready-bg);
-            color: var(--ready-text);
-            border: 1px solid #86efac;
-        }
+    .favorite-title {
+      font-size: 0.82rem;
+      font-weight: 760;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .favorite-title::after {
+      content: ""; flex: 1; height: 1px; background: var(--line);
+    }
 
-        .review-badge.soon {
-            background: var(--soon-bg);
-            color: var(--soon-text);
-            border: 1px solid #cbd5e1;
-        }
+    /* ── Section heading ── */
+    .section-title {
+      font-size: 0.82rem;
+      font-weight: 760;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 38px 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: ""; flex: 1; height: 1px; background: var(--line);
+    }
 
-        .tools {
-            margin-top: 50px;
-            background: #1e293b;
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-        }
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+      gap: 16px;
+    }
 
-        .tools strong {
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            color: var(--accent);
-        }
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      min-height: 152px;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
 
-        .tools a {
-            margin: 0 15px;
-            color: #f8fafc;
-            text-decoration: none;
-            font-size: 0.95rem;
-            border-bottom: 1px dashed #94a3b8;
-            padding-bottom: 2px;
-        }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--orange));
+      opacity: 0;
+      transition: opacity .18s ease;
+    }
 
-        .tools a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(124,99,192,.25);
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding-bottom: 30px;
-            font-size: 0.85rem;
-            color: #94a3b8;
-        }
+    .card:hover::before { opacity: 1; }
 
+    .card-day {
+      font-size: 0.75rem;
+      font-weight: 780;
+      color: var(--purple);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
 
-        .review-toolbar {
-            margin: 25px 0 30px;
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 15px;
-            padding: 18px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
+    .card-title {
+      font-size: 1.04rem;
+      font-weight: 780;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
 
-        .search-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
+    .card-desc {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.55;
+      flex-grow: 1;
+    }
 
-        .search-box {
-            flex: 1;
-            min-width: 240px;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            outline: none;
-            background: #f8fafc;
-        }
+    /* ── Review badges ── */
+    .review-badge {
+      margin-top: 12px;
+      width: fit-content;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.73rem;
+      font-weight: 760;
+    }
 
-        .search-box:focus {
-            border-color: var(--primary);
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
-        }
+    .review-badge.available {
+      background: var(--green-soft);
+      color: #166534;
+      border: 1px solid #86e0aa;
+    }
 
-        .filter-btn {
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            padding: 10px 14px;
-            background: #fff;
-            color: #475569;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all .2s ease;
-        }
+    .review-badge.soon {
+      background: #f4f0ec;
+      color: var(--muted);
+      border: 1px solid rgba(88,63,35,.14);
+    }
 
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #fee2e2;
-            color: #991b1b;
-            border-color: #fca5a5;
-        }
+    /* ── Fav button ── */
+    .fav-btn {
+      position: absolute;
+      top: 12px; right: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      color: #b8a898;
+      border-radius: 999px;
+      width: 32px; height: 32px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all .18s ease;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .search-hint {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
+    .fav-btn:hover {
+      transform: scale(1.1);
+      border-color: #facc15;
+      color: #ca8a04;
+      background: #fefce8;
+    }
 
-        .favorite-section {
-            display: none;
-            margin-top: 24px;
-        }
+    .fav-btn.active {
+      background: #fef3c7;
+      border-color: #facc15;
+      color: #ca8a04;
+    }
 
-        .favorite-section.show {
-            display: block;
-        }
+    .card.is-hidden,
+    .section-group.is-hidden { display: none; }
 
-        .favorite-title {
-            font-size: 1.15rem;
-            color: var(--secondary);
-            font-weight: bold;
-            margin-bottom: 14px;
-            border-left: 5px solid var(--primary);
-            padding-left: 12px;
-        }
+    .empty-state {
+      background: rgba(255,255,255,.72);
+      border: 1px dashed var(--line);
+      color: var(--muted);
+      padding: 18px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
 
-        .fav-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            border: 1px solid var(--line);
-            background: white;
-            color: #94a3b8;
-            border-radius: 999px;
-            width: 34px;
-            height: 34px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all .2s ease;
-            z-index: 2;
-        }
+    /* ── Footer ── */
+    .footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
 
-        .fav-btn:hover {
-            transform: scale(1.08);
-            border-color: #facc15;
-            color: #ca8a04;
-        }
+    .footer-note { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    .footer-links { display: flex; gap: 6px; flex-wrap: wrap; }
 
-        .fav-btn.active {
-            background: #fef3c7;
-            border-color: #facc15;
-            color: #ca8a04;
-        }
+    .footer-link {
+      font-size: 0.81rem;
+      font-weight: 660;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      transition: all .18s ease;
+    }
 
-        .card.is-hidden,
-        .section-group.is-hidden {
-            display: none;
-        }
+    .footer-link:hover {
+      color: var(--purple);
+      border-color: rgba(124,99,192,.3);
+      background: var(--purple-soft);
+    }
 
-        .empty-state {
-            background: #fff;
-            border: 1px dashed var(--line);
-            color: var(--muted);
-            padding: 18px;
-            border-radius: 14px;
-            text-align: center;
-        }
-
-        @media (max-width: 720px) {
-            body { padding: 14px; }
-            h1 { font-size: 1.8rem; }
-            .header { padding: 18px; }
-            .grid { grid-template-columns: 1fr; }
-            .tools a {
-                display: inline-block;
-                margin: 6px 8px;
-            }
-        }
-    </style>
+    @media (max-width: 720px) {
+      body { padding: 34px 14px 56px; }
+      h1 { font-size: 1.9rem; }
+      .grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; }
+    }
+  </style>
 </head>
-
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>🇹🇭 泰文複習系統：Book 1 & Book 2</h1>
-        <div style="margin-bottom: 15px;">
-            <span class="status-badge">互動複習實戰 📍 ABBY.</span>
-        </div>
-        <p style="color: #64748b;">
-            根據 RTL Speaking 1 & Speaking 2 筆記整理｜Review Mode / Compact Review / Weak Point Review
-        </p>
+
+  <div class="eyebrow">Review Hub · Book 1 & Book 2</div>
+  <h1>泰文複習系統</h1>
+  <div class="subtitle">根據 RTL Speaking 1 & Speaking 2 筆記整理｜Review Mode / Compact Review / Weak Point Review</div>
+  <div class="header-tags">
+    <span class="header-tag">互動複習實戰</span>
+    <span class="header-tag">Book 1 & Book 2</span>
+    <span class="header-tag">Favorite 收藏</span>
+    <span class="header-tag">ABBY.</span>
+  </div>
+
+  <div class="review-toolbar">
+    <div class="search-row">
+      <input id="reviewSearch" class="search-box" type="search" placeholder="搜尋課程：例如 機場、BTS、押金、家事、比較、Day 9..." />
+      <button id="showAllBtn" class="filter-btn active" type="button">全部</button>
+      <button id="showFavBtn" class="filter-btn" type="button">⭐ 只看收藏</button>
     </div>
-
-
-    <div class="review-toolbar">
-        <div class="search-row">
-            <input id="reviewSearch" class="search-box" type="search" placeholder="搜尋課程：例如 機場、BTS、押金、家事、比較、Day 9..." />
-            <button id="showAllBtn" class="filter-btn active" type="button">全部</button>
-            <button id="showFavBtn" class="filter-btn" type="button">⭐ 只看收藏</button>
-        </div>
-        <div class="search-hint">
-            可以搜尋 Day、中文主題、檔名或卡片描述。按卡片右上角 ⭐ 可收藏不熟的 Review。
-        </div>
-
-        <div id="favoriteSection" class="favorite-section">
-            <div class="favorite-title">⭐ 我的收藏複習</div>
-            <div id="favoriteGrid" class="grid"></div>
-        </div>
+    <div class="search-hint">可以搜尋 Day、中文主題、檔名或卡片描述。按卡片右上角 ⭐ 可收藏不熟的 Review。</div>
+    <div id="favoriteSection" class="favorite-section">
+      <div class="favorite-title">⭐ 我的收藏複習</div>
+      <div id="favoriteGrid" class="grid"></div>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">☕ Book 1｜點餐與請求 Review</div>
-        <div class="grid">
-            <a href="thai_book1_day5_day6_review.html" class="card">
-                <div class="card-day">Day 5+6</div>
-                <span class="card-title">Day 5+6 Review</span>
-                <span class="card-desc">甜度、餐具、容器、外帶、海鮮、結帳與找零。</span>
-                <span class="review-badge available">Review Ready</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">☕ Book 1｜點餐與請求 Review</div>
+    <div class="grid">
+      <a href="thai_book1_day5_day6_review.html" class="card">
+        <div class="card-day">Day 5+6</div>
+        <span class="card-title">Day 5+6 Review</span>
+        <span class="card-desc">甜度、餐具、容器、外帶、海鮮、結帳與找零。</span>
+        <span class="review-badge available">Review Ready</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">🚕 Book 1｜曼谷生存實戰 Review</div>
-        <div class="grid">
-            <a href="thai_book1_day7_day8_review.html" class="card">
-                <div class="card-day">Day 7+8</div>
-                <span class="card-title">Day 7+8 Review</span>
-                <span class="card-desc">衣物、量詞、買衣服、叫車、問路與指路。</span>
-                <span class="review-badge available">Review Ready</span>
-            </a><a href="thai_book1_day9_review.html" class="card">
-                <div class="card-day">Day 9</div>
-                <span class="card-title">Day 9 Review</span>
-                <span class="card-desc">交通工具：上車下車、搭乘方式、機場、車站、碼頭。</span>
-                <span class="review-badge available">Review 0525</span>
-            </a><a href="thai_book1_day10_review.html" class="card">
-                <div class="card-day">Day 10</div>
-                <span class="card-title">Day 10 Review</span>
-                <span class="card-desc">買賣水果：會幾種語言、想做什麼、問價格、殺價。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day11_review.html" class="card">
-                <div class="card-day">Day 11</div>
-                <span class="card-title">Day 11 Review</span>
-                <span class="card-desc">時間單位：多久、節日、地點、跟誰、活動安排。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day12_review.html" class="card">
-                <div class="card-day">Day 12</div>
-                <span class="card-title">Day 12 Review</span>
-                <span class="card-desc">經驗與時間：曾經做過、第一次／最後一次、早中晚、幾點鐘。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">🚕 Book 1｜曼谷生存實戰 Review</div>
+    <div class="grid">
+      <a href="thai_book1_day7_day8_review.html" class="card">
+        <div class="card-day">Day 7+8</div>
+        <span class="card-title">Day 7+8 Review</span>
+        <span class="card-desc">衣物、量詞、買衣服、叫車、問路與指路。</span>
+        <span class="review-badge available">Review Ready</span>
+      </a>
+      <a href="thai_book1_day9_review.html" class="card">
+        <div class="card-day">Day 9</div>
+        <span class="card-title">Day 9 Review</span>
+        <span class="card-desc">交通工具：上車下車、搭乘方式、機場、車站、碼頭。</span>
+        <span class="review-badge available">Review 0525</span>
+      </a>
+      <a href="thai_book1_day10_review.html" class="card">
+        <div class="card-day">Day 10</div>
+        <span class="card-title">Day 10 Review</span>
+        <span class="card-desc">買賣水果：會幾種語言、想做什麼、問價格、殺價。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day11_review.html" class="card">
+        <div class="card-day">Day 11</div>
+        <span class="card-title">Day 11 Review</span>
+        <span class="card-desc">時間單位：多久、節日、地點、跟誰、活動安排。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day12_review.html" class="card">
+        <div class="card-day">Day 12</div>
+        <span class="card-title">Day 12 Review</span>
+        <span class="card-desc">經驗與時間：曾經做過、第一次／最後一次、早中晚、幾點鐘。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">💬 Book 1｜描述、家庭與互動 Review</div>
-        <div class="grid">
-            <a href="thai_book1_day13_review.html" class="card">
-                <div class="card-day">Day 13</div>
-                <span class="card-title">Day 13 Review</span>
-                <span class="card-desc">形容詞與比較：問怎麼樣、A 比 B、日常描述。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day14_review.html" class="card">
-                <div class="card-day">Day 14</div>
-                <span class="card-title">Day 14 Review</span>
-                <span class="card-desc">家庭成員與年齡：家庭成員、年齡、排行與人物介紹。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day15_review.html" class="card">
-                <div class="card-day">Day 15</div>
-                <span class="card-title">Day 15 Review</span>
-                <span class="card-desc">請求幫忙：聽不清楚、請幫忙、開關物品。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day16_review.html" class="card">
-                <div class="card-day">Day 16</div>
-                <span class="card-title">Day 16 Review</span>
-                <span class="card-desc">接待客人：見面、接待客人、請進、明天見。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">💬 Book 1｜描述、家庭與互動 Review</div>
+    <div class="grid">
+      <a href="thai_book1_day13_review.html" class="card">
+        <div class="card-day">Day 13</div>
+        <span class="card-title">Day 13 Review</span>
+        <span class="card-desc">形容詞與比較：問怎麼樣、A 比 B、日常描述。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day14_review.html" class="card">
+        <div class="card-day">Day 14</div>
+        <span class="card-title">Day 14 Review</span>
+        <span class="card-desc">家庭成員與年齡：家庭成員、年齡、排行與人物介紹。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day15_review.html" class="card">
+        <div class="card-day">Day 15</div>
+        <span class="card-title">Day 15 Review</span>
+        <span class="card-desc">請求幫忙：聽不清楚、請幫忙、開關物品。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day16_review.html" class="card">
+        <div class="card-day">Day 16</div>
+        <span class="card-title">Day 16 Review</span>
+        <span class="card-desc">接待客人：見面、接待客人、請進、明天見。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">🏥 Book 1｜健康、邀請與總結 Review</div>
-        <div class="grid">
-            <a href="thai_book1_day17_review.html" class="card">
-                <div class="card-day">Day 17</div>
-                <span class="card-title">Day 17 Review</span>
-                <span class="card-desc">不舒服與症狀：幾種、看醫生、如果／時候...怎麼辦。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day18_review.html" class="card">
-                <div class="card-day">Day 18</div>
-                <span class="card-title">Day 18 Review</span>
-                <span class="card-desc">探望與邀請：為什麼／因為、今天有空嗎、一起吃飯、請客。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai_book1_day19_review.html" class="card">
-                <div class="card-day">Day 19</div>
-                <span class="card-title">Day 19 Review</span>
-                <span class="card-desc">最高級與頻率：最喜歡、自然景點、電影與明星、電話號碼。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">🏥 Book 1｜健康、邀請與總結 Review</div>
+    <div class="grid">
+      <a href="thai_book1_day17_review.html" class="card">
+        <div class="card-day">Day 17</div>
+        <span class="card-title">Day 17 Review</span>
+        <span class="card-desc">不舒服與症狀：幾種、看醫生、如果／時候...怎麼辦。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day18_review.html" class="card">
+        <div class="card-day">Day 18</div>
+        <span class="card-title">Day 18 Review</span>
+        <span class="card-desc">探望與邀請：為什麼／因為、今天有空嗎、一起吃飯、請客。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai_book1_day19_review.html" class="card">
+        <div class="card-day">Day 19</div>
+        <span class="card-title">Day 19 Review</span>
+        <span class="card-desc">最高級與頻率：最喜歡、自然景點、電影與明星、電話號碼。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">🕒 Book 2｜基礎強化與描述 Review</div>
-        <div class="grid">
-            <a href="thai_book2_day1_review.html" class="card">
-                <div class="card-day">Day 1</div>
-                <span class="card-title">Day 1 Review</span>
-                <span class="card-desc">出發與抵達時間：烹飪方式、活動起迄時間表達。</span>
-                <span class="review-badge available">Review Ready</span>
-            </a><a href="thai_book2_day2_review.html" class="card">
-                <div class="card-day">Day 2</div>
-                <span class="card-title">Day 2 Review</span>
-                <span class="card-desc">家務與比較級：正在進行的家務、使用กว่า กัน進行兩者比較。</span>
-                <span class="review-badge available">Review Ready</span>
-            </a><a href="thai_book2_day3_review.html" class="card">
-                <div class="card-day">Day 3</div>
-                <span class="card-title">Day 3 Review</span>
-                <span class="card-desc">最高級與程度詞：最...、程度副詞、初次印象描述。</span>
-                <span class="review-badge available">Review Ready</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">🕒 Book 2｜基礎強化與描述 Review</div>
+    <div class="grid">
+      <a href="thai_book2_day1_review.html" class="card">
+        <div class="card-day">Day 1</div>
+        <span class="card-title">Day 1 Review</span>
+        <span class="card-desc">出發與抵達時間：烹飪方式、活動起迄時間表達。</span>
+        <span class="review-badge available">Review Ready</span>
+      </a>
+      <a href="thai_book2_day2_review.html" class="card">
+        <div class="card-day">Day 2</div>
+        <span class="card-title">Day 2 Review</span>
+        <span class="card-desc">家務與比較級：正在進行的家務、使用กว่า กัน進行兩者比較。</span>
+        <span class="review-badge available">Review Ready</span>
+      </a>
+      <a href="thai_book2_day3_review.html" class="card">
+        <div class="card-day">Day 3</div>
+        <span class="card-title">Day 3 Review</span>
+        <span class="card-desc">最高級與程度詞：最...、程度副詞、初次印象描述。</span>
+        <span class="review-badge available">Review Ready</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">📞 Book 2｜社交禮儀與通訊 Review</div>
-        <div class="grid">
-            <a href="thai-book2-day4-review.html" class="card">
-                <div class="card-day">Day 4</div>
-                <span class="card-title">Day 4 Review</span>
-                <span class="card-desc">禮儀與禁止命令：請進／請坐、禁止行為、情緒表達。</span>
-                <span class="review-badge available">Review 0526</span>
-            </a><a href="thai-book2-day5-review.html" class="card">
-                <div class="card-day">Day 5</div>
-                <span class="card-title">Day 5 Review</span>
-                <span class="card-desc">電話溝通與留言：詢問號碼、轉接分機、留言與轉告訊息。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day6-review.html" class="card">
-                <div class="card-day">Day 6</div>
-                <span class="card-title">Day 6 Review</span>
-                <span class="card-desc">攜帶物品與領路：帶物與帶人的區別、辦公室、移民局等場景。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day7-review.html" class="card">
-                <div class="card-day">Day 7</div>
-                <span class="card-title">Day 7 Review</span>
-                <span class="card-desc">家鄉與活動頻率：詢問對方家鄉背景、描述活動頻率。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">📞 Book 2｜社交禮儀與通訊 Review</div>
+    <div class="grid">
+      <a href="thai-book2-day4-review.html" class="card">
+        <div class="card-day">Day 4</div>
+        <span class="card-title">Day 4 Review</span>
+        <span class="card-desc">禮儀與禁止命令：請進／請坐、禁止行為、情緒表達。</span>
+        <span class="review-badge available">Review 0526</span>
+      </a>
+      <a href="thai-book2-day5-review.html" class="card">
+        <div class="card-day">Day 5</div>
+        <span class="card-title">Day 5 Review</span>
+        <span class="card-desc">電話溝通與留言：詢問號碼、轉接分機、留言與轉告訊息。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day6-review.html" class="card">
+        <div class="card-day">Day 6</div>
+        <span class="card-title">Day 6 Review</span>
+        <span class="card-desc">攜帶物品與領路：帶物與帶人的區別、辦公室、移民局等場景。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day7-review.html" class="card">
+        <div class="card-day">Day 7</div>
+        <span class="card-title">Day 7 Review</span>
+        <span class="card-desc">家鄉與活動頻率：詢問對方家鄉背景、描述活動頻率。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">🏥 Book 2｜生活細節與健康 Review</div>
-        <div class="grid">
-            <a href="thai-book2-day8-review.html" class="card">
-                <div class="card-day">Day 8</div>
-                <span class="card-title">Day 8 Review</span>
-                <span class="card-desc">物品位置與收納：描述放置與儲存、方位詞應用。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day9-review.html" class="card">
-                <div class="card-day">Day 9</div>
-                <span class="card-title">Day 9 Review</span>
-                <span class="card-desc">身體不適與症狀：頭痛、肚子痛、發燒、描述症狀持續時間。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day10-review.html" class="card">
-                <div class="card-day">Day 10</div>
-                <span class="card-title">Day 10 Review</span>
-                <span class="card-desc">生活習慣與頻率副詞：經常、總是、偶爾等進階頻率詞。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day11-review.html" class="card">
-                <div class="card-day">Day 11</div>
-                <span class="card-title">Day 11 Review</span>
-                <span class="card-desc">意圖與具體計畫：表達打算做某事、預計計畫。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">🏥 Book 2｜生活細節與健康 Review</div>
+    <div class="grid">
+      <a href="thai-book2-day8-review.html" class="card">
+        <div class="card-day">Day 8</div>
+        <span class="card-title">Day 8 Review</span>
+        <span class="card-desc">物品位置與收納：描述放置與儲存、方位詞應用。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day9-review.html" class="card">
+        <div class="card-day">Day 9</div>
+        <span class="card-title">Day 9 Review</span>
+        <span class="card-desc">身體不適與症狀：頭痛、肚子痛、發燒、描述症狀持續時間。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day10-review.html" class="card">
+        <div class="card-day">Day 10</div>
+        <span class="card-title">Day 10 Review</span>
+        <span class="card-desc">生活習慣與頻率副詞：經常、總是、偶爾等進階頻率詞。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day11-review.html" class="card">
+        <div class="card-day">Day 11</div>
+        <span class="card-title">Day 11 Review</span>
+        <span class="card-desc">意圖與具體計畫：表達打算做某事、預計計畫。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="section-group">
-        <div class="section-title">💡 Book 2｜進階語法實戰 Review</div>
-        <div class="grid">
-            <a href="thai-book2-day12-review.html" class="card">
-                <div class="card-day">Day 12</div>
-                <span class="card-title">Day 12 Review</span>
-                <span class="card-desc">經驗與嘗試：曾經做過、試試看。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day13-review.html" class="card">
-                <div class="card-day">Day 13</div>
-                <span class="card-title">Day 13 Review</span>
-                <span class="card-desc">因果關係表達：因為...所以...。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day14-review.html" class="card">
-                <div class="card-day">Day 14</div>
-                <span class="card-title">Day 14 Review</span>
-                <span class="card-desc">時間長度與完成度：描述時間流逝、確認事情已完成。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day15-review.html" class="card">
-                <div class="card-day">Day 15</div>
-                <span class="card-title">Day 15 Review</span>
-                <span class="card-desc">條件假設句型：如果...就...。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day16-review.html" class="card">
-                <div class="card-day">Day 16</div>
-                <span class="card-title">Day 16 Review</span>
-                <span class="card-desc">能力與許可：表達能夠或不可以。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day17-review.html" class="card">
-                <div class="card-day">Day 17</div>
-                <span class="card-title">Day 17 Review</span>
-                <span class="card-desc">感官印象與觀察：看起來、聽起來的感覺。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day18-review.html" class="card">
-                <div class="card-day">Day 18</div>
-                <span class="card-title">Day 18 Review</span>
-                <span class="card-desc">建議與提醒：給予建議、提醒注意事項。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a><a href="thai-book2-day19-review.html" class="card">
-                <div class="card-day">Day 19</div>
-                <span class="card-title">Day 19 Review</span>
-                <span class="card-desc">先後順序：先後、銀行開戶、硬幣。</span>
-                <span class="review-badge soon">Coming Soon</span>
-            </a>
-        </div>
+  <div class="section-group">
+    <div class="section-title">💡 Book 2｜進階語法實戰 Review</div>
+    <div class="grid">
+      <a href="thai-book2-day12-review.html" class="card">
+        <div class="card-day">Day 12</div>
+        <span class="card-title">Day 12 Review</span>
+        <span class="card-desc">經驗與嘗試：曾經做過、試試看。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day13-review.html" class="card">
+        <div class="card-day">Day 13</div>
+        <span class="card-title">Day 13 Review</span>
+        <span class="card-desc">因果關係表達：因為...所以...。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day14-review.html" class="card">
+        <div class="card-day">Day 14</div>
+        <span class="card-title">Day 14 Review</span>
+        <span class="card-desc">時間長度與完成度：描述時間流逝、確認事情已完成。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day15-review.html" class="card">
+        <div class="card-day">Day 15</div>
+        <span class="card-title">Day 15 Review</span>
+        <span class="card-desc">條件假設句型：如果...就...。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day16-review.html" class="card">
+        <div class="card-day">Day 16</div>
+        <span class="card-title">Day 16 Review</span>
+        <span class="card-desc">能力與許可：表達能夠或不可以。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day17-review.html" class="card">
+        <div class="card-day">Day 17</div>
+        <span class="card-title">Day 17 Review</span>
+        <span class="card-desc">感官印象與觀察：看起來、聽起來的感覺。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day18-review.html" class="card">
+        <div class="card-day">Day 18</div>
+        <span class="card-title">Day 18 Review</span>
+        <span class="card-desc">建議與提醒：給予建議、提醒注意事項。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
+      <a href="thai-book2-day19-review.html" class="card">
+        <div class="card-day">Day 19</div>
+        <span class="card-title">Day 19 Review</span>
+        <span class="card-desc">先後順序：先後、銀行開戶、硬幣。</span>
+        <span class="review-badge soon">Coming Soon</span>
+      </a>
     </div>
+  </div>
 
-    <div class="tools">
-        <strong>📚 系統導覽工具</strong>
-        <a href="https://abbyyyli.github.io/thai-index/">← 返回首頁入口</a>|
-        <a href="https://github.com/abbyyyli/thai-review.git" target="_blank">GitHub 專案倉庫</a>|
-        <a href="https://abbyyyli.github.io/thai-notes-book1-audio/">第一冊</a>|
-        <a href="https://abbyyyli.github.io/thai-notes-book2-audio/">第二冊</a>
+  <footer class="footer">
+    <div class="footer-note">Review Hub · RTL Speaking 1 & 2 · Created for ABBY.</div>
+    <div class="footer-links">
+      <a href="https://abbyyyli.github.io/thai-index/" class="footer-link">← 學習入口</a>
+      <a href="https://abbyyyli.github.io/thai-notes-book1-audio/" class="footer-link">Book 1</a>
+      <a href="https://abbyyyli.github.io/thai-notes-book2-audio/" class="footer-link">Book 2</a>
+      <a href="https://github.com/abbyyyli/thai-review.git" target="_blank" class="footer-link">🗂️ GitHub</a>
     </div>
+  </footer>
 
-    <footer>
-        &copy; 2026 Thai Study Project | Review Hub | Created for ABBY.
-    </footer>
 </div>
-
 
 <script>
 (function () {
@@ -591,22 +652,13 @@
     let favorites = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     let favOnly = false;
 
-    function saveFavorites() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-    }
-
-    function normalize(text) {
-        return (text || "").toLowerCase().trim();
-    }
-
-    function getCards() {
-        return Array.from(document.querySelectorAll(".section-group .card"));
-    }
+    function saveFavorites() { localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites)); }
+    function normalize(text) { return (text || "").toLowerCase().trim(); }
+    function getCards() { return Array.from(document.querySelectorAll(".section-group .card")); }
 
     function addFavoriteButtons() {
         getCards().forEach(card => {
             if (card.querySelector(".fav-btn")) return;
-
             const href = card.getAttribute("href");
             const btn = document.createElement("button");
             btn.type = "button";
@@ -614,31 +666,18 @@
             btn.innerHTML = "☆";
             btn.title = "收藏這課";
             btn.setAttribute("aria-label", "收藏這課");
-
-            if (favorites.includes(href)) {
-                btn.classList.add("active");
-                btn.innerHTML = "★";
-            }
-
-            btn.addEventListener("click", function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-
+            if (favorites.includes(href)) { btn.classList.add("active"); btn.innerHTML = "★"; }
+            btn.addEventListener("click", function (e) {
+                e.preventDefault(); e.stopPropagation();
                 if (favorites.includes(href)) {
-                    favorites = favorites.filter(item => item !== href);
-                    btn.classList.remove("active");
-                    btn.innerHTML = "☆";
+                    favorites = favorites.filter(i => i !== href);
+                    btn.classList.remove("active"); btn.innerHTML = "☆";
                 } else {
                     favorites.push(href);
-                    btn.classList.add("active");
-                    btn.innerHTML = "★";
+                    btn.classList.add("active"); btn.innerHTML = "★";
                 }
-
-                saveFavorites();
-                renderFavorites();
-                applyFilters();
+                saveFavorites(); renderFavorites(); applyFilters();
             });
-
             card.appendChild(btn);
         });
     }
@@ -652,54 +691,35 @@
 
     function renderFavorites() {
         favoriteGrid.innerHTML = "";
-
         const cards = getCards().filter(card => favorites.includes(card.getAttribute("href")));
-
-        if (cards.length === 0) {
-            favoriteSection.classList.remove("show");
-            return;
-        }
-
+        if (cards.length === 0) { favoriteSection.classList.remove("show"); return; }
         favoriteSection.classList.add("show");
         cards.forEach(card => favoriteGrid.appendChild(cloneCardForFavorites(card)));
     }
 
     function applyFilters() {
         const query = normalize(searchInput.value);
-        const cards = getCards();
-
         document.querySelectorAll(".section-group").forEach(section => {
             let visibleCount = 0;
-
             section.querySelectorAll(".card").forEach(card => {
                 const href = card.getAttribute("href");
                 const text = normalize(card.textContent + " " + href);
                 const matchesSearch = !query || text.includes(query);
                 const matchesFavorite = !favOnly || favorites.includes(href);
                 const shouldShow = matchesSearch && matchesFavorite;
-
                 card.classList.toggle("is-hidden", !shouldShow);
                 if (shouldShow) visibleCount++;
             });
-
             section.classList.toggle("is-hidden", visibleCount === 0);
         });
     }
 
     searchInput.addEventListener("input", applyFilters);
-
     showAllBtn.addEventListener("click", function () {
-        favOnly = false;
-        showAllBtn.classList.add("active");
-        showFavBtn.classList.remove("active");
-        applyFilters();
+        favOnly = false; showAllBtn.classList.add("active"); showFavBtn.classList.remove("active"); applyFilters();
     });
-
     showFavBtn.addEventListener("click", function () {
-        favOnly = true;
-        showFavBtn.classList.add("active");
-        showAllBtn.classList.remove("active");
-        applyFilters();
+        favOnly = true; showFavBtn.classList.add("active"); showAllBtn.classList.remove("active"); applyFilters();
     });
 
     addFavoriteButtons();
