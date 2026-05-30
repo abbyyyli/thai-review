@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thai Book 2｜Day 4 Review Mode</title>
+<style>
+:root{--text:var(--color-text-primary,#1f2937);--muted:#6b7280;--line:rgba(107,114,128,.28);--orange:#f97316;--orange-soft:rgba(249,115,22,.13);--green:#16a34a;--green-soft:rgba(22,163,74,.13);--blue:#2563eb;--blue-soft:rgba(37,99,235,.12);--red:#dc2626;--red-soft:rgba(220,38,38,.11);--purple-soft:rgba(124,58,237,.12);--yellow-soft:rgba(234,179,8,.15)}
+*{box-sizing:border-box}body{margin:0;padding:24px;color:var(--text);background:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.65}.container{max-width:1180px;margin:0 auto}.hero{padding:28px;border:.5px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(249,115,22,.10),rgba(22,163,74,.08),rgba(37,99,235,.06));box-shadow:0 12px 34px rgba(0,0,0,.05);margin-bottom:18px}h1{margin:0 0 8px;font-size:28px;letter-spacing:-.02em}h2{margin-top:0;font-size:22px;border-bottom:1px solid var(--line);padding-bottom:10px}h3{margin-top:26px;font-size:18px}.subtitle{color:var(--muted);font-size:14px}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;padding:10px;border:.5px solid var(--line);border-radius:18px;background:rgba(255,255,255,.45);position:sticky;top:0;backdrop-filter:blur(10px);z-index:5}.tab-btn{border:.5px solid var(--line);background:rgba(255,255,255,.65);color:var(--text);border-radius:999px;padding:8px 13px;font-size:13px;cursor:pointer;transition:.18s}.tab-btn:hover{transform:translateY(-1px)}.tab-btn.active{border-color:rgba(249,115,22,.55);background:var(--orange-soft);color:#9a3412;font-weight:700}.tab-content{display:none;padding:24px;border:.5px solid var(--line);border-radius:24px;background:rgba(255,255,255,.52);box-shadow:0 10px 28px rgba(0,0,0,.04);margin-bottom:20px}.tab-content.active{display:block}.label{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700;margin:2px 4px 2px 0}.review{background:var(--blue-soft);color:#1d4ed8;border:.5px solid rgba(37,99,235,.3)}.textbook{background:var(--orange-soft);color:#c2410c;border:.5px solid rgba(249,115,22,.3)}.local{background:var(--green-soft);color:#15803d;border:.5px solid rgba(22,163,74,.3)}.practical{background:var(--yellow-soft);color:#854d0e;border:.5px solid rgba(234,179,8,.35)}.drill{background:var(--purple-soft);color:#5b21b6;border:.5px solid rgba(124,58,237,.28)}.warn{background:var(--red-soft);color:#b91c1c;border:.5px solid rgba(220,38,38,.3)}.thai{font-size:15px;font-weight:500;letter-spacing:.01em}.roman{color:#6b7280;font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:13px}.eng{font-size:13px;color:var(--text)}.triad{display:grid;gap:2px;margin:4px 0}.triad .thai:before{content:"Thai: ";color:var(--muted);font-weight:400}.triad .roman:before{content:"Romanization: ";color:var(--muted);font-family:inherit}.triad .eng:before{content:"English: ";color:var(--muted)}table{width:100%;border-collapse:collapse;margin:14px 0 24px;font-size:14px}th,td{border:.5px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}th{background:rgba(243,244,246,.72);font-weight:700}tbody tr:nth-child(even){background:rgba(249,250,251,.55)}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:14px;margin:16px 0}.card,.study-task,.quiz-card,.review-box,.random-card{border:.5px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:rgba(255,255,255,.72)}.study-task{background:rgba(255,248,239,.82)}.study-task label{display:block;margin:8px 0;cursor:pointer}.mini-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:700}.tip{border-left:4px solid var(--green);padding:12px 14px;background:var(--green-soft);border-radius:12px;margin:14px 0}.tip.orange{border-left-color:var(--orange);background:var(--orange-soft)}.tip.blue{border-left-color:var(--blue);background:var(--blue-soft)}.tip.red{border-left-color:var(--red);background:var(--red-soft)}details{border:.5px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 0;background:rgba(255,255,255,.45)}summary{cursor:pointer;font-weight:700}.answer-box{margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--green-soft);border:.5px solid rgba(22,163,74,.22)}.progress-wrap{border:.5px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.72);margin:16px 0}.progress-bar{width:100%;height:14px;border-radius:999px;background:rgba(107,114,128,.18);overflow:hidden;margin:10px 0 6px}.progress-fill{width:0%;height:100%;background:linear-gradient(90deg,var(--orange),var(--green),var(--blue));border-radius:999px;transition:.25s}.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.small-btn{border:.5px solid var(--line);background:rgba(255,255,255,.75);border-radius:999px;padding:7px 11px;font-size:12px;cursor:pointer}.small-btn.easy{background:var(--green-soft);color:#15803d;border-color:rgba(22,163,74,.28)}.small-btn.hard{background:var(--red-soft);color:#b91c1c;border-color:rgba(220,38,38,.28)}.small-btn.blue{background:var(--blue-soft);color:#1d4ed8;border-color:rgba(37,99,235,.28)}.bubble-wrap{display:grid;gap:10px;margin:14px 0 24px}.bubble{border:.5px solid var(--line);border-radius:18px;padding:13px 15px;max-width:84%;background:rgba(255,255,255,.72)}.bubble.a{justify-self:start;border-left:5px solid var(--blue)}.bubble.b{justify-self:end;border-right:5px solid var(--green)}.speaker{display:inline-block;font-size:12px;font-weight:700;padding:2px 7px;border-radius:999px;margin-bottom:6px}.speaker.a{background:var(--blue-soft);color:#1d4ed8}.speaker.b{background:var(--green-soft);color:#15803d}.speak-btn{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;border:.5px solid rgba(37,99,235,.3);background:var(--blue-soft);color:#1d4ed8;font-size:11px;cursor:pointer;margin-left:6px;vertical-align:middle;flex-shrink:0;transition:.15s;line-height:1;padding:0}.speak-btn:hover{background:rgba(37,99,235,.22);transform:scale(1.12)}.speak-btn.speaking{background:var(--orange-soft);border-color:rgba(249,115,22,.4);color:#c2410c}div.thai{display:flex;align-items:center;flex-wrap:wrap;gap:2px}.thai-text{flex:1}textarea{width:100%;min-height:90px;border:.5px solid var(--line);border-radius:14px;padding:12px;font-family:inherit;line-height:1.6;background:rgba(255,255,255,.8)}@media(max-width:720px){body{padding:14px}.tab-content{padding:16px}table{font-size:13px}.bubble{max-width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<section class="hero">
+<h1>Thai Book 2｜Day 4 Review Mode</h1>
+<p class="subtitle">主線：進出方向、請進/敲門/按鈴、鑰匙錢包不見、ต้อง/ไม่ต้อง/อย่า/ห้าม、พอ/เมื่อ/ตอนที่、第幾次。這版是複習工具，不是完整講義。</p>
+<p><span class="label review">Review Mode</span><span class="label textbook">Textbook-based</span><span class="label local">Bangkok Local</span><span class="label practical">Practical Usage</span><span class="label drill">Cycling Drill</span></p>
+</section>
+<nav class="tabs">
+<button class="tab-btn active" onclick="openTab(event,'mission')">Mission</button><button class="tab-btn" onclick="openTab(event,'core')">Core Sentences</button><button class="tab-btn" onclick="openTab(event,'recall')">Recall</button><button class="tab-btn" onclick="openTab(event,'translation')">Translation</button><button class="tab-btn" onclick="openTab(event,'shadowing')">Shadowing</button><button class="tab-btn" onclick="openTab(event,'random')">Random Quiz</button><button class="tab-btn" onclick="openTab(event,'output')">Output</button><button class="tab-btn" onclick="openTab(event,'bangkok')">Bangkok Real-life</button><button class="tab-btn" onclick="openTab(event,'mistakes')">Mistakes</button><button class="tab-btn" onclick="openTab(event,'quick')">Quick Review</button>
+</nav>
+
+<section id="mission" class="tab-content active">
+<h2>Mission｜今天的複習任務</h2>
+<div class="progress-wrap"><strong>今日完成度</strong><div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div><p id="progressText" class="subtitle">0% completed</p><div class="btn-row"><button class="small-btn blue" onclick="resetProgress()">重置今日進度</button></div></div>
+<div class="study-task">
+<h3>Checklist</h3>
+<label><input type="checkbox" class="task-check" data-id="core"> Core Sentences 跟讀 1 輪</label>
+<label><input type="checkbox" class="task-check" data-id="cycle"> 方向/禁止/時間 Cycling Drill 刷 1 輪</label>
+<label><input type="checkbox" class="task-check" data-id="recall"> Recall 先想再看答案 8 題</label>
+<label><input type="checkbox" class="task-check" data-id="translation"> Translation 完成 10 題</label>
+<label><input type="checkbox" class="task-check" data-id="shadow"> Shadowing 跟讀 3 輪</label>
+<label><input type="checkbox" class="task-check" data-id="random"> Random Quiz 抽 5 題</label>
+<label><input type="checkbox" class="task-check" data-id="output"> Output 自己造 4 句</label>
+</div>
+<div class="cards">
+<div class="card"><div class="mini-title">Come inside</div><div class="triad"><div class="thai">เชิญเข้ามาข้างในสิคะ</div><div class="roman">chəən khâo maa khâang-nai sì khá</div><div class="eng">Please come inside.</div></div></div>
+<div class="card"><div class="mini-title">Lost key</div><div class="triad"><div class="thai">กุญแจหายค่ะ เข้าไม่ได้ค่ะ</div><div class="roman">gun-jɛɛ hǎai khâ, khâo mâi dâai khâ</div><div class="eng">My key is missing. I can’t get in.</div></div></div>
+<div class="card"><div class="mini-title">No need</div><div class="triad"><div class="thai">ไม่ต้องถอดรองเท้าหรอกค่ะ</div><div class="roman">mâi dtɔ̂ng thɔ̀ɔt rɔɔng-tháao rɔ̀ɔk khâ</div><div class="eng">You really don’t need to take off your shoes.</div></div></div>
+<div class="card"><div class="mini-title">First time</div><div class="triad"><div class="thai">ครั้งแรกฉันมาเที่ยวค่ะ</div><div class="roman">khráng-rɛ̂ɛk chǎn maa thîao khâ</div><div class="eng">The first time, I came to travel.</div></div></div>
+</div>
+<div class="tip orange"><strong>今天達標：</strong>能反射說出「請進」、「要不要脫鞋」、「不用客氣」、「不要/禁止」、「第一次來泰國做什麼」。</div>
+</section>
+
+<section id="core" class="tab-content">
+<h2>Core Sentences｜刷熟這 18 句</h2>
+<table>
+<thead><tr><th>#</th><th>Sentence</th><th>Words from this sentence｜句中生字</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><div class="triad"><div class="thai">เชิญเข้ามาข้างในสิคะ</div><div class="roman">chəən khâo maa khâang-nai sì khá</div><div class="eng">Please come inside.</div></div></td><td>เชิญ / please；เข้ามา / come in；ข้างใน / inside；สิ / go ahead</td><td>請進</td></tr>
+<tr><td>2</td><td><div class="triad"><div class="thai">เข้ามาก่อนค่ะ ข้างนอกร้อนมากค่ะ</div><div class="roman">khâo maa gɔ̀ɔn khâ, khâang-nɔ̂ɔk rɔ́ɔn mâak khâ</div><div class="eng">Come in first. It’s very hot outside.</div></div></td><td>ก่อน / first；ข้างนอก / outside；ร้อน / hot</td><td>曼谷家裡/店內</td></tr>
+<tr><td>3</td><td><div class="triad"><div class="thai">ถึงแล้วกดกริ่งนะคะ</div><div class="roman">thʉ̌ng lɛ́ɛw gòt grìng ná khá</div><div class="eng">When you arrive, press the bell.</div></div></td><td>ถึงแล้ว / arrived；กด / press；กริ่ง / bell</td><td>公寓來訪</td></tr>
+<tr><td>4</td><td><div class="triad"><div class="thai">ก่อนเข้าห้อง ต้องเคาะประตูก่อนค่ะ</div><div class="roman">gɔ̀ɔn khâo hɔ̂ng, dtɔ̂ng khɔ́ bprà-dtuu gɔ̀ɔn khâ</div><div class="eng">Before entering the room, you must knock first.</div></div></td><td>ก่อน / before；เข้าห้อง / enter room；เคาะประตู / knock on door</td><td>禮貌規則</td></tr>
+<tr><td>5</td><td><div class="triad"><div class="thai">ต้องถอดรองเท้าไหมคะ</div><div class="roman">dtɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khá</div><div class="eng">Do I have to take off my shoes?</div></div></td><td>ต้อง / have to；ถอด / take off；รองเท้า / shoes</td><td>去別人家</td></tr>
+<tr><td>6</td><td><div class="triad"><div class="thai">ไม่ต้องถอดรองเท้าหรอกค่ะ</div><div class="roman">mâi dtɔ̂ng thɔ̀ɔt rɔɔng-tháao rɔ̀ɔk khâ</div><div class="eng">You really don’t need to take off your shoes.</div></div></td><td>ไม่ต้อง / don’t have to；หรอก / soft reassurance</td><td>柔和說不用</td></tr>
+<tr><td>7</td><td><div class="triad"><div class="thai">ไม่ต้องเกรงใจนะคะ</div><div class="roman">mâi dtɔ̂ng greeng-jai ná khá</div><div class="eng">Don’t feel shy / don’t worry about imposing.</div></div></td><td>เกรงใจ / reluctant to impose；นะคะ / softening</td><td>泰國文化詞</td></tr>
+<tr><td>8</td><td><div class="triad"><div class="thai">ตามสบายค่ะ</div><div class="roman">dtaam sà-baai khâ</div><div class="eng">Make yourself comfortable.</div></div></td><td>ตามสบาย / as you like, comfortably</td><td>招待客人</td></tr>
+<tr><td>9</td><td><div class="triad"><div class="thai">อะไรก็ได้ค่ะ</div><div class="roman">à-rai gɔ̂ɔ dâai khâ</div><div class="eng">Anything is fine.</div></div></td><td>อะไร / what；ก็ได้ / is fine</td><td>選擇都可以</td></tr>
+<tr><td>10</td><td><div class="triad"><div class="thai">กุญแจหายค่ะ เข้าไม่ได้ค่ะ</div><div class="roman">gun-jɛɛ hǎai khâ, khâo mâi dâai khâ</div><div class="eng">My key is missing. I can’t get in.</div></div></td><td>กุญแจ / key；หาย / missing；เข้าไม่ได้ / cannot enter</td><td>公寓問題</td></tr>
+<tr><td>11</td><td><div class="triad"><div class="thai">โทรศัพท์ถูกขโมยค่ะ</div><div class="roman">thoo-rá-sàp thùuk khà-mooi khâ</div><div class="eng">My phone was stolen.</div></div></td><td>โทรศัพท์ / phone；ถูก / passive marker；ขโมย / steal</td><td>被偷</td></tr>
+<tr><td>12</td><td><div class="triad"><div class="thai">อย่าพูดภาษาอังกฤษนะคะ</div><div class="roman">yàa phûut phaa-sǎa ang-grìt ná khá</div><div class="eng">Don’t speak English, okay?</div></div></td><td>อย่า / don’t；พูด / speak；ภาษาอังกฤษ / English</td><td>語言練習</td></tr>
+<tr><td>13</td><td><div class="triad"><div class="thai">ห้ามสูบบุหรี่ที่ปั๊มน้ำมันค่ะ</div><div class="roman">hâam sùup bù-rìi thîi bpám-nám-man khâ</div><div class="eng">Smoking is prohibited at the gas station.</div></div></td><td>ห้าม / prohibited；สูบบุหรี่ / smoke；ปั๊มน้ำมัน / gas station</td><td>禁止標語</td></tr>
+<tr><td>14</td><td><div class="triad"><div class="thai">พอฉันไม่สบาย ฉันกินยาค่ะ</div><div class="roman">phɔɔ chǎn mâi sà-baai, chǎn gin yaa khâ</div><div class="eng">When I feel sick, I take medicine.</div></div></td><td>พอ / when；ไม่สบาย / sick；กินยา / take medicine</td><td>健康句型</td></tr>
+<tr><td>15</td><td><div class="triad"><div class="thai">พอฉันไม่สบายมาก ฉันไปหาหมอค่ะ</div><div class="roman">phɔɔ chǎn mâi sà-baai mâak, chǎn bpai hǎa mɔ̌ɔ khâ</div><div class="eng">When I feel very sick, I go see a doctor.</div></div></td><td>ไปหาหมอ / see a doctor；มาก / very</td><td>健康句型</td></tr>
+<tr><td>16</td><td><div class="triad"><div class="thai">ตอนที่ฉันมาเมืองไทยครั้งแรก ฉันมาเที่ยวค่ะ</div><div class="roman">dtɔɔn-thîi chǎn maa mʉang-thai khráng-rɛ̂ɛk, chǎn maa thîao khâ</div><div class="eng">When I came to Thailand for the first time, I came to travel.</div></div></td><td>ตอนที่ / at the time；ครั้งแรก / first time；มาเที่ยว / came to travel</td><td>第一次來泰國</td></tr>
+<tr><td>17</td><td><div class="triad"><div class="thai">ครั้งที่สองฉันมาเรียนภาษาไทยค่ะ</div><div class="roman">khráng-thîi sɔ̌ɔng chǎn maa riian phaa-sǎa Thai khâ</div><div class="eng">The second time, I came to study Thai.</div></div></td><td>ครั้งที่สอง / second time；เรียนภาษาไทย / study Thai</td><td>第幾次</td></tr>
+<tr><td>18</td><td><div class="triad"><div class="thai">เมื่อฉันเป็นเด็ก ฉันชอบดูการ์ตูนมากที่สุดค่ะ</div><div class="roman">mʉ̂a chǎn bpen dèk, chǎn chɔ̂ɔp duu gaa-tuun mâak thîi-sùt khâ</div><div class="eng">When I was a child, I liked watching cartoons the most.</div></div></td><td>เมื่อ / when；เด็ก / child；มากที่สุด / the most</td><td>童年聊天</td></tr>
+</tbody>
+</table>
+
+<h3>Cycling Drill｜方向 / 規則 / 第幾次</h3>
+<table>
+<thead><tr><th>Type</th><th>Thai / Romanization / English</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>come in</td><td><div class="triad"><div class="thai">เข้ามา</div><div class="roman">khâo maa</div><div class="eng">come in toward speaker</div></div></td><td><div class="triad"><div class="thai">เข้ามาข้างในสิคะ</div><div class="roman">khâo maa khâang-nai sì khá</div><div class="eng">Come inside.</div></div></td></tr>
+<tr><td>go in</td><td><div class="triad"><div class="thai">เข้าไป</div><div class="roman">khâo bpai</div><div class="eng">go in away from speaker</div></div></td><td><div class="triad"><div class="thai">อย่าเข้าไปในห้องนั้นค่ะ</div><div class="roman">yàa khâo bpai nai hɔ̂ng nán khâ</div><div class="eng">Don’t go into that room.</div></div></td></tr>
+<tr><td>don’t have to</td><td><div class="triad"><div class="thai">ไม่ต้อง</div><div class="roman">mâi dtɔ̂ng</div><div class="eng">don’t have to</div></div></td><td><div class="triad"><div class="thai">ไม่ต้องรอฉันค่ะ</div><div class="roman">mâi dtɔ̂ng rɔɔ chǎn khâ</div><div class="eng">You don’t have to wait for me.</div></div></td></tr>
+<tr><td>don’t</td><td><div class="triad"><div class="thai">อย่า</div><div class="roman">yàa</div><div class="eng">don’t</div></div></td><td><div class="triad"><div class="thai">อย่าลืมกุญแจนะคะ</div><div class="roman">yàa lʉʉm gun-jɛɛ ná khá</div><div class="eng">Don’t forget the key.</div></div></td></tr>
+<tr><td>forbidden</td><td><div class="triad"><div class="thai">ห้าม</div><div class="roman">hâam</div><div class="eng">forbidden</div></div></td><td><div class="triad"><div class="thai">ห้ามสูบบุหรี่ค่ะ</div><div class="roman">hâam sùup bù-rìi khâ</div><div class="eng">Smoking is prohibited.</div></div></td></tr>
+<tr><td>first / second / last</td><td><div class="triad"><div class="thai">ครั้งแรก / ครั้งที่สอง / ครั้งสุดท้าย</div><div class="roman">khráng-rɛ̂ɛk / khráng-thîi sɔ̌ɔng / khráng-sùt-tháai</div><div class="eng">first time / second time / last time</div></div></td><td><div class="triad"><div class="thai">ครั้งที่สองฉันมาเรียนภาษาไทยค่ะ</div><div class="roman">khráng-thîi sɔ̌ɔng chǎn maa riian phaa-sǎa Thai khâ</div><div class="eng">The second time, I came to study Thai.</div></div></td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="recall" class="tab-content">
+<h2>Recall｜先想，再打開答案</h2>
+<div id="recallList"></div>
+</section>
+
+<section id="translation" class="tab-content">
+<h2>Translation｜中/英 → 泰</h2>
+<div id="translationList"></div>
+</section>
+
+<section id="shadowing" class="tab-content">
+<h2>Shadowing｜跟讀 3 輪</h2>
+<div class="tip blue"><strong>練法：</strong>第一輪聽語氣；第二輪跟讀；第三輪只看泰文。Day4 的重點是「邀請、柔和禁止、方向感」。</div>
+<div class="bubble-wrap">
+<div class="bubble a"><span class="speaker a">Friend</span><div class="triad"><div class="thai">ถึงแล้วค่ะ อยู่ข้างนอกค่ะ</div><div class="roman">thʉ̌ng lɛ́ɛw khâ, yùu khâang-nɔ̂ɔk khâ</div><div class="eng">I’ve arrived. I’m outside.</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">เข้ามาข้างในสิคะ ข้างนอกร้อนมากค่ะ</div><div class="roman">khâo maa khâang-nai sì khá, khâang-nɔ̂ɔk rɔ́ɔn mâak khâ</div><div class="eng">Come inside. It’s very hot outside.</div></div></div>
+<div class="bubble a"><span class="speaker a">Friend</span><div class="triad"><div class="thai">ต้องถอดรองเท้าไหมคะ</div><div class="roman">dtɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khá</div><div class="eng">Do I have to take off my shoes?</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ไม่ต้องค่ะ ตามสบายค่ะ</div><div class="roman">mâi dtɔ̂ng khâ, dtaam sà-baai khâ</div><div class="eng">No need. Make yourself comfortable.</div></div></div>
+<div class="bubble b"><span class="speaker b">You</span><div class="triad"><div class="thai">ไม่ต้องเกรงใจนะคะ กินได้เลยค่ะ</div><div class="roman">mâi dtɔ̂ng greeng-jai ná khá, gin dâai ləəy khâ</div><div class="eng">Don’t be shy. You can eat now.</div></div></div>
+</div>
+</section>
+
+<section id="random" class="tab-content">
+<h2>Random Quiz｜隨機抽題</h2>
+<div class="random-card"><p class="subtitle">抽題後先自己說，再顯示答案。</p><h3 id="randomQuestion">按下方按鈕開始抽題</h3><div id="randomAnswer" class="answer-box" style="display:none;"></div><div class="btn-row"><button class="small-btn blue" onclick="drawRandom()">抽一題</button><button class="small-btn easy" onclick="showRandomAnswer()">顯示答案</button></div></div>
+</section>
+
+<section id="output" class="tab-content">
+<h2>Output｜真實情境造句</h2>
+<div class="review-box"><h3>1. 朋友來你家</h3><p>Prompt：朋友到了，人在外面。請你叫他進來，說外面很熱，並告訴他不用脫鞋。</p><textarea></textarea><details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">เข้ามาข้างในสิคะ ข้างนอกร้อนมากค่ะ ไม่ต้องถอดรองเท้าค่ะ</div><div class="roman">khâo maa khâang-nai sì khá, khâang-nɔ̂ɔk rɔ́ɔn mâak khâ, mâi dtɔ̂ng thɔ̀ɔt rɔɔng-tháao khâ</div><div class="eng">Come inside. It’s very hot outside. You don’t have to take off your shoes.</div></div></div></details></div>
+<div class="review-box"><h3>2. 公寓鑰匙不見</h3><p>Prompt：跟櫃檯說鑰匙不見、進不去，問該怎麼辦。</p><textarea></textarea><details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">กุญแจหายค่ะ เข้าไม่ได้ค่ะ ต้องทำยังไงคะ</div><div class="roman">gun-jɛɛ hǎai khâ, khâo mâi dâai khâ, dtɔ̂ng tham yang-ngai khá</div><div class="eng">My key is missing. I can’t get in. What should I do?</div></div></div></details></div>
+<div class="review-box"><h3>3. 語言交換</h3><p>Prompt：請對方今天不要說英文，慢慢說泰文。</p><textarea></textarea><details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">วันนี้อย่าพูดภาษาอังกฤษนะคะ พูดภาษาไทยช้า ๆ หน่อยค่ะ</div><div class="roman">wan-níi yàa phûut phaa-sǎa ang-grìt ná khá, phûut phaa-sǎa Thai cháa-cháa nɔ̀i khâ</div><div class="eng">Today, don’t speak English, okay? Please speak Thai slowly.</div></div></div></details></div>
+<div class="review-box"><h3>4. 第一次 / 第二次 / 這次來泰國</h3><p>Prompt：用三句說明：第一次來旅遊，第二次來學泰文，這次來住 Bangkok 一段時間。</p><textarea></textarea><details><summary>參考答案</summary><div class="answer-box"><div class="triad"><div class="thai">ครั้งแรกฉันมาเที่ยวค่ะ ครั้งที่สองฉันมาเรียนภาษาไทยค่ะ ครั้งนี้ฉันมาอยู่กรุงเทพฯ ค่ะ</div><div class="roman">khráng-rɛ̂ɛk chǎn maa thîao khâ, khráng-thîi sɔ̌ɔng chǎn maa riian phaa-sǎa Thai khâ, khráng níi chǎn maa yùu grung-thêep khâ</div><div class="eng">The first time, I came to travel. The second time, I came to study Thai. This time, I came to stay in Bangkok.</div></div></div></details></div>
+</section>
+
+<section id="bangkok" class="tab-content">
+<h2>Bangkok Real-life｜課本到生活</h2>
+<table><thead><tr><th>Situation</th><th>Textbook</th><th>Natural Bangkok Thai</th><th>Note</th></tr></thead><tbody>
+<tr><td>請進</td><td><div class="triad"><div class="thai">เชิญเข้ามาข้างในสิคะ</div><div class="roman">chəən khâo maa khâang-nai sì khá</div><div class="eng">Please come inside.</div></div></td><td><div class="triad"><div class="thai">เข้ามาก่อนค่ะ</div><div class="roman">khâo maa gɔ̀ɔn khâ</div><div class="eng">Come in first.</div></div></td><td>朋友間可短一點；正式招待用 เชิญ。</td></tr>
+<tr><td>不用脫鞋</td><td><div class="triad"><div class="thai">ไม่ต้องถอดรองเท้าหรอกค่ะ</div><div class="roman">mâi dtɔ̂ng thɔ̀ɔt rɔɔng-tháao rɔ̀ɔk khâ</div><div class="eng">You really don’t need to take off your shoes.</div></div></td><td><div class="triad"><div class="thai">ไม่ต้องค่ะ ใส่ได้ค่ะ</div><div class="roman">mâi dtɔ̂ng khâ, sài dâai khâ</div><div class="eng">No need. You can keep them on.</div></div></td><td>已知上下文時可省略ถอดรองเท้า。</td></tr>
+<tr><td>不用客氣</td><td><div class="triad"><div class="thai">ไม่ต้องเกรงใจค่ะ</div><div class="roman">mâi dtɔ̂ng greeng-jai khâ</div><div class="eng">Don’t feel shy / don’t worry about imposing.</div></div></td><td><div class="triad"><div class="thai">ตามสบายค่ะ กินได้เลยค่ะ</div><div class="roman">dtaam sà-baai khâ, gin dâai ləəy khâ</div><div class="eng">Make yourself comfortable. You can eat now.</div></div></td><td>เกรงใจ 是文化詞；ตามสบาย 更像招待。</td></tr>
+<tr><td>第一次來泰國</td><td><div class="triad"><div class="thai">ตอนที่คุณมาเมืองไทยครั้งแรก คุณมาทำอะไรคะ</div><div class="roman">dtɔɔn-thîi khun maa mʉang-thai khráng-rɛ̂ɛk, khun maa tham à-rai khá</div><div class="eng">When you came to Thailand for the first time, what did you come to do?</div></div></td><td><div class="triad"><div class="thai">มาไทยครั้งแรกมาทำอะไรคะ</div><div class="roman">maa thai khráng-rɛ̂ɛk maa tham à-rai khá</div><div class="eng">The first time you came to Thailand, what did you come to do?</div></div></td><td>口語可省略ตอนที่。</td></tr>
+<tr><td>生病時</td><td><div class="triad"><div class="thai">พอคุณไม่สบาย คุณทำยังไงคะ</div><div class="roman">phɔɔ khun mâi sà-baai, khun tham yang-ngai khá</div><div class="eng">When you feel sick, what do you do?</div></div></td><td><div class="triad"><div class="thai">ถ้าไม่สบาย ปกติทำยังไงคะ</div><div class="roman">thâa mâi sà-baai, bpòk-gà-dtì tham yang-ngai khá</div><div class="eng">If you feel sick, what do you usually do?</div></div></td><td>日常聊天更常用ถ้า + ปกติ。</td></tr>
+</tbody></table>
+</section>
+
+<section id="mistakes" class="tab-content">
+<h2>Common Mistakes｜真正常錯</h2>
+<table><thead><tr><th>Mistake</th><th>Why awkward</th><th>Better</th></tr></thead><tbody>
+<tr><td><div class="triad"><div class="thai">เข้ามา / เข้าไป 亂用</div><div class="roman">khâo maa / khâo bpai</div><div class="eng">come in / go in</div></div></td><td>不是只看中文「進」，還要看方向是不是往說話者。</td><td><div class="triad"><div class="thai">เข้ามาข้างในสิคะ / อย่าเข้าไปข้างในค่ะ</div><div class="roman">khâo maa khâang-nai sì khá / yàa khâo bpai khâang-nai khâ</div><div class="eng">Come inside / Don’t go inside.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">ไม่ต้อง = 不要</div><div class="roman">mâi dtɔ̂ng</div><div class="eng">don’t have to</div></div></td><td>ไม่ต้อง 是「不用」，不是命令對方不要做。</td><td><div class="triad"><div class="thai">ไม่ต้องรอค่ะ / อย่ารอค่ะ</div><div class="roman">mâi dtɔ̂ng rɔɔ khâ / yàa rɔɔ khâ</div><div class="eng">You don’t have to wait / Don’t wait.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">หาย 只記成 missing</div><div class="roman">hǎai</div><div class="eng">missing / recover</div></div></td><td>物品不見用หาย，病好了也可用หาย。</td><td><div class="triad"><div class="thai">กุญแจหายค่ะ / หายป่วยแล้วค่ะ</div><div class="roman">gun-jɛɛ hǎai khâ / hǎai bpùai lɛ́ɛw khâ</div><div class="eng">The key is missing / I recovered from being sick.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">เกรงใจ = embarrassed</div><div class="roman">greeng-jai</div><div class="eng">reluctant to impose</div></div></td><td>它不是單純害羞，而是怕麻煩別人、不好意思接受。</td><td><div class="triad"><div class="thai">ไม่ต้องเกรงใจนะคะ กินได้เลยค่ะ</div><div class="roman">mâi dtɔ̂ng greeng-jai ná khá, gin dâai ləəy khâ</div><div class="eng">Don’t worry about imposing. You can eat now.</div></div></td></tr>
+<tr><td><div class="triad"><div class="thai">นักเรียน / นักศึกษา 混用</div><div class="roman">nák-riian / nák-sʉ̀k-sǎa</div><div class="eng">school student / university student</div></div></td><td>นักเรียน 多指中小學生；นักศึกษา 是大學生。</td><td><div class="triad"><div class="thai">เมื่อฉันเป็นนักศึกษา ฉันเรียนเศรษฐศาสตร์ค่ะ</div><div class="roman">mʉ̂a chǎn bpen nák-sʉ̀k-sǎa, chǎn riian sèet-thà-sàat khâ</div><div class="eng">When I was a university student, I studied economics.</div></div></td></tr>
+</tbody></table>
+</section>
+
+<section id="quick" class="tab-content">
+<h2>Quick Review｜睡前 3 分鐘</h2>
+<div class="cards">
+<div class="card"><div class="mini-title">今日最重要</div><div class="triad"><div class="thai">เชิญเข้ามาข้างในสิคะ</div><div class="roman">chəən khâo maa khâang-nai sì khá</div><div class="eng">Please come inside.</div></div><div class="triad"><div class="thai">ต้องถอดรองเท้าไหมคะ</div><div class="roman">dtɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khá</div><div class="eng">Do I have to take off my shoes?</div></div><div class="triad"><div class="thai">ไม่ต้องเกรงใจนะคะ</div><div class="roman">mâi dtɔ̂ng greeng-jai ná khá</div><div class="eng">Don’t feel shy / don’t worry about imposing.</div></div></div>
+<div class="card"><div class="mini-title">Bangkok 最實用</div><div class="triad"><div class="thai">กุญแจหายค่ะ เข้าไม่ได้ค่ะ</div><div class="roman">gun-jɛɛ hǎai khâ, khâo mâi dâai khâ</div><div class="eng">My key is missing. I can’t get in.</div></div><div class="triad"><div class="thai">ถึงแล้วกดกริ่งนะคะ</div><div class="roman">thʉ̌ng lɛ́ɛw gòt grìng ná khá</div><div class="eng">When you arrive, press the bell.</div></div><div class="triad"><div class="thai">อย่าพูดภาษาอังกฤษนะคะ</div><div class="roman">yàa phûut phaa-sǎa ang-grìt ná khá</div><div class="eng">Don’t speak English, okay?</div></div></div>
+<div class="card"><div class="mini-title">今天最容易錯</div><p>1. <span class="thai">ไม่ต้อง</span> / <span class="roman">mâi dtɔ̂ng</span> / <span class="eng">don’t have to</span> ≠ <span class="thai">อย่า</span> / <span class="roman">yàa</span> / <span class="eng">don’t</span></p><p>2. <span class="thai">เข้ามา</span> / <span class="roman">khâo maa</span> / <span class="eng">come in</span> 看方向是往你這裡。</p><p>3. <span class="thai">ครั้งที่สอง</span> / <span class="roman">khráng-thîi sɔ̌ɔng</span> / <span class="eng">second time</span>，第幾次要加 <span class="thai">ที่</span>。</p></div>
+</div>
+</section>
+</div>
+<script>
+function openTab(e,id){document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');e.currentTarget.classList.add('active')}
+const storagePrefix='thaiBook2Day4ReviewMode_';
+function updateProgress(){const checks=[...document.querySelectorAll('.task-check')];const done=checks.filter(c=>c.checked).length;const total=checks.length||1;const pct=Math.round(done/total*100);document.getElementById('progressFill').style.width=pct+'%';document.getElementById('progressText').textContent=`${pct}% completed（${done}/${total}）`}
+function initChecks(){document.querySelectorAll('.task-check').forEach(c=>{const k=storagePrefix+'check_'+c.dataset.id;c.checked=localStorage.getItem(k)==='true';c.addEventListener('change',()=>{localStorage.setItem(k,c.checked);updateProgress()})});updateProgress()}
+function resetProgress(){document.querySelectorAll('.task-check').forEach(c=>{c.checked=false;localStorage.removeItem(storagePrefix+'check_'+c.dataset.id)});updateProgress()}
+function markCard(id,status){localStorage.setItem(storagePrefix+'card_'+id,status);const el=document.querySelector(`[data-qid="${id}"]`);if(el){el.style.borderColor=status==='easy'?'rgba(22,163,74,.55)':'rgba(220,38,38,.55)';el.style.background=status==='easy'?'rgba(22,163,74,.08)':'rgba(220,38,38,.07)'}}
+function restoreCardMarks(){document.querySelectorAll('[data-qid]').forEach(el=>{const s=localStorage.getItem(storagePrefix+'card_'+el.dataset.qid);if(s){el.style.borderColor=s==='easy'?'rgba(22,163,74,.55)':'rgba(220,38,38,.55)';el.style.background=s==='easy'?'rgba(22,163,74,.08)':'rgba(220,38,38,.07)'}})}
+const recall=[
+['r1','朋友在你家門口，請他進來。','เชิญเข้ามาข้างในสิคะ','chəən khâo maa khâang-nai sì khá','Please come inside.'],
+['r2','說：「外面很熱，先進來。」','ข้างนอกร้อนมากค่ะ เข้ามาก่อนค่ะ','khâang-nɔ̂ɔk rɔ́ɔn mâak khâ, khâo maa gɔ̀ɔn khâ','It’s very hot outside. Come in first.'],
+['r3','去朋友家，問：「要脫鞋嗎？」','ต้องถอดรองเท้าไหมคะ','dtɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khá','Do I have to take off my shoes?'],
+['r4','主人說：「不用脫啦。」','ไม่ต้องถอดรองเท้าหรอกค่ะ','mâi dtɔ̂ng thɔ̀ɔt rɔɔng-tháao rɔ̀ɔk khâ','You really don’t need to take off your shoes.'],
+['r5','公寓櫃檯：鑰匙不見，進不去。','กุญแจหายค่ะ เข้าไม่ได้ค่ะ','gun-jɛɛ hǎai khâ, khâo mâi dâai khâ','My key is missing. I can’t get in.'],
+['r6','說：「請不要說英文。」','อย่าพูดภาษาอังกฤษนะคะ','yàa phûut phaa-sǎa ang-grìt ná khá','Don’t speak English, okay?'],
+['r7','加油站標語：「禁止吸菸。」','ห้ามสูบบุหรี่ที่ปั๊มน้ำมันค่ะ','hâam sùup bù-rìi thîi bpám-nám-man khâ','Smoking is prohibited at the gas station.'],
+['r8','說：「我生病時會吃藥。」','พอฉันไม่สบาย ฉันกินยาค่ะ','phɔɔ chǎn mâi sà-baai, chǎn gin yaa khâ','When I feel sick, I take medicine.'],
+['r9','說：「我第一次來泰國是來旅遊。」','ครั้งแรกฉันมาเที่ยวค่ะ','khráng-rɛ̂ɛk chǎn maa thîao khâ','The first time, I came to travel.']
+];
+const trans=[
+['t1','Please come inside.','เชิญเข้ามาข้างในสิคะ','chəən khâo maa khâang-nai sì khá','Please come inside.','你人在裡面，所以用 เข้ามา。'],
+['t2','My friend is waiting outside.','เพื่อนรออยู่ข้างนอกค่ะ','phʉ̂an rɔɔ yùu khâang-nɔ̂ɔk khâ','My friend is waiting outside.','ข้างนอก = outside。'],
+['t3','When you arrive, press the bell.','ถึงแล้วกดกริ่งนะคะ','thʉ̌ng lɛ́ɛw gòt grìng ná khá','When you arrive, press the bell.','公寓來訪很實用。'],
+['t4','Do I have to take off my shoes?','ต้องถอดรองเท้าไหมคะ','dtɔ̂ng thɔ̀ɔt rɔɔng-tháao mái khá','Do I have to take off my shoes?','去別人家、寺廟、按摩店都可用。'],
+['t5','You don’t have to wait for me.','ไม่ต้องรอฉันค่ะ','mâi dtɔ̂ng rɔɔ chǎn khâ','You don’t have to wait for me.','ไม่ต้อง = 不必。'],
+['t6','Don’t forget the key.','อย่าลืมกุญแจนะคะ','yàa lʉʉm gun-jɛɛ ná khá','Don’t forget the key.','อย่า + Verb = 不要做。'],
+['t7','Smoking is prohibited in the room.','ในห้องห้ามสูบบุหรี่ค่ะ','nai hɔ̂ng hâam sùup bù-rìi khâ','Smoking is prohibited in the room.','ห้าม = 禁止，偏規則。'],
+['t8','My wallet is missing.','กระเป๋าสตางค์หายค่ะ','grà-bpǎo sà-dtaang hǎai khâ','My wallet is missing.','口語也可說 กระเป๋าตังค์。'],
+['t9','When I feel very sick, I go see a doctor.','พอฉันไม่สบายมาก ฉันไปหาหมอค่ะ','phɔɔ chǎn mâi sà-baai mâak, chǎn bpai hǎa mɔ̌ɔ khâ','When I feel very sick, I go see a doctor.','ไปหาหมอ = go see a doctor。'],
+['t10','The second time, I came to study Thai.','ครั้งที่สองฉันมาเรียนภาษาไทยค่ะ','khráng-thîi sɔ̌ɔng chǎn maa riian phaa-sǎa Thai khâ','The second time, I came to study Thai.','ครั้งที่ + number = 第幾次。']
+];
+function makeDetail(item,type){let [id,q,th,ro,en,note]=item;return `<details class="quiz-card" data-qid="${id}"><summary>${q}</summary><div class="answer-box"><div class="triad"><div class="thai">${th}</div><div class="roman">${ro}</div><div class="eng">${en}</div></div>${note?`<p>中文：${note}</p>`:''}<div class="btn-row"><button class="small-btn easy" onclick="markCard('${id}','easy')">Easy</button><button class="small-btn hard" onclick="markCard('${id}','hard')">Hard</button></div></div></details>`}
+document.getElementById('recallList').innerHTML=recall.map(x=>makeDetail(x)).join('');
+document.getElementById('translationList').innerHTML=trans.map(x=>makeDetail(x)).join('');
+const randomItems=recall.concat(trans).map(x=>({q:x[1],a:`<div class="triad"><div class="thai">${x[2]}</div><div class="roman">${x[3]}</div><div class="eng">${x[4]}</div></div>`}));
+let currentRandom=null;
+function drawRandom(){currentRandom=randomItems[Math.floor(Math.random()*randomItems.length)];document.getElementById('randomQuestion').textContent=currentRandom.q;const a=document.getElementById('randomAnswer');a.style.display='none';a.innerHTML=''}
+function showRandomAnswer(){if(!currentRandom)drawRandom();const a=document.getElementById('randomAnswer');a.innerHTML=currentRandom.a;a.style.display='block';addSpeakButtons(a)}
+let thaiVoice=null,activBtn=null;
+function loadVoices(){const voices=window.speechSynthesis.getVoices();thaiVoice=voices.find(v=>v.lang==='th-TH')||voices.find(v=>v.lang.startsWith('th'))||null}
+loadVoices();if(speechSynthesis.onvoiceschanged!==undefined){speechSynthesis.onvoiceschanged=loadVoices}
+function speakThai(text,btn){if(!window.speechSynthesis){alert('此瀏覽器不支援語音合成。請用 Safari 或 Chrome。');return}if(activBtn===btn&&speechSynthesis.speaking){speechSynthesis.cancel();btn.classList.remove('speaking');btn.textContent='🔊';activBtn=null;return}speechSynthesis.cancel();if(activBtn){activBtn.classList.remove('speaking');activBtn.textContent='🔊'}const u=new SpeechSynthesisUtterance(text);u.lang='th-TH';u.rate=.85;u.pitch=1.0;if(thaiVoice)u.voice=thaiVoice;u.onstart=()=>{btn.classList.add('speaking');btn.textContent='⏸';activBtn=btn};u.onend=u.onerror=()=>{btn.classList.remove('speaking');btn.textContent='🔊';activBtn=null};speechSynthesis.speak(u)}
+function addSpeakButtons(root=document){root.querySelectorAll('div.thai').forEach(el=>{if(el.querySelector('.speak-btn'))return;const raw=el.textContent.trim();if(!raw)return;const span=document.createElement('span');span.className='thai-text';span.textContent=raw;const btn=document.createElement('button');btn.className='speak-btn';btn.textContent='🔊';btn.title='唸出泰文';btn.setAttribute('aria-label','播放發音');btn.addEventListener('click',e=>{e.stopPropagation();speakThai(raw,btn)});el.textContent='';el.appendChild(span);el.appendChild(btn)})}
+document.addEventListener('DOMContentLoaded',()=>{initChecks();restoreCardMarks();addSpeakButtons()});
+</script>
+</body>
+</html>
